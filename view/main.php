@@ -10,7 +10,7 @@
         <header>
             <div>
                 <a href="">
-                    <img src="" alt="logo">
+                    <img src="../public/images/site/logo.png" alt="logo">
                 </a>
 
                 <nav>
@@ -50,7 +50,7 @@
                 <div>
                     <a href="">
                         <div>
-                            <img src="" alt="maal">
+                            <img src="../public/images/cat_img/maal.png" alt="maal">
                                 <div>
                                     <p>MAAL</p>
                                 </div>
@@ -61,7 +61,7 @@
                 <div>
                     <a href="">
                         <div>
-                            <img src="" alt="illustratsioon">
+                            <img src="../public/images/cat_img/illustratsioon.png" alt="illustratsioon">
                                 <div>
                                     <p>ILLUSTRATSIOON</p>
                                 </div>
@@ -72,7 +72,7 @@
                 <div>
                     <a href="">
                         <div>
-                            <img src="" alt="plakat">
+                            <img src="../public/images/cat_img/plakat.png" alt="plakat">
                                 <div>
                                     <p>PLAKAT</p>
                                 </div>
@@ -83,7 +83,7 @@
                 <div>
                     <a href="">
                         <div>
-                            <img src="" alt="kujundus">
+                            <img src="../public/images/cat_img/kujundus.png" alt="kujundus">
                                 <div>
                                     <p>KUJUNDUS</p>
                                 </div>
@@ -94,7 +94,7 @@
                 <div>
                     <a href="">
                         <div>
-                            <img src="" alt="foto">
+                            <img src="../public/images/cat_img/foto.png" alt="foto">
                                 <div>
                                     <p>FOTO</p>
                                 </div>
@@ -105,7 +105,7 @@
                 <div>
                     <a href="">
                         <div>
-                            <img src="" alt="ruum">
+                            <img src="../public/images/cat_img/ruum.png" alt="ruum">
                                 <div>
                                     <p>RUUM</p>
                                 </div>
