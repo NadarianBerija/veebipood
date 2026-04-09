@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>VIHMART</title>
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <div>
+            <div class="container">
                 <a href="">
-                    <img src="../public/images/site/logo.png" alt="logo">
+                    <img class="logo" src="../public/images/site/logo.png" alt="logo">
                 </a>
 
-                <nav>
-                    <ul>
+                <nav class="header_menu">
+                    <ul class="menu_links">
                         <li><a href="">Avaleht</a></li>
                         <li><a href="">Pood</a></li>
                         <li><a href="">Meist</a></li>
                         <li><a href="">Kontakt</a></li>
                     </ul>
 
-                    <ul>
+                    <div class="line"></div>
+
+                    <ul class="cat_gallery">
                         <li><a href="">MAAL</a></li>
                         <li><a href="">ILLUSTRATSIOON</a></li>
                         <li><a href="">PLAKAT</a></li>
@@ -38,7 +43,7 @@
         </header>
 
         <section>
-            <div>
+            <div class="hero-slider">
                 <h1>Tere!</h1>
                 <a href="">Kirjuta meil</a>
                 <div>
@@ -46,8 +51,8 @@
                 </div>
             </div>
 
-            <div>
-                <div>
+            <div class="container">
+                <div class="cat_container">
                     <a href="">
                         <div>
                             <img src="../public/images/cat_img/maal.png" alt="maal">
@@ -57,8 +62,7 @@
                             </img>
                         </div>
                     </a>
-                </div>
-                <div>
+                
                     <a href="">
                         <div>
                             <img src="../public/images/cat_img/illustratsioon.png" alt="illustratsioon">
@@ -68,8 +72,7 @@
                             </img>
                         </div>
                     </a>
-                </div>
-                <div>
+                
                     <a href="">
                         <div>
                             <img src="../public/images/cat_img/plakat.png" alt="plakat">
@@ -79,8 +82,7 @@
                             </img>
                         </div>
                     </a>
-                </div>
-                <div>
+                
                     <a href="">
                         <div>
                             <img src="../public/images/cat_img/kujundus.png" alt="kujundus">
@@ -90,8 +92,7 @@
                             </img>
                         </div>
                     </a>
-                </div>
-                <div>
+                
                     <a href="">
                         <div>
                             <img src="../public/images/cat_img/foto.png" alt="foto">
@@ -101,8 +102,7 @@
                             </img>
                         </div>
                     </a>
-                </div>
-                <div>
+                
                     <a href="">
                         <div>
                             <img src="../public/images/cat_img/ruum.png" alt="ruum">
@@ -117,16 +117,16 @@
         </section>
 
         <footer>
-            <div>
-                <nav>
-                    <ul>
+            <div class="container">
+                <nav class="footer_menu">
+                    <ul class="menu_links">
                         <li><a href="">Avaleht</a></li>
                         <li><a href="">Pood</a></li>
                         <li><a href="">Meist</a></li>
                         <li><a href="">Kontakt</a></li>
                     </ul>
-
-                    <ul>
+                    <span class="diagonal">/</span>
+                    <ul class="cat_gallery">
                         <li><a href="">MAAL</a></li>
                         <li><a href="">ILLUSTRATSIOON</a></li>
                         <li><a href="">PLAKAT</a></li>
@@ -143,5 +143,6 @@
             </div>
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
