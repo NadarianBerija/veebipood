@@ -1,5 +1,5 @@
 <?php
-session_abort()
+session_start()
 
 require 'inc/Database.php';
 require 'inc/Lang.php';
