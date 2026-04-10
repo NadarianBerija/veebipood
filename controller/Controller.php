@@ -4,7 +4,7 @@ class Controller {
         extract($data);
 
         ob_start();
-        include "views/$view.php";
+        include "view/$view.php";
         $content = ob_get_clean();
 
         ob_start();
@@ -14,5 +14,9 @@ class Controller {
 
     public static function StartSite() {
         return self::render('main');
+    }
+
+    public static function error404() {
+        return self::render('error404');
     }
 }

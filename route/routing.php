@@ -16,7 +16,7 @@ if (!in_array($lang, $availableLangs, true)) {
     $lang = 'ee';
     $pathParts = $parts;
 } else {
-    $pathParts = array_shift($parts, 1);
+    $pathParts = array_slice($parts, 1);
 }
 
 $path = implode('/', $pathParts);
