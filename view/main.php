@@ -20,67 +20,18 @@ if (is_array($heroImages)) {
     </div>
 </div>
 
-<div class="container">
+<div class="my-container">
     <div class="cat_container">
+        <?php foreach(Controller::AllCategory() as $cat) { ?>
         <a href="">
-            <div>
-                <img src="../public/images/cat_img/maal.png" alt="maal">
-                    <div>
-                        <p>MAAL</p>
+            <div class="cat_block">
+                <img class="w-100 d-block object-fit-cover mx-auto" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($cat['cat_img']) ?>">
+                    <div class="position-absolute top-50 start-50 translate-middle">
+                        <p style="color: black;"><?= htmlspecialchars($cat['category_name']) ?></p>
                     </div>
-                </img>
             </div>
         </a>
-    
-        <a href="">
-            <div>
-                <img src="../public/images/cat_img/illustratsioon.png" alt="illustratsioon">
-                    <div>
-                        <p>ILLUSTRATSIOON</p>
-                    </div>
-                </img>
-            </div>
-        </a>
-    
-        <a href="">
-            <div>
-                <img src="../public/images/cat_img/plakat.png" alt="plakat">
-                    <div>
-                        <p>PLAKAT</p>
-                    </div>
-                </img>
-            </div>
-        </a>
-    
-        <a href="">
-            <div>
-                <img src="../public/images/cat_img/kujundus.png" alt="kujundus">
-                    <div>
-                        <p>KUJUNDUS</p>
-                    </div>
-                </img>
-            </div>
-        </a>
-    
-        <a href="">
-            <div>
-                <img src="../public/images/cat_img/foto.png" alt="foto">
-                    <div>
-                        <p>FOTO</p>
-                    </div>
-                </img>
-            </div>
-        </a>
-    
-        <a href="">
-            <div>
-                <img src="../public/images/cat_img/ruum.png" alt="ruum">
-                    <div>
-                        <p>RUUM</p>
-                    </div>
-                </img>
-            </div>
-        </a>
+        <?php } ?>
     </div>
 </div>
 <script src="<?= BASE_URL ?>/public/js/slider.js"></script>

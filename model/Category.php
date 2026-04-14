@@ -7,7 +7,8 @@ class Category {
                         l.code AS language_code
                     FROM categories c
                     JOIN cat_lang cl ON cl.cat_id = c.id
-                    JOIN languaes l ON cl.lang_id = l.id";
+                    JOIN languages l ON cl.lang_id = l.id
+                    WHERE l.code = 'ee'";
         $db = new Database();
         $arr = $db->getAll($query);
         return $arr;

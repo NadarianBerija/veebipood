@@ -11,7 +11,7 @@
 <body>
     <div class="d-flex flex-column min-vh-100">
         <header class="d-flex">
-            <div class="container">
+            <div class="my-container">
                 <div class="d-flex align-items-center justify-content-between">
                     <a href="">
                         <img class="logo" src="<?= BASE_URL ?>/public/images/site/logo.png" alt="logo">
@@ -55,7 +55,7 @@
         </section>
 
         <footer class="d-flex">
-            <div class="container">
+            <div class="my-container">
                 <div class="d-flex flex-column align-items-center mx-auto">
                     <nav class="d-flex align-items-center gap-2 mb-3">
                         <ul class="menu_links d-flex mb-0 gap-2 text-uppercase">
@@ -78,7 +78,7 @@
                     </nav>
 
                     <ul class="lang-footer d-flex flex-row gap-3 mb-0">
-                        <li><a href="">EESTI</a></li>
+                        <li><a href="">EESTI<img class="flag" src="<?= BASE_URL ?>/public/images/site/flags/ee.png" alt="ee"></a></li>
                         <li><a href="">ENGLISH<img class="flag" src="<?= BASE_URL ?>/public/images/site/flags/en.png" alt="en"></a></li>
                         <li><a href="">РУССКИЙ<img class="flag" src="<?= BASE_URL ?>/public/images/site/flags/ru.png" alt="ru"></a></li>
                     </ul>

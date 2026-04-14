@@ -20,6 +20,10 @@ class Controller {
         return HeroSlider::getAllHeroSlides();
     }
 
+    public static function AllCategory() {
+        return Category::getAllCategory();
+    }
+
     public static function error404() {
         return self::render('error404');
     }
