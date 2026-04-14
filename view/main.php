@@ -7,14 +7,16 @@ if (is_array($heroImages)) {
 
 <div id="hero-slider">
     <?php foreach($heroImages as $index => $image){ ?>
-        <div></div>
+        <div class="slide <?php echo $index === 0 ? 'active' : ''; ?>"data-bg="<?= BASE_URL ?>/public/<?= htmlspecialchars($image['hero_slide'], ENT_QUOTES, 'UTF-8') ?>"></div>
     <?php } ?>
-    <div class="hero-main">
-        <h1>Tere!</h1>
-        <a href="">Kirjuta meil</a>
-    </div>
-    <div class="hero-bottom-line">
-        <p>Saate tellida individuaalse töö vastavalt oma soovidele.</p>
+    <div class="hero-slide-content">
+        <div class="hero-main">
+            <h1>Tere!</h1>
+            <a href="">Kirjuta meil</a>
+        </div>
+        <div class="hero-bottom-line">
+            <p>Saate tellida individuaalse töö vastavalt oma soovidele.</p>
+        </div>
     </div>
 </div>
 
@@ -81,3 +83,4 @@ if (is_array($heroImages)) {
         </a>
     </div>
 </div>
+<script src="<?= BASE_URL ?>/public/js/slider.js"></script>
