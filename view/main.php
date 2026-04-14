@@ -1,8 +1,19 @@
+<?php
+$heroImages = Controller::AllHeroSlides();
+if (is_array($heroImages)) {
+    shuffle($heroImages);
+}
+?>
 
-<div class="hero-slider">
-    <h1>Tere!</h1>
-    <a href="">Kirjuta meil</a>
-    <div>
+<div id="hero-slider">
+    <?php foreach($heroImages as $index => $image){ ?>
+        <div></div>
+    <?php } ?>
+    <div class="hero-main">
+        <h1>Tere!</h1>
+        <a href="">Kirjuta meil</a>
+    </div>
+    <div class="hero-bottom-line">
         <p>Saate tellida individuaalse töö vastavalt oma soovidele.</p>
     </div>
 </div>

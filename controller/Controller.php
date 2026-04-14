@@ -16,6 +16,10 @@ class Controller {
         return self::render('main');
     }
 
+    public static function AllHeroSlides() {
+        return HeroSlider::getAllHeroSlides();
+    }
+
     public static function error404() {
         return self::render('error404');
     }
