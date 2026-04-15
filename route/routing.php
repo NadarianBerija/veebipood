@@ -29,6 +29,9 @@ $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 if ($path == '' OR $path == 'index' OR $path == 'index.php') {
     $response = Controller::StartSite();
 }
+elseif ($path == 'aboutUs') {
+    $response = Controller::AboutUs();
+}
 else {
     $response = Controller::error404();
 }

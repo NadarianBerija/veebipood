@@ -13,15 +13,15 @@
         <header class="d-flex">
             <div class="my-container">
                 <div class="d-flex align-items-center justify-content-between">
-                    <a href="<?= BASE_URL ?>">
+                    <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/">
                         <img class="logo" src="<?= BASE_URL ?>/public/images/site/logo.png" alt="logo">
                     </a>
 
                     <nav class="d-flex flex-column align-items-center gap-2">
                         <ul class="menu_links d-flex mb-0 gap-3 text-uppercase">
-                            <li><a href=""><?= htmlspecialchars(Lang::get('home')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a></li>
                             <li><a href=""><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
-                            <li><a href=""><?= htmlspecialchars(Lang::get('about')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/aboutUs"><?= htmlspecialchars(Lang::get('about')) ?></a></li>
                             <li><a href=""><?= htmlspecialchars(Lang::get('contact')) ?></a></li>
                         </ul>
 

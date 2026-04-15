@@ -22,8 +22,21 @@ li {
 }
 
 h2 {
+    position: relative;
     font-size: 42px;
     text-transform: uppercase;
+    margin: 50px 0 40px 50px;
+    display: inline-block;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 4px;
+    background-color: currentColor;
 }
 
 a {
@@ -210,4 +223,54 @@ header {
 
 .cat_block:hover {
     font-size: 46px; 
+}
+
+/* ---- About Us ---- */
+.biography_container{
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.biography_box{
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 30px 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.biography_box:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.auth_img{
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.auth_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.biography_box h4{
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #222;
+    text-align: center;
+}
+
+.biography_box p{
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
 }

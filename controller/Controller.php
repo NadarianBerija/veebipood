@@ -17,6 +17,11 @@ class Controller {
         return self::render('main');
     }
 
+    public static function AboutUs() {
+        Lang::load('lang');
+        return self::render('aboutUs');
+    }
+
     public static function AllHeroSlides() {
         return HeroSlider::getAllHeroSlides();
     }
