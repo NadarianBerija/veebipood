@@ -11,11 +11,11 @@ if (is_array($heroImages)) {
     <?php } ?>
     <div class="hero-slide-content">
         <div class="hero-main">
-            <h1>Tere!</h1>
-            <a href="">Kirjuta meil</a>
+            <h1><?= htmlspecialchars(Lang::get('hello')) ?></h1>
+            <a href=""><?= htmlspecialchars(Lang::get('write_us')) ?></a>
         </div>
         <div class="hero-bottom-line">
-            <p>Saate tellida individuaalse töö vastavalt oma soovidele.</p>
+            <p><?= htmlspecialchars(Lang::get('phrase')) ?></p>
         </div>
     </div>
 </div>

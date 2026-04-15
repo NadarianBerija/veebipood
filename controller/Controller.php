@@ -13,6 +13,7 @@ class Controller {
     }
 
     public static function StartSite() {
+        Lang::load('lang');
         return self::render('main');
     }
 
@@ -21,7 +22,7 @@ class Controller {
     }
 
     public static function AllCategory() {
-        return Category::getAllCategory();
+        return Category::getAllCategory(APP_LANG);
     }
 
     public static function error404() {
