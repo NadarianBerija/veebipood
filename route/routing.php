@@ -1,6 +1,7 @@
 <?php
 $host = explode('?', $_SERVER['REQUEST_URI'])[0];
 $queryString = $_SERVER['QUERY_STRING'] ?? '';
+$GLOBALS['query'] = $queryString;
 $parts = array_values(array_filter(explode('/', $host)));
 
 $baseFolder = 'vihmart';
@@ -23,6 +24,8 @@ $path = implode('/', $pathParts);
 
 define('APP_LANG', $lang);
 define('BASE_URL', '/vihmart');
+
+$GLOBALS['path'] = $path;
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 

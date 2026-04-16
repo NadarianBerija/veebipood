@@ -35,8 +35,8 @@
                     </nav>
 
                     <?php 
-                        $path = trim($viewData['path'] ?? '');
-                        $query = trim($viewData['query'] ?? '');
+                        $path = trim($GLOBALS['path'] ?? '');
+                        $query = trim($GLOBALS['query'] ?? '');
                     ?>
 
                     <?php
@@ -46,7 +46,7 @@
                         'ru' => ['name' => 'РУССКИЙ', 'flag' => 'ru.png'],
                     ];
 
-                    $currentLang = APP_LANG ?? 'ee';
+                    $currentLang = $GLOBALS['lang'] ?? 'ee';
 
                     $menuLanguages = $languages;
                     unset($menuLanguages[$currentLang]);
