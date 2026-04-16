@@ -32,6 +32,9 @@ $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 if ($path == '' OR $path == 'index' OR $path == 'index.php') {
     $response = Controller::StartSite();
 }
+elseif ($path == 'shop') {
+    $response = Controller::AllArtsShop();
+}
 elseif ($path == 'aboutUs') {
     $response = Controller::AboutUs();
 }

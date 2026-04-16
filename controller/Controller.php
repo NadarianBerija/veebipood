@@ -35,6 +35,14 @@ class Controller {
         return Category::getAllCategory(APP_LANG);
     }
 
+    public static function AllArtsShop() {
+        Lang::load('lang');
+        $allArtsShop = Arts::getAllArtsInShop(APP_LANG);
+        return self::render('allArtsShop', [
+            'allArtsShop' => $allArtsShop
+        ]);
+    }
+
     public static function error404() {
         return self::render('error404');
     }
