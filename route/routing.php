@@ -32,6 +32,9 @@ if ($path == '' OR $path == 'index' OR $path == 'index.php') {
 elseif ($path == 'aboutUs') {
     $response = Controller::AboutUs();
 }
+elseif ($path == 'contact') {
+    $response = Controller::Contact();
+}
 else {
     $response = Controller::error404();
 }

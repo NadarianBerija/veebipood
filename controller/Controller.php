@@ -22,6 +22,11 @@ class Controller {
         return self::render('aboutUs');
     }
 
+    public static function Contact() {
+        Lang::load('lang');
+        return self::render('contact');
+    }
+
     public static function AllHeroSlides() {
         return HeroSlider::getAllHeroSlides();
     }

@@ -28,5 +28,11 @@ return [
     
     Liis jäädvustab hea meelega sind, sinu peret või sinu korraldatud ürituse erilisi hetki - loomulikult, soojalt ja siiralt. Tema eesmärk on püüda kaadrisse ehtsad emotsioonid ja mälestused, mis kestavad ajas.',
 
+    //contact
+    'painting' => 'Maal',
+    'illustration' => 'Illustratsioon',
+    'poster' => 'Plakat',
+    'design' => 'Kujundus',
+    'photo' => 'Foto',
 ]
 ?>

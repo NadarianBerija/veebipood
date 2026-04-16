@@ -27,5 +27,12 @@ return [
     'Liis_bio' => 'Liis studied public relations and has worked in schools with and for young people, supporting their development and initiatives. Recently, she has dedicated herself to photography, exploring the world of visual storytelling through the lens of a camera.
 
     Liis is happy to capture you, your family, or the special moments of your event - naturally, warmly, and sincerely. Her goal is to preserve genuine emotions and memories that stand the test of time.',
+
+    // contact
+    'painting' => 'Painting',
+    'illustration' => 'Illustration',
+    'poster' => 'Poster',
+    'design' => 'Design',
+    'photo' => 'Photo'
 ]
 ?>

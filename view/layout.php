@@ -22,7 +22,7 @@
                             <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a></li>
                             <li><a href=""><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
                             <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/aboutUs"><?= htmlspecialchars(Lang::get('about')) ?></a></li>
-                            <li><a href=""><?= htmlspecialchars(Lang::get('contact')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/contact"><?= htmlspecialchars(Lang::get('contact')) ?></a></li>
                         </ul>
 
                         <div class="line"></div>
