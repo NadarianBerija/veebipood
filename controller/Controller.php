@@ -37,9 +37,21 @@ class Controller {
 
     public static function AllArtsShop() {
         Lang::load('lang');
-        $allArtsShop = Arts::getAllArtsInShop(APP_LANG);
+
+        $categoryId = isset($_GET['category_id']) ? (int)$_GET['category_id'] : null;
+
+        if ($categoryId) {
+            $allArtsShop = Arts::getArtsByCategoryInShop($categoryId, APP_LANG);
+        } else {
+            $allArtsShop = Arts::getAllArtsInShop(APP_LANG);
+        }
+
+        $categories = Category::getAllCategory(APP_LANG);
+
         return self::render('allArtsShop', [
-            'allArtsShop' => $allArtsShop
+            'allArtsShop' => $allArtsShop,
+            'categories' => $categories,
+            'selectedCategory' => $categoryId
         ]);
     }
 

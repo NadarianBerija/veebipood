@@ -1,14 +1,13 @@
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('shop')) ?></h2>
-    <form action="">
-        <select name="" id="">
-            <option value="Kõik"></option>
-            <option value="Maal"></option>
-            <option value="Illustratsioon"></option>
-            <option value="Plakat"></option>
-            <option value="Kujundus"></option>
-            <option value="Foto"></option>
-            <option value="Ruum"></option>
+    <form method="GET" class="d-flex justify-content-end me-3 mb-3">
+        <select name="category_id" onchange="this.form.submit()" class="form-select w-auto">
+            <option value="">Kõik</option>
+            <?php foreach ($categories as $category) { ?>
+                <option value="<?= (int)$category['category_id'] ?>" <?= ($selectedCategory == (int)$category['category_id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($category['category_name']) ?>
+                </option>
+                <?php } ?>
         </select>
     </form>
 
