@@ -12,7 +12,7 @@ if (is_array($heroImages)) {
     <div class="hero-slide-content">
         <div class="hero-main">
             <h1><?= htmlspecialchars(Lang::get('hello')) ?></h1>
-            <a href=""><?= htmlspecialchars(Lang::get('write_us')) ?></a>
+            <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/contact"><?= htmlspecialchars(Lang::get('write_us')) ?></a>
         </div>
         <div class="hero-bottom-line">
             <p><?= htmlspecialchars(Lang::get('phrase')) ?></p>
@@ -23,7 +23,7 @@ if (is_array($heroImages)) {
 <div class="my-container">
     <div class="cat_container">
         <?php foreach(Controller::AllCategory() as $cat) { ?>
-        <a href="">
+        <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/gallery/category?id=<?= (int)$cat['category_id'] ?>">
             <div class="cat_block">
                 <img class="w-100 d-block object-fit-cover mx-auto" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($cat['cat_img']) ?>">
                     <div class="position-absolute top-50 start-50 translate-middle">
