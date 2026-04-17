@@ -34,5 +34,10 @@ return [
     'poster' => 'Plakat',
     'design' => 'Kujundus',
     'photo' => 'Foto',
+
+    // shop
+    'nothing' => 'Poole veel midagi',
+    'all_categories' => 'Kõik kategooriad',
+    
 ]
 ?>

@@ -2,7 +2,7 @@
     <h2><?= htmlspecialchars(Lang::get('shop')) ?></h2>
     <form method="GET" class="d-flex justify-content-end me-3 mb-3">
         <select name="category_id" onchange="this.form.submit()" class="form-select w-auto">
-            <option value="">Kõik</option>
+            <option value=""> <?= htmlspecialchars(Lang::get('all_categories')) ?></option>
             <?php foreach ($categories as $category) { ?>
                 <option value="<?= (int)$category['category_id'] ?>" <?= ($selectedCategory == (int)$category['category_id']) ? 'selected' : '' ?>>
                     <?= htmlspecialchars($category['category_name']) ?>
@@ -27,6 +27,6 @@
             <?php } ?>
         </div>
     <?php } else {?>
-        <p class="text-center my-5">nothing</p>
+        <p class="text-center my-5"><?= htmlspecialchars(Lang::get('nothing')) ?></p>
     <?php } ?> 
 </div>

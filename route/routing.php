@@ -35,6 +35,9 @@ if ($path == '' OR $path == 'index' OR $path == 'index.php') {
 elseif ($path == 'shop') {
     $response = Controller::AllArtsShop();
 }
+elseif ($path == 'gallery/category' and $id) {
+    $response = Controller::ArtsByCatID($id);
+}
 elseif ($path == 'aboutUs') {
     $response = Controller::AboutUs();
 }

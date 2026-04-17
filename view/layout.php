@@ -29,7 +29,7 @@
 
                         <ul class="cat_gallery d-flex mb-0 gap-3 text-uppercase">
                             <?php foreach (Controller::AllCategory() as $cat) {?>
-                                <li><a href=""><?= htmlspecialchars($cat['category_name']) ?></a></li>
+                                <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/gallery/category?id=<?= (int)$cat['category_id'] ?>"><?= htmlspecialchars($cat['category_name']) ?></a></li>
                             <?php } ?>
                         </ul>
                     </nav>

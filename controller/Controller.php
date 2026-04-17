@@ -55,6 +55,18 @@ class Controller {
         ]);
     }
 
+    public static function ArtsByCatID($id) {
+        Lang::load('lang');
+
+        $arts = Arts::getArtsByCategoryID($id, APP_LANG);
+        $category = Category::getCategoryByID($id, APP_LANG);
+
+        return self::render('catArtsGallery', [
+            'arts' => $arts,
+            'category' => $category
+        ]);
+    }
+
     public static function error404() {
         return self::render('error404');
     }

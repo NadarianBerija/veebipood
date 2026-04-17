@@ -34,5 +34,9 @@ return [
     'poster' => 'Плакат',
     'design' => 'Дизайн',
     'photo' => 'Фото',
+
+    // shop
+    'nothing' => 'Пока ничего нет',
+    'all_categories' => 'Все категории',
 ]
 ?>

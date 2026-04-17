@@ -33,6 +33,11 @@ return [
     'illustration' => 'Illustration',
     'poster' => 'Poster',
     'design' => 'Design',
-    'photo' => 'Photo'
+    'photo' => 'Photo',
+
+    // shop
+    'nothing' => 'There is nothing yet',
+    'all_categories' => 'All categories',
+    
 ]
 ?>
