@@ -317,7 +317,7 @@ header {
     gap: 14px;
 }
 
-/* --- Shop Art --- */
+/* --- Shop Arts --- */
 .shop_art {
     border-radius: 10px;
     max-width: 330px;
@@ -353,5 +353,47 @@ header {
     max-height: 100%;
     border-radius: 10px;
     object-fit: contain;
+}
+
+/* ---- Gallery Arts ---- */
+.gallery_art {
+  position: relative;
+  max-width: 364px;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery_art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery_art:hover .overlay {
+  opacity: 1;
+}
+
+.overlay h3 {
+    font-size: 26px;
+    margin: 0;
 }
 

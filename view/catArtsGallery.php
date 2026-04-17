@@ -1,24 +1,23 @@
-<div>
-    <h2>Galerii</h2>
-</div>
-<h3>Kategooria nimi</h3>
-<div>
-    <a href="">
-        <img src="../public/images/arts/Maal/1/69b173c76687f.jpg" alt="">
-        <div>
-            <h3>Nimi</h3>
-        </div>
-    </a>
-    <a href="">
-        <img src="../public/images/arts/Maal/1/69b173c76687f.jpg" alt="">
-        <div>
-            <h3>Nimi</h3>
-        </div>
-    </a>
-    <a href="">
-        <img src="../public/images/arts/Maal/1/69b173c76687f.jpg" alt="">
-        <div>
-            <h3>Nimi</h3>
-        </div>
-    </a>
+<div class="my-container">
+    <h2><?= htmlspecialchars(Lang::get('gallery')) ?></h2>
+
+    <h3 class="fs-3 mb-3 mt-0"><?= htmlspecialchars($category['category_name']) ?></h3>
+
+    <?php if (!empty($arts)) { ?>
+    <div class="arts_list">
+        <?php foreach ($arts as $art) { ?>
+        <a class="gallery_art" href="">
+            <img src="<?= BASE_URL ?>/public/<?= htmlspecialchars($art['art_image'], ENT_QUOTES, 'UTF-8') ?>">
+            <div class="overlay">
+                <h3><?= htmlspecialchars($art['art_title'], ENT_QUOTES, 'UTF-8') ?></h3>
+            </div>
+        </a>
+        <?php } ?>
+    </div>
+
+    <?php } else {?>
+        <p class="text-center my-5"><?= htmlspecialchars(Lang::get('nothing')) ?></p>
+    <?php } ?>
+
+
 </div>
