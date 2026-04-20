@@ -6,7 +6,7 @@
     <?php if (!empty($arts)) { ?>
     <div class="arts_list">
         <?php foreach ($arts as $art) { ?>
-        <a class="gallery_art" href="">
+        <a class="gallery_art" href="<?= BASE_URL ?>/<?= APP_LANG ?>/gallery/art?id=<?= (int)$art['art_id'] ?>">
             <img src="<?= BASE_URL ?>/public/<?= htmlspecialchars($art['art_image'], ENT_QUOTES, 'UTF-8') ?>">
             <div class="overlay">
                 <h3><?= htmlspecialchars($art['art_title'], ENT_QUOTES, 'UTF-8') ?></h3>
