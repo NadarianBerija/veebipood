@@ -1,6 +1,6 @@
 <?php
 class Arts {
-    public static function getAllArtsInShop($lang) {
+    public static function getAllArtsInShop($lang, $limit, $offset) {
         $query = "SELECT a.id AS art_id,
                         a.price AS art_price,
                         a.in_shop AS in_shop,
@@ -12,9 +12,10 @@ class Arts {
                     JOIN art_images ai ON ai.art_id = a.id
                     JOIN languages l ON al.lang_id = l.id
                     WHERE ai.position = 0 AND l.code = ? AND a.in_shop = 1
-                    ORDER BY a.id DESC";
+                    ORDER BY a.id DESC
+                    LIMIT ? OFFSET ?";
         $db = new Database();
-        $arr = $db->getAll($query, [$lang]);
+        $arr = $db->getAll($query, [$lang, $limit, $offset]);
         return $arr;
     }
 
@@ -31,7 +32,7 @@ class Arts {
         return (int)$arr['total'];
     }
 
-    public static function getArtsByCategoryInShop($id, $lang) {
+    public static function getArtsByCategoryInShop($id, $lang, $limit, $offset) {
         $query = "SELECT a.id AS art_id,
                         a.price AS art_price,
                         al.title AS art_title,
@@ -44,9 +45,10 @@ class Arts {
                     JOIN categories c ON a.category_id = c.id
                     JOIN languages l ON al.lang_id = l.id
                     WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.in_shop = 1
-                    ORDER BY a.id DESC";
+                    ORDER BY a.id DESC
+                    LIMIT ? OFFSET ?";
         $db = new Database();
-        $arr = $db->getAll($query, [$id, $lang]);
+        $arr = $db->getAll($query, [$id, $lang, $limit, $offset]);
         return $arr;
     }
 
@@ -65,7 +67,7 @@ class Arts {
         return (int)$arr['total'];
     }
 
-    public static function getArtsByCategoryID($id, $lang) {
+    public static function getArtsByCategoryID($id, $lang, $limit, $offset) {
         $query = "SELECT a.id AS art_id,
                         al.title AS art_title,
                         al.text AS art_text,
@@ -77,9 +79,10 @@ class Arts {
                     JOIN categories c ON a.category_id = c.id
                     JOIN languages l ON al.lang_id = l.id
                     WHERE ai.position = 0 AND c.id = ? AND l.code = ?
-                    ORDER BY a.id DESC";
+                    ORDER BY a.id DESC
+                    LIMIT ? OFFSET ?";
         $db = new Database();
-        $arr = $db->getAll($query, [$id, $lang]);
+        $arr = $db->getAll($query, [$id, $lang, $limit, $offset]);
         return $arr;
     }
 
