@@ -67,16 +67,24 @@ class Controller {
         ]);
     }
 
-    public static function ArtByID($id) {
+    public static function ArtByID($id, $type = 'shop') {
         Lang::load('lang');
 
         $currentArt = Arts::getArtById($id, APP_LANG);
         $images = Arts::getArtImages($id);
 
-        return self::render('artGallery', [
-            'currentArt' => $currentArt,
-            'images' => $images
-        ]);
+        if ($type === 'gallery') {
+            return self::render('artGallery', [
+                'currentArt' => $currentArt,
+                'images' => $images
+            ]);
+        } else {
+            return self::render('artShop', [
+                'currentArt' => $currentArt,
+                'images' => $images
+            ]);
+        }
+        
     }
 
     public static function error404() {

@@ -44,8 +44,11 @@ elseif ($path == 'aboutUs') {
 elseif ($path == 'contact') {
     $response = Controller::Contact();
 }
+elseif ($path == 'shop/art' and $id) {
+    $response = Controller::ArtByID($id, 'shop');
+}
 elseif ($path == 'gallery/art' and $id) {
-    $response = Controller::ArtByID($id);
+    $response = Controller::ArtByID($id, 'gallery');
 }
 else {
     $response = Controller::error404();

@@ -14,7 +14,7 @@
     <?php if (!empty($allArtsShop)) { ?>
         <div class="arts_list">
             <?php foreach ($allArtsShop as $art) { ?>
-                <a class="shop_art" href="">
+                <a class="shop_art" href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop/art?id=<?= (int)$art['art_id'] ?>">
                     <div class="shop_art_img">
                         <img src="<?= BASE_URL ?>/public/<?= htmlspecialchars($art['art_image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($art['art_title']) ?>">
                     </div>
