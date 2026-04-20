@@ -41,5 +41,12 @@ return [
     
     // order
     'order_btn' => 'Telli',
+    'title' => 'Pealkiri',
+    'category' => 'Kategooria',
+    'price' => 'Hind',
+    'email' => 'E-mail',
+    'phone' => 'Telefon',
+    'your_name' => 'Sinu nimi',
+    'message' => 'Sinu sõnum',
 ]
 ?>

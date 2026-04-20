@@ -41,5 +41,12 @@ return [
     
     // order
     'order_btn' => 'Order',
+    'title' => 'Title',
+    'category' => 'Category',
+    'price' => 'Price',
+    'email' => 'E-mail',
+    'phone' => 'Phone',
+    'your_name' => 'Your name',
+    'message' => 'Your message',
 ]
 ?>
