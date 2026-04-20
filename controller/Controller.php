@@ -38,18 +38,29 @@ class Controller {
     public static function AllArtsShop() {
         Lang::load('lang');
 
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        if ($page < 1) $page = 1;
+
+        $limit = 12;
+        $offset = ($page - 1) * $limit;
+
         $categoryId = isset($_GET['category_id']) ? (int)$_GET['category_id'] : null;
 
         if ($categoryId) {
-            $allArtsShop = Arts::getArtsByCategoryInShop($categoryId, APP_LANG);
+            $allArtsShop = Arts::getArtsByCategoryInShop($categoryId, APP_LANG, $limit, $offset);
+            $totalArts = Arts::getArtsCountByCategoryInShop($categoryId, APP_LANG);
         } else {
             $allArtsShop = Arts::getAllArtsInShop(APP_LANG);
+            $totalArts = Arts::getAllArtsInShopCount(APP_LANG);
         }
 
+        $totalPages = ceil($totalArts / $limit);
         $categories = Category::getAllCategory(APP_LANG);
 
         return self::render('allArtsShop', [
             'allArtsShop' => $allArtsShop,
+            'page' => $page,
+            'totalPages' => $totalPages,
             'categories' => $categories,
             'selectedCategory' => $categoryId
         ]);
@@ -58,12 +69,22 @@ class Controller {
     public static function ArtsByCatID($id) {
         Lang::load('lang');
 
-        $arts = Arts::getArtsByCategoryID($id, APP_LANG);
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        if ($page < 1) $page = 1;
+
+        $limit = 12;
+        $offset = ($page - 1) * $limit;
+
+        $arts = Arts::getArtsByCategoryID($id, APP_LANG, $limit, $offset);
         $category = Category::getCategoryByID($id, APP_LANG);
+        $totalArts = Arts::getArtsCountByCategory($id, APP_LANG);
+        $totalPages = ceil($totalArts / $limit);
 
         return self::render('catArtsGallery', [
             'arts' => $arts,
-            'category' => $category
+            'category' => $category,
+            'page' => $page,
+            'totalPages' => $totalPages
         ]);
     }
 
