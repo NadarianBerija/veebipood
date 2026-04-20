@@ -8,6 +8,8 @@ require 'model/Arts.php';
 require 'model/HeroSlider.php';
 require 'model/Category.php';
 
+require 'view/pagination.php';
+
 require 'controller/Controller.php';
 require 'route/routing.php';
 

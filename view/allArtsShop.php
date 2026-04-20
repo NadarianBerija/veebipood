@@ -26,6 +26,9 @@
                 </a>
             <?php } ?>
         </div>
+
+        <?php Pagination::Pagination($totalPages, $page, 'shop', $selectedCategory) ?>
+
     <?php } else {?>
         <p class="text-center my-5"><?= htmlspecialchars(Lang::get('nothing')) ?></p>
     <?php } ?> 

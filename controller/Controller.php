@@ -50,7 +50,7 @@ class Controller {
             $allArtsShop = Arts::getArtsByCategoryInShop($categoryId, APP_LANG, $limit, $offset);
             $totalArts = Arts::getArtsCountByCategoryInShop($categoryId, APP_LANG);
         } else {
-            $allArtsShop = Arts::getAllArtsInShop(APP_LANG);
+            $allArtsShop = Arts::getAllArtsInShop(APP_LANG, $limit, $offset);
             $totalArts = Arts::getAllArtsInShopCount(APP_LANG);
         }
 

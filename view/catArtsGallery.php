@@ -15,6 +15,8 @@
         <?php } ?>
     </div>
 
+    <?php Pagination::Pagination($totalPages, $page, 'gallery/category', (int)$category['category_id']) ?>
+
     <?php } else {?>
         <p class="text-center my-5"><?= htmlspecialchars(Lang::get('nothing')) ?></p>
     <?php } ?>
