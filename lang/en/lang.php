@@ -39,5 +39,7 @@ return [
     'nothing' => 'There is nothing yet',
     'all_categories' => 'All categories',
     
+    // order
+    'order_btn' => 'Order',
 ]
 ?>

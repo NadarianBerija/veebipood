@@ -39,5 +39,7 @@ return [
     'nothing' => 'Poole veel midagi',
     'all_categories' => 'Kõik kategooriad',
     
+    // order
+    'order_btn' => 'Telli',
 ]
 ?>

@@ -38,5 +38,8 @@ return [
     // shop
     'nothing' => 'Пока ничего нет',
     'all_categories' => 'Все категории',
+
+    // order
+    'order_btn' => 'Заказать',
 ]
 ?>
