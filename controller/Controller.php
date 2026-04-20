@@ -87,6 +87,16 @@ class Controller {
         
     }
 
+    public static function Order($id) {
+        Lang::load('lang');
+
+        $art = Arts::getArtById($id, APP_LANG);
+
+        return self::render('order', [
+            'art' => $art
+        ]);
+    }
+
     public static function error404() {
         return self::render('error404');
     }

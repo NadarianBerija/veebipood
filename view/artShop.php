@@ -44,7 +44,7 @@
             </div>
             <p class="fs-5"><?= htmlspecialchars($currentArt['art_text']) ?></p>
             <p class="fs-3 fw-bold fst-italic"><?= htmlspecialchars($currentArt['art_price']) ?> € </p>
-            <a class="btn btn-dark btn-lg rounded-2" href=""><?= htmlspecialchars(Lang::get('order_btn')) ?></a>
+            <a class="btn btn-dark btn-lg rounded-2" href="<?= BASE_URL ?>/<?= APP_LANG ?>/order?id=<?= (int)$currentArt['art_id'] ?>"><?= htmlspecialchars(Lang::get('order_btn')) ?></a>
         </div>
     </div>
 </div>
