@@ -18,6 +18,19 @@ class Arts {
         return $arr;
     }
 
+    public static function getAllArtsInShopCount($lang) {
+        $query = "SELECT COUNT(*) AS total
+                    FROM arts a
+                    JOIN art_lang al ON al.art_id = a.id
+                    JOIN art_images ai ON ai.art_id = a.id
+                    JOIN languages l ON al.lang_id = l.id
+                    WHERE ai.position = 0 AND l.code = ? AND a.in_shop = 1";
+
+        $db = new Database();
+        $arr = $db->getOne($query, [$lang]);
+        return (int)$arr['total'];
+    }
+
     public static function getArtsByCategoryInShop($id, $lang) {
         $query = "SELECT a.id AS art_id,
                         a.price AS art_price,
@@ -37,6 +50,21 @@ class Arts {
         return $arr;
     }
 
+    public static function getArtsCountByCategoryInShop($id, $lang) {
+        $query = "SELECT COUNT(*) AS total
+                FROM arts a
+                JOIN art_lang al ON al.art_id = a.id
+                JOIN art_images ai ON ai.art_id = a.id
+                JOIN categories c ON a.category_id = c.id 
+                JOIN languages l ON al.lang_id = l.id 
+                WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.in_shop = 1";
+
+        $db = new Database();
+        $arr = $db->getOne($query, [$id, $lang]);
+
+        return (int)$arr['total'];
+    }
+
     public static function getArtsByCategoryID($id, $lang) {
         $query = "SELECT a.id AS art_id,
                         al.title AS art_title,
@@ -53,6 +81,21 @@ class Arts {
         $db = new Database();
         $arr = $db->getAll($query, [$id, $lang]);
         return $arr;
+    }
+
+    public static function getArtsCountByCategory($id, $lang) {
+        $query = "SELECT COUNT(*) AS total
+                    FROM arts a
+                    JOIN art_lang al ON al.art_id = a.id
+                    JOIN art_images ai ON ai.art_id = a.id
+                    JOIN categories c ON a.category_id = c.id 
+                    JOIN languages l ON al.lang_id = l.id 
+                    WHERE ai.position = 0 AND c.id = ? AND l.code = ?";
+
+        $db = new Database();
+        $arr = $db->getOne($query, [$id, $lang]);
+
+        return (int)$arr['total'];
     }
 
     public static function getArtById($id, $lang) {
