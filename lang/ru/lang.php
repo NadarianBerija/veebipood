@@ -38,8 +38,10 @@ return [
     // shop
     'nothing' => 'Пока ничего нет',
     'all_categories' => 'Все категории',
+    'back' => 'Назад',
 
     // order
+    'order' => 'Заказ',
     'order_btn' => 'Заказать',
     'title' => 'Название',
     'category' => 'Категория',

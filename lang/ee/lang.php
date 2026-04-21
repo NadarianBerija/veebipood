@@ -38,8 +38,10 @@ return [
     // shop
     'nothing' => 'Poole veel midagi',
     'all_categories' => 'Kõik kategooriad',
+    'back' => 'Tagasi',
     
     // order
+    'order' => 'Tellimus',
     'order_btn' => 'Telli',
     'title' => 'Pealkiri',
     'category' => 'Kategooria',

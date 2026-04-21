@@ -1,4 +1,11 @@
 <div class="my-container">
+    <span class="breadcrumbs">
+        <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a> /
+        <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop"><?= htmlspecialchars(Lang::get('shop')) ?></a> /
+        <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop?category_id=<?= (int)$currentArt['cat_id'] ?>"><?= htmlspecialchars($currentArt['cat_name']) ?></a> /
+        <?= htmlspecialchars($currentArt['art_title']) ?> 
+    </span>
+
     <div class="d-flex justify-content-center gap-4 my-4 mb-5">
         <div class="swiper-container">
             <?php if (count($images) > 1) {?>

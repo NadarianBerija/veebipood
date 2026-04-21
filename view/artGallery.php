@@ -1,4 +1,7 @@
 <div class="my-container">
+    <div class="back-btn">
+        <a href="<?= BASE_URL  ?>/<?= APP_LANG  ?>/gallery/category?id=<?= (int)$currentArt['cat_id']  ?>" class="back-btn">&#11207; <?= htmlspecialchars(Lang::get('back')) ?></a>
+    </div>
     <div class="d-flex flex-column justify-content-center align-items-center my-4 mb-5 gap-4">
         <div class="swiper-container">
             <?php if (count($images) > 1) {?>

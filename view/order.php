@@ -1,4 +1,12 @@
 <div class="my-container">
+<span class="breadcrumbs">
+  <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a> /
+  <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop"><?= htmlspecialchars(Lang::get('shop')) ?></a> /
+  <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop?category_id=<?= (int)$art['cat_id'] ?>"><?= htmlspecialchars($art['cat_name']) ?></a> /
+  <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop/art?id=<?=  (int)$art['art_id'] ?>"><?= htmlspecialchars($art['art_title']) ?></a> /
+  <?= htmlspecialchars(Lang::get('order')) ?>
+</span>
+
 <form class="mx-auto mt-4" style="max-width: 500px;">
 
     <div class="card mb-4">

@@ -38,8 +38,10 @@ return [
     // shop
     'nothing' => 'There is nothing yet',
     'all_categories' => 'All categories',
+    'back' => 'Back',
     
     // order
+    'order' => 'Order',
     'order_btn' => 'Order',
     'title' => 'Title',
     'category' => 'Category',

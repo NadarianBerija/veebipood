@@ -397,6 +397,13 @@ header {
     margin: 0;
 }
 
+.breadcrumbs,
+.breadcrumbs a,
+.back-btn {
+    color: #919191;
+    font-size: 18px;
+}
+
 /* ---- Swiper ---- */
 .swiper-container {
     width: 100%;
