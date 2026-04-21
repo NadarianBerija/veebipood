@@ -18,7 +18,7 @@
                         <img class="logo" src="<?= BASE_URL ?>/public/images/site/logo.png" alt="logo">
                     </a>
 
-                    <nav class="d-flex flex-column align-items-center gap-2">
+                    <nav class="d-none d-xl-flex flex-column align-items-center gap-2">
                         <ul class="menu_links d-flex mb-0 gap-3 text-uppercase">
                             <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a></li>
                             <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop"><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
@@ -53,7 +53,7 @@
                     unset($menuLanguages[$currentLang]);
                     ?>
 
-                    <div class="dropdown">
+                    <div class="dropdown d-none d-xl-block">
                         <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                             <?= htmlspecialchars($languages[$currentLang]['name']) ?>
@@ -84,9 +84,64 @@
 
                         </ul>
                     </div>
+                    <button class="btn d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <span class="bg-span"></span>
+                        <span class="bg-span"></span>
+                        <span class="bg-span"></span>
+                    </button>
                 </div>
             </div>
         </header>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body d-flex flex-column gap-4">
+
+                <ul class="d-flex flex-column gap-3 text-uppercase ps-0">
+                    <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a></li>
+                    <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop"><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
+                    <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/aboutUs"><?= htmlspecialchars(Lang::get('about')) ?></a></li>
+                    <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/contact"><?= htmlspecialchars(Lang::get('contact')) ?></a></li>
+                </ul>
+
+                <div class="line"></div>
+
+                <ul class="d-flex flex-column gap-3 text-uppercase ps-0"">
+                    <?php foreach (Controller::AllCategory() as $cat) { ?>
+                        <li>
+                            <a
+                            href="<?= BASE_URL ?>/<?= APP_LANG ?>/gallery/category?id=<?= (int)$cat['category_id'] ?>" style="color:black;">
+                                <?= htmlspecialchars($cat['category_name']) ?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+
+                <div class="line"></div>
+
+                <ul class="d-flex flex-column gap-3 text-uppercase ps-0">
+                    <?php foreach ($languages as $code => $lang) { 
+                        $url = BASE_URL . '/' . $code . '/' . $path;
+                        if (!empty($query)) $url .= '?' . $query;
+                    ?>
+                        <li>
+                            <a class="d-flex align-items-center"
+                            style="color:black;"
+                            href="<?= htmlspecialchars($url) ?>">
+
+                                <?= htmlspecialchars($lang['name']) ?>
+
+                                <img class="flag ms-2"
+                                    src="<?= BASE_URL ?>/public/images/site/flags/<?= htmlspecialchars($lang['flag']) ?>">
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
 
         <section>
             <?php 
