@@ -478,3 +478,56 @@ header {
     color: white;
     border: 1px solid black;
 }
+
+@media (max-width: 1564px) { 
+    .my-container {
+        width: 90%;
+    }
+
+    h2 {
+        margin: 50px 0 40px 50px;
+    }
+
+    .cat_container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 1286px) {
+    .arts_list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 1190px) { 
+    .my-container {
+        width: 90%;
+    }
+
+    h2 {
+        margin: 20px 0 40px 0;
+    }
+    
+}
+
+@media (max-width: 966px) { 
+    .my-container {
+        width: 90%;
+    }
+
+    .cat_container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 860px) {
+    .arts_list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 424px) {
+    .arts_list {
+        grid-template-columns: 1fr;
+    }
+}
