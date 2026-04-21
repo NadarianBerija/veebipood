@@ -95,6 +95,10 @@ header, footer {
     width: 30px;
 }
 
+.vartical-line {
+    display: none;
+}
+
 /* ---- Header ---- */
 header {
     height: 123px;
@@ -138,6 +142,11 @@ header {
     font-size: 13px;
     margin-top: 20px;
     color: grey;
+}
+
+footer .menu_links,
+footer .cat_gallery {
+    flex-direction: row;
 }
 
 /* ---- MAIN ---- */
@@ -413,6 +422,10 @@ header {
     font-size: 18px;
 }
 
+.gallery-art-info {
+    width: 500px;
+}
+
 /* ---- Swiper ---- */
 .swiper-container {
     width: 100%;
@@ -526,6 +539,25 @@ header {
     
 }
 
+@media (max-width: 1050px) {
+    footer .menu_links,
+    footer .cat_gallery {
+        flex-direction: column;
+    }
+
+    .diagonal {
+        display: none;
+    }
+
+    .vartical-line {
+        display: block;
+        border: 1px solid black;
+        height: 180px;
+        width: 0;
+        margin: 0 20px;
+    }
+}
+
 @media (max-width: 966px) { 
     .my-container {
         width: 90%;
@@ -539,6 +571,16 @@ header {
 @media (max-width: 860px) {
     .arts_list {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .logo {
+        width: 200px;
+    }
+}
+
+@media (max-width: 570px) { 
+    .gallery-art-info {
+        width: 100%;
     }
 }
 

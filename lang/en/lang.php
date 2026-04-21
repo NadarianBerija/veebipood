@@ -35,11 +35,12 @@ return [
     'design' => 'Design',
     'photo' => 'Photo',
 
-    // shop
+    // arts
     'nothing' => 'There is nothing yet',
     'all_categories' => 'All categories',
     'back' => 'Back',
-    
+    'gallery' => 'Gallery',
+
     // order
     'order' => 'Order',
     'order_btn' => 'Order',

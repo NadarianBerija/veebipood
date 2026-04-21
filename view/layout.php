@@ -158,25 +158,39 @@
                 <div class="d-flex flex-column align-items-center mx-auto">
                     <nav class="d-flex align-items-center gap-2 mb-3">
                         <ul class="menu_links d-flex mb-0 gap-2 text-uppercase">
-                            <li><a href=""><?= htmlspecialchars(Lang::get('home')) ?></a></li>
-                            <li><a href=""><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
-                            <li><a href=""><?= htmlspecialchars(Lang::get('about')) ?></a></li>
-                            <li><a href=""><?= htmlspecialchars(Lang::get('contact')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop"><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/aboutUs"><?= htmlspecialchars(Lang::get('about')) ?></a></li>
+                            <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/contact"><?= htmlspecialchars(Lang::get('contact')) ?></a></li>
                         </ul>
 
                         <span class="diagonal">/</span>
+                        <span class="vartical-line"></span>
 
                         <ul class="cat_gallery d-flex mb-0 gap-2 text-uppercase">
                             <?php foreach (Controller::AllCategory() as $cat) {?>
-                                <li><a href=""><?= htmlspecialchars($cat['category_name']) ?></a></li>
+                                <li><a href="<?= BASE_URL ?>/<?= APP_LANG ?>/gallery/category?id=<?= (int)$cat['category_id'] ?>"><?= htmlspecialchars($cat['category_name']) ?></a></li>
                             <?php } ?>
                         </ul>
                     </nav>
 
                     <ul class="lang-footer d-flex flex-row gap-3 mb-0">
-                        <li><a href="<?= BASE_URL ?>/ee/<?= htmlspecialchars($path) ?>">EESTI<img class="flag" src="<?= BASE_URL ?>/public/images/site/flags/ee.png" alt="ee"></a></li>
-                        <li><a href="<?= BASE_URL ?>/en/<?= htmlspecialchars($path) ?>">ENGLISH<img class="flag" src="<?= BASE_URL ?>/public/images/site/flags/en.png" alt="en"></a></li>
-                        <li><a href="<?= BASE_URL ?>/ru/<?= htmlspecialchars($path) ?>">РУССКИЙ<img class="flag" src="<?= BASE_URL ?>/public/images/site/flags/ru.png" alt="ru"></a></li>
+                        <?php foreach ($languages as $code => $lang) { 
+                            $url = BASE_URL . '/' . $code . '/' . $path;
+                            if (!empty($query)) $url .= '?' . $query;
+                        ?>
+                            <li>
+                                <a class="d-flex align-items-center"
+                                style="color:black;"
+                                href="<?= htmlspecialchars($url) ?>">
+
+                                    <?= htmlspecialchars($lang['name']) ?>
+
+                                    <img class="flag"
+                                        src="<?= BASE_URL ?>/public/images/site/flags/<?= htmlspecialchars($lang['flag']) ?>">
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                     <p class="copyright">&copy; Vihmart 2026. <?= htmlspecialchars(Lang::get('copyright')) ?>.</p>
                 </div>

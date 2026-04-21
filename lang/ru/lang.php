@@ -35,10 +35,12 @@ return [
     'design' => 'Дизайн',
     'photo' => 'Фото',
 
-    // shop
+    // arts
     'nothing' => 'Пока ничего нет',
     'all_categories' => 'Все категории',
     'back' => 'Назад',
+    'gallery' => 'Галерея',
+
 
     // order
     'order' => 'Заказ',

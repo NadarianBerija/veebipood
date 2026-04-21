@@ -35,10 +35,11 @@ return [
     'design' => 'Kujundus',
     'photo' => 'Foto',
 
-    // shop
+    // arts
     'nothing' => 'Poole veel midagi',
     'all_categories' => 'Kõik kategooriad',
     'back' => 'Tagasi',
+    'gallery' => 'Galerii',
     
     // order
     'order' => 'Tellimus',

@@ -31,7 +31,7 @@
             <?php } ?>
         </div>
 
-        <div style="width: 500px;">
+        <div class="gallery-art-info">
             <h3><?= htmlspecialchars($currentArt['art_title']) ?></h3>
             <div class="d-flex align-items-center gap-2 mb-3">
                 <div class="rounded-circle" style="width: 30px; height: 30px;">
