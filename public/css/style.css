@@ -375,7 +375,7 @@ footer .cat_gallery {
 }
 
 .shop-art-info {
-    max-width: 300px;
+    width: 300px;
 }
 
 /* ---- Gallery Arts ---- */
@@ -599,6 +599,7 @@ footer .cat_gallery {
 
 @media (max-width: 768px) {
     .shop-art-info {
+        width: 100%;
         max-width: 500px;
     }
 }

@@ -55,3 +55,6 @@
         </div>
     </div>
 </div>
+
+<script src="<?= BASE_URL ?>/public/js/swiper-bundle.min.js"></script>
+<script src="<?= BASE_URL ?>/public/js/artScripts.js"></script>
