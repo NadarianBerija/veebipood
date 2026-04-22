@@ -45,6 +45,12 @@
                 </div>
                 <p class="fst-italic"><?= htmlspecialchars($currentArt['author']) ?></p>
             </div>
+            <div class="d-flex flex-column flex-md-row gap-3">
+                <?php if ($currentArt['art_in_shop'] == 1) {?>
+                <a class="btn btn-dark btn-lg rounded-2 d-block d-md-inline-block" href="<?= BASE_URL  ?>/<?= APP_LANG  ?>/shop/art?id=<?= (int)$currentArt['art_id'] ?>"><?= htmlspecialchars(Lang::get('visit')) ?></a>
+                <?php } ?>
+                <a class="btn btn-dark btn-lg rounded-2 d-block d-md-inline-block" href="<?= BASE_URL  ?>/<?= APP_LANG  ?>/contact"><?= htmlspecialchars(Lang::get('order_work')) ?></a>
+            </div>
         </div>
     </div>
 </div>

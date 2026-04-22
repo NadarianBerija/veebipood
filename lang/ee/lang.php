@@ -40,6 +40,8 @@ return [
     'all_categories' => 'Kõik kategooriad',
     'back' => 'Tagasi',
     'gallery' => 'Galerii',
+    'visit' => 'Külastada poodi',
+    'order_work' => 'Tellimus töö',
     
     // order
     'order' => 'Tellimus',

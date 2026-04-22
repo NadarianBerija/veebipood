@@ -40,6 +40,8 @@ return [
     'all_categories' => 'Все категории',
     'back' => 'Назад',
     'gallery' => 'Галерея',
+    'visit' => 'Посетить магазин',
+    'order_work' => 'Работа на заказ',
 
 
     // order

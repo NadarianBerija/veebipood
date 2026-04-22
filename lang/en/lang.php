@@ -40,6 +40,8 @@ return [
     'all_categories' => 'All categories',
     'back' => 'Back',
     'gallery' => 'Gallery',
+    'visit' => 'Visit a store',
+    'order_work' => 'Custom work',
 
     // order
     'order' => 'Order',
