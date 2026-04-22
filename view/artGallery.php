@@ -9,7 +9,7 @@
                 <div class="swiper-wrapper">
                     <?php foreach ($images as $img) { ?>
                         <div class="swiper-slide">
-                            <img src="<?= BASE_URL ?>/public/<?= htmlspecialchars($img['art_image'], ENT_QUOTES, 'UTF-8') ?>">
+                            <img data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($img['art_image'], ENT_QUOTES, 'UTF-8') ?>">
                         </div>
                     <?php } ?>
                 </div>
@@ -27,8 +27,17 @@
                 </div>
             </div>
             <?php } else { ?>
-                <img class="singleImg" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($images[0]['art_image'], ENT_QUOTES, 'UTF-8') ?>">
+                <img class="singleImg" data-bs-toggle="modal" data-bs-target="#imageModal" style="cursor: pointer;" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($images[0]['art_image'], ENT_QUOTES, 'UTF-8') ?>">
             <?php } ?>
+            <div class="modal fade" id="imageModal">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content bg-transparent border-0">
+                        <div class="modal-body text-center p-0">
+                            <img id="modalImage" class="img-fluid modal-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="gallery-art-info">

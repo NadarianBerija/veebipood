@@ -1,3 +1,4 @@
+// Swiper
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: 10,
   slidesPerView: 6,
@@ -13,4 +14,13 @@ var swiper2 = new Swiper(".mySwiper2", {
   thumbs: {
     swiper: swiper,
   },
+});
+
+// Modal
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-bs-toggle="modal"]').forEach(img => {
+    img.addEventListener('click', (e) => {
+      document.getElementById('modalImage').src = e.target.src;
+    });
+  });
 });
