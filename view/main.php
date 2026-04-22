@@ -11,7 +11,7 @@ if (is_array($heroImages)) {
     <?php } ?>
     <div class="hero-slide-content">
         <div class="hero-main">
-            <h1><?= htmlspecialchars(Lang::get('hello')) ?></h1>
+            <h1 class="fw-bold"><?= htmlspecialchars(Lang::get('hello')) ?></h1>
             <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/contact"><?= htmlspecialchars(Lang::get('write_us')) ?></a>
         </div>
         <div class="hero-bottom-line">

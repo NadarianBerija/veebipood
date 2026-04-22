@@ -27,13 +27,13 @@
                 </div>
             </div>
             <?php } else { ?>
-                <img style="width: 100%;" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($images[0]['art_image'], ENT_QUOTES, 'UTF-8') ?>">
+                <img class="singleImg" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($images[0]['art_image'], ENT_QUOTES, 'UTF-8') ?>">
             <?php } ?>
         </div>
 
         <div class="gallery-art-info">
-            <h3><?= htmlspecialchars($currentArt['art_title']) ?></h3>
-            <div class="d-flex align-items-center gap-2 mb-3">
+            <h3 class="fw-bold"><?= htmlspecialchars($currentArt['art_title']) ?></h3>
+            <div class="d-flex gap-2 mb-3">
                 <div class="rounded-circle" style="width: 30px; height: 30px;">
                 <?php 
                     if (!empty($currentArt['author_picture'])) {
@@ -43,7 +43,7 @@
                     }
                 ?>
                 </div>
-                <p><?= htmlspecialchars($currentArt['author']) ?></p>
+                <p class="fst-italic"><?= htmlspecialchars($currentArt['author']) ?></p>
             </div>
         </div>
     </div>

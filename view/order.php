@@ -50,7 +50,7 @@
       <label class="form-label fs-5 fw-medium">
         <?= htmlspecialchars(Lang::get('message')) ?>
       </label>
-      <textarea name="message" class="form-control mb-3" rows="5"></textarea>
+      <textarea name="message" class="form-control mb-3" rows="5" style="resize: none;"></textarea>
 
       <button type="submit" name="order" class="btn btn-dark btn-lg rounded-2 mt-2">
         <?= htmlspecialchars(Lang::get('order_btn')) ?>

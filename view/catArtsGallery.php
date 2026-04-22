@@ -1,7 +1,7 @@
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('gallery')) ?></h2>
 
-    <h3 class="fs-3 mb-3 mt-0"><?= htmlspecialchars($category['category_name']) ?></h3>
+    <h3 class="fs-3 mb-3 mt-0 fw-bold"><?= htmlspecialchars($category['category_name']) ?></h3>
 
     <?php if (!empty($arts)) { ?>
     <div class="arts_list">

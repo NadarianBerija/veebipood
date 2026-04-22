@@ -100,7 +100,7 @@
 
             <div class="offcanvas-body d-flex flex-column gap-4">
 
-                <ul class="d-flex flex-column gap-3 text-uppercase ps-0">
+                <ul class="d-flex flex-column gap-3 text-uppercase ps-0 ms-4">
                     <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a></li>
                     <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop"><?= htmlspecialchars(Lang::get('shop')) ?></a></li>
                     <li><a style="color:black;" href="<?= BASE_URL ?>/<?= APP_LANG ?>/aboutUs"><?= htmlspecialchars(Lang::get('about')) ?></a></li>
@@ -109,7 +109,7 @@
 
                 <div class="line"></div>
 
-                <ul class="d-flex flex-column gap-3 text-uppercase ps-0"">
+                <ul class="d-flex flex-column gap-3 text-uppercase ps-0 ms-4">
                     <?php foreach (Controller::AllCategory() as $cat) { ?>
                         <li>
                             <a
@@ -122,7 +122,7 @@
 
                 <div class="line"></div>
 
-                <ul class="d-flex flex-column gap-3 text-uppercase ps-0">
+                <ul class="d-flex flex-column gap-3 text-uppercase ps-0 ms-4">
                     <?php foreach ($languages as $code => $lang) { 
                         $url = BASE_URL . '/' . $code . '/' . $path;
                         if (!empty($query)) $url .= '?' . $query;

@@ -19,7 +19,7 @@
                         <img src="<?= BASE_URL ?>/public/<?= htmlspecialchars($art['art_image'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($art['art_title']) ?>">
                     </div>
                     <div class="shop_art_info">
-                        <h3><?= htmlspecialchars($art['art_title']) ?></h3>
+                        <h3 class="text-truncate"><?= htmlspecialchars($art['art_title']) ?></h3>
                         <p class="text-truncate"><?= htmlspecialchars($art['art_text']) ?></p>
                         <p class="fs-5 fw-bold fst-italic"><?= htmlspecialchars($art['art_price']) ?> €</p>
                     </div>
