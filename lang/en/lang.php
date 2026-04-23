@@ -55,6 +55,7 @@ return [
     'message' => 'Your message',
 
     // cart
+    'cart' => 'Cart',
     'empty_cart' => 'Cart is empty',
     'remove' => 'Remove',
 ]

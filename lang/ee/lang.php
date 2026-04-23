@@ -55,6 +55,7 @@ return [
     'message' => 'Sinu sõnum',
 
     // cart
+    'cart' => 'Ostukorv',
     'empty_cart' => 'Ostukorv on tühi',
     'remove' => 'Eemalda',
 ]

@@ -53,6 +53,10 @@
                     unset($menuLanguages[$currentLang]);
                     ?>
 
+                    <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart">
+                        <?= htmlspecialchars(Lang::get('cart')) ?> (<?= count($_SESSION['cart']) ?>)
+                    </a>
+
                     <div class="dropdown d-none d-xl-block">
                         <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
