@@ -53,5 +53,9 @@ return [
     'phone' => 'Phone',
     'your_name' => 'Your name',
     'message' => 'Your message',
+
+    // cart
+    'empty_cart' => 'Cart is empty',
+    'remove' => 'Remove',
 ]
 ?>

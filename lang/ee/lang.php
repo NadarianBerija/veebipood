@@ -53,5 +53,9 @@ return [
     'phone' => 'Telefon',
     'your_name' => 'Sinu nimi',
     'message' => 'Sinu sõnum',
+
+    // cart
+    'empty_cart' => 'Ostukorv on tühi',
+    'remove' => 'Eemalda',
 ]
 ?>
