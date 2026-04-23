@@ -121,4 +121,39 @@ class Controller {
     public static function error404() {
         return self::render('error404');
     }
+
+    public static function Cart() {
+        Lang::load('lang');
+
+        $cart = $_SESSION['cart'] ?? [];
+
+        if (empty($cart)) {
+            return self::render('cart', ['items' => []]);
+        }
+
+        $ids = array_keys($cart);
+        $items = Arts::getArtsByIds($ids, APP_LANG);
+
+        foreach ($items as &$item) {
+            $item['qty'] = 1;
+        }
+
+        return self::render('cart', [
+            'items' => $items
+        ]);
+    }
+
+    public static function CartAdd($id) {
+        $_SESSION['cart'][$id] = 1;
+
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit;
+    }
+
+    public static function CartRemove($id) {
+        unset($_SESSION['cart'][$id]);
+
+        header("Location: " . BASE_URL . '/' . APP_LANG . '/cart');
+        exit;
+    }
 }

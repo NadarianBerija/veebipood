@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 
 require 'inc/Database.php';
 require 'inc/Lang.php';
