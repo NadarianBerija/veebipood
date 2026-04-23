@@ -128,18 +128,25 @@ class Controller {
         $cart = $_SESSION['cart'] ?? [];
 
         if (empty($cart)) {
-            return self::render('cart', ['items' => []]);
+            return self::render('cart', [
+                'items' => [],
+                'total' => 0
+            ]);
         }
 
         $ids = array_keys($cart);
         $items = Arts::getArtsByIds($ids, APP_LANG);
 
+        $total = 0;
+
         foreach ($items as &$item) {
             $item['qty'] = 1;
+            $total += (float)$item['art_price'];
         }
 
         return self::render('cart', [
-            'items' => $items
+            'items' => $items,
+            'total' => $total
         ]);
     }
 

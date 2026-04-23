@@ -10,14 +10,15 @@
                         <div class="d-flex align-items-center gap-3">
                             <img style="width: 70px; border-radius: 5px;" src="<?= BASE_URL ?>/public/<?= htmlspecialchars($item['art_image'], ENT_QUOTES, 'UTF-8') ?>">
                             <div>
-                                <h6><?= htmlspecialchars($item['art_title']) ?></h6>
-                                <p><?= htmlspecialchars($item['art_price']) ?> €</p>
+                                <h5><?= htmlspecialchars($item['art_title']) ?></h5>
+                                <p class="fst-italic fs-5"><?= htmlspecialchars($item['art_price']) ?> €</p>
                             </div>
                         </div>
                         <a class="mx-3 text-danger" href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart/remove?id=<?= (int)$item['art_id'] ?>"><?= htmlspecialchars(Lang::get('remove')) ?></a>
                     </div>
                 </div>
                 <?php } ?>
+                <p class="fs-4 fw-bold fst-italic text-end mt-3"><?= htmlspecialchars(Lang::get('total')) ?>: <?= number_format($total, 2) ?> €</p>
             </div>
             <form class="col-12 col-md-4 d-flex flex-column">
                 <label class="form-label fs-5 fw-medium">

@@ -58,5 +58,6 @@ return [
     'cart' => 'Ostukorv',
     'empty_cart' => 'Ostukorv on tühi',
     'remove' => 'Eemalda',
+    'total' => 'Kokku',
 ]
 ?>

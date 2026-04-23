@@ -58,5 +58,6 @@ return [
     'cart' => 'Cart',
     'empty_cart' => 'Cart is empty',
     'remove' => 'Remove',
+    'total' => 'Total'
 ]
 ?>
