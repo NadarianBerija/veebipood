@@ -60,7 +60,13 @@
             </div>
             <p class="fs-5"><?= htmlspecialchars($currentArt['art_text']) ?></p>
             <p class="fs-3 fw-bold fst-italic"><?= htmlspecialchars($currentArt['art_price']) ?> € </p>
-            <a class="btn btn-dark btn-lg rounded-2 d-block d-md-inline-block" href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart/add?id=<?= (int)$currentArt['art_id'] ?>"><?= htmlspecialchars(Lang::get('order_btn')) ?></a>
+            <?php if (isset($_SESSION['cart'][$currentArt['art_id']])) { ?>
+                <a class="btn btn-dark btn-lg rounded-2 d-block d-md-inline-block" href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart">
+                    <?= htmlspecialchars(Lang::get('go_to_cart')) ?>
+                </a>
+            <?php } else { ?>
+                <a class="btn btn-dark btn-lg rounded-2 d-block d-md-inline-block" href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart/add?id=<?= (int)$currentArt['art_id'] ?>"><?= htmlspecialchars(Lang::get('order_btn')) ?></a>
+            <?php } ?>
         </div>
     </div>
 </div>
