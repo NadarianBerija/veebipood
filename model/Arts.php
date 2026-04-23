@@ -137,5 +137,27 @@ class Arts {
         $arr = $db->getAll($query, [$id]);
         return $arr;
     }
+
+    public static function getArtsByIds($ids, $lang) {
+        if (empty($ids)) return [];
+
+        $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+        $query = "SELECT a.id AS art_id,
+                        a.price AS art_price,
+                        al.title AS art_title,
+                        ai.image AS art_image
+                FROM arts a
+                JOIN art_lang al ON al.art_id = a.id
+                JOIN art_images ai ON ai.art_id = a.id
+                JOIN languages l ON al.lang_id = l.id
+                WHERE ai.position = 0
+                AND l.code = ?
+                AND a.id IN ($placeholders)";
+
+        $db = new Database();
+        $arr = $db->getAll($query, array_merge([$lang], $ids));
+        return $arr;
+    }
 }
 ?>
