@@ -53,6 +53,15 @@ elseif ($path == 'gallery/art' and $id) {
 elseif ($path == 'order' and $id) {
     $response = Controller::Order($id);
 }
+elseif ($path == 'cart') {
+    $response = Controller::Cart();
+}
+elseif ($path == 'cart/add') {
+    $response = Controller::CartAdd((int)$_GET['id']);
+}
+elseif ($path == 'cart/remove') {
+    $response = Controller::CartRemove((int)$_GET['id']);
+}
 else {
     $response = Controller::error404();
 }
