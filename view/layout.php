@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/style.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/public/css/swiper-bundle.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <title>VIHMART</title>
 </head>
 <body>
@@ -52,47 +53,53 @@
                     $menuLanguages = $languages;
                     unset($menuLanguages[$currentLang]);
                     ?>
-
-                    <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart">
-                        <?= htmlspecialchars(Lang::get('cart')) ?> (<?= count($_SESSION['cart']) ?>)
-                    </a>
-
-                    <div class="dropdown d-none d-xl-block">
-                        <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= htmlspecialchars($languages[$currentLang]['name']) ?>
-                            <img class="flag ms-2"
-                            src="<?= BASE_URL ?>/public/images/site/flags/<?= htmlspecialchars($languages[$currentLang]['flag']) ?>"
-                            alt="<?= htmlspecialchars($currentLang) ?>">
-                        </button>
-
-                        <ul class="dropdown-menu">
-                            <?php foreach ($menuLanguages as $code => $lang) { 
-                                $url = BASE_URL . '/' . $code . '/' . $path;
-                                if (!empty($query)) {
-                                    $url .= '?' . $query;
-                                }
-                            ?>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center"
-                                href="<?= htmlspecialchars($url) ?>">
-
-                                <?= htmlspecialchars($lang['name']) ?>
-
-                                <img class="flag ms-2"
-                                    src="<?= BASE_URL ?>/public/images/site/flags/<?= htmlspecialchars($lang['flag']) ?>"
-                                    alt="<?= htmlspecialchars($code) ?>">
-                                </a>
-                            </li>
+                    <div class="d-flex gap-4">
+                        <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart" class="cart-link">
+                            <i class="bi-bag-fill text-dark" style="font-size: 26px;"></i>
+                            <?php if (!empty($_SESSION['cart'])) { ?>
+                                <span class="cart-count">
+                                    <?= count($_SESSION['cart']) ?>
+                                </span>
                             <?php } ?>
+                        </a>
 
-                        </ul>
+                        <div class="dropdown d-none d-xl-block">
+                            <button class="btn btn-outline-dark dropdown-toggle d-flex align-items-center" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= htmlspecialchars($languages[$currentLang]['name']) ?>
+                                <img class="flag ms-2"
+                                src="<?= BASE_URL ?>/public/images/site/flags/<?= htmlspecialchars($languages[$currentLang]['flag']) ?>"
+                                alt="<?= htmlspecialchars($currentLang) ?>">
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                <?php foreach ($menuLanguages as $code => $lang) { 
+                                    $url = BASE_URL . '/' . $code . '/' . $path;
+                                    if (!empty($query)) {
+                                        $url .= '?' . $query;
+                                    }
+                                ?>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center"
+                                    href="<?= htmlspecialchars($url) ?>">
+
+                                    <?= htmlspecialchars($lang['name']) ?>
+
+                                    <img class="flag ms-2"
+                                        src="<?= BASE_URL ?>/public/images/site/flags/<?= htmlspecialchars($lang['flag']) ?>"
+                                        alt="<?= htmlspecialchars($code) ?>">
+                                    </a>
+                                </li>
+                                <?php } ?>
+
+                            </ul>
+                        </div>
+                        <button class="btn d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                            <span class="bg-span"></span>
+                            <span class="bg-span"></span>
+                            <span class="bg-span"></span>
+                        </button>
                     </div>
-                    <button class="btn d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-                        <span class="bg-span"></span>
-                        <span class="bg-span"></span>
-                        <span class="bg-span"></span>
-                    </button>
                 </div>
             </div>
         </header>
