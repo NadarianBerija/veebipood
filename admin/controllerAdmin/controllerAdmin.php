@@ -4,6 +4,16 @@ class controllerAdmin {
         include_once('viewAdmin/formLogin.php');
     }
 
+    public static function loginAction() {
+        $login = Login::authentication();
+        if (isset($login) and $login == true) {
+            include_once('viewAdmin/dashboard.php');
+        } else {
+            $_SESSION['errorString'] = 'Vale kasutajanimi või parool';
+            include_once('viewAdmin/formLogin.php');
+        }
+    }
+
     public static function logoutAction() {
         Login::logout();
         include_once('viewAdmin/formLogin.php');

@@ -6,3 +6,9 @@ $path = explode('/', $host)[$num];
 if ($path == 'admin' OR $path == '' OR $path == 'index.php') {
     $response = controllerAdmin::formLoginSite();
 }
+elseif ($path == 'login') {
+    $response = controllerAdmin::loginAction();
+}
+elseif ($path == 'logout') {
+    $response = controllerAdmin::logoutAction();
+}
