@@ -1,3 +1,9 @@
+<?php
+if (isset($_SESSION['userId'])) {
+    header('Location: dashboard');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +20,15 @@
             <input type="text" name="login" placeholder="Login" class="form-control mb-3">
             <input type="password" name="password" placeholder="Parool" class="form-control mb-3">
             <button type="submit" class="btn btn-dark btn-lg rounded-2 mt-2">Siseneda</button>
+
+            <p class="pt-2">
+                <?php
+                if (isset($_SESSION['errorString'])) {
+                    echo htmlspecialchars($_SESSION['errorString'], ENT_QUOTES, 'UTF-8');
+                    unset($_SESSION['errorString']);
+                }
+                ?>
+            </p>
         </form>
     </div>
 </body>
