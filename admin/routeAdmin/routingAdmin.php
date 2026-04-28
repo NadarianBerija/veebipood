@@ -12,3 +12,6 @@ elseif ($path == 'login') {
 elseif ($path == 'logout') {
     $response = controllerAdmin::logoutAction();
 }
+elseif ($path == 'heroSlides') {
+    $response = controllerAdmin::HeroSlides();
+}
