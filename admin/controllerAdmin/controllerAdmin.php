@@ -18,4 +18,9 @@ class controllerAdmin {
         Login::logout();
         include_once('viewAdmin/formLogin.php');
     }
+
+    public static function HeroSlides() {
+        $arr = HeroSlides::getAllSlides();
+        include_once('viewAdmin/heroSlides.php');
+    }
 }
