@@ -19,7 +19,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
             <p class="text-white"><?= htmlspecialchars($_SESSION["status"], ENT_QUOTES, 'UTF-8') ?></p>
             <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active text-white" href="#">Teosed</a>
+                <a class="nav-link active text-white" href="artsList">Teosed</a>
             </li>
             <li class="nav-item"> 
                 <a class="nav-link text-white" href="heroSlides">Slaidid</a>

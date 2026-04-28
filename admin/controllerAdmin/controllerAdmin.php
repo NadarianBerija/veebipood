@@ -25,6 +25,6 @@ class controllerAdmin {
     }
     public static function AllArts() {
         $list = adminArts::getAllArts();
-        include_once('viewAdmin/artList.php');
+        include_once('viewAdmin/artsList.php');
     }
 }
