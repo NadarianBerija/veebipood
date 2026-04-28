@@ -28,6 +28,11 @@ class controllerAdmin {
         include_once('viewAdmin/artsList.php');
     }
 
+    public static function Users() {
+        $arr = Users::getAllUsers();
+        include_once('viewAdmin/users.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }

@@ -18,6 +18,9 @@ elseif ($path == 'heroSlides') {
 elseif ($path == 'artsList') {
     $response = controllerAdmin::AllArts();
 }
+elseif ($path == 'users') {
+    $response = controllerAdmin::Users();
+}
 else {
     $response = controllerAdmin::error404();
 }
