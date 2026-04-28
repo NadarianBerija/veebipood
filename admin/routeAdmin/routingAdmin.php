@@ -18,3 +18,6 @@ elseif ($path == 'heroSlides') {
 elseif ($path == 'artsList') {
     $response = controllerAdmin::AllArts();
 }
+else {
+    $response = controllerAdmin::error404();
+}

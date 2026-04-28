@@ -27,4 +27,8 @@ class controllerAdmin {
         $list = adminArts::getAllArts();
         include_once('viewAdmin/artsList.php');
     }
+
+    public static function error404() {
+        include_once('viewAdmin/error404.php');
+    }
 }
