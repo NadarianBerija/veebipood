@@ -25,7 +25,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
                 <a class="nav-link text-white" href="heroSlides">Slaidid</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Kasutajad</a>
+                <a class="nav-link text-white" href="users">Kasutajad</a>
             </li>
 
             <li class="nav-item">
