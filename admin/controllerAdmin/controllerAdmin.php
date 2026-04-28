@@ -23,4 +23,8 @@ class controllerAdmin {
         $arr = HeroSlides::getAllSlides();
         include_once('viewAdmin/heroSlides.php');
     }
+    public static function AllArts() {
+        $list = adminArts::getAllArts();
+        include_once('viewAdmin/artList.php');
+    }
 }

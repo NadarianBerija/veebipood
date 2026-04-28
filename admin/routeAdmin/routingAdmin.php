@@ -15,3 +15,6 @@ elseif ($path == 'logout') {
 elseif ($path == 'heroSlides') {
     $response = controllerAdmin::HeroSlides();
 }
+elseif ($path == 'artsList') {
+    $response = controllerAdmin::AllArts();
+}
