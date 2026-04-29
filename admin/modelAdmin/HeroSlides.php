@@ -70,4 +70,27 @@ class HeroSlides {
             'message' => 'Pilt edukalt üles laetud.'
         ];
     }
+
+    public static function deleteSlide($id) {
+        $db = new Database();
+        $slide = $db->getOne("SELECT image FROM hero_slides WHERE id = ?", [$id]);
+
+        if (!$slide) {
+            return [
+                'success' => false,
+                'message' => 'Slaidi ei leitud.'
+            ];
+        }
+
+        $filePaht = dirname(__DIR__, 2) . '/public/' . $slide['image'];
+        if (file_exists($filePaht) && is_file($filePaht)) {
+            unlink($filePaht);
+        }
+
+        $db->executeRun("DELETE FROM hero_slides WHERE id = ?", [$id]);
+        return [
+            'success' => true,
+            'message' => 'Slaid edukalt kustutatud.'
+        ];
+    }
 }

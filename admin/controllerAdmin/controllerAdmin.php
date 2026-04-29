@@ -30,7 +30,14 @@ class controllerAdmin {
             $_SESSION['flash'] = $result['message'];
             header("Location: heroSlides");
             exit();
-        } 
+        }
+
+        if (isset($_POST['delete']) && !empty($_POST['slide_id'])) {
+            $result = HeroSlides::deleteSlide((int)$_POST['slide_id']);
+            $_SESSION['flash'] = $result['message'];
+            header("Location: heroSlides");
+            exit();
+        }
 
         $arr = HeroSlides::getAllSlides();
         include_once('viewAdmin/heroSlides.php');

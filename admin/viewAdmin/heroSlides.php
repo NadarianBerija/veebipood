@@ -88,6 +88,7 @@ ob_start()
     </div>
   </div>
 </div>
+<script src="../admin/public/js/deleteSlideId.js"></script>
 
 <?php
 $content = ob_get_clean();
