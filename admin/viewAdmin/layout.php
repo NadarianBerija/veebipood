@@ -18,16 +18,36 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
         <nav class="bg-black p-3" style="width: 250px; min-height: 100vh;">
             <h4 class="text-white"><?= htmlspecialchars($_SESSION["name"], ENT_QUOTES, 'UTF-8') ?></h4>
             <p class="text-white"><?= htmlspecialchars($_SESSION["status"], ENT_QUOTES, 'UTF-8') ?></p>
+
+            <div class="line"></div>
+
             <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active text-white" href="artsList">Teosed</a>
-            </li>
-            <li class="nav-item"> 
-                <a class="nav-link text-white" href="heroSlides">Slaidid</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="users">Kasutajad</a>
-            </li>
+            <?php 
+            if (isset($_SESSION["status"])) {
+                if ($_SESSION["status"] === 'admin') { 
+            ?>
+                <li class="nav-item">
+                    <a class="nav-link active text-white" href="artsList">Teosed</a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link text-white" href="heroSlides">Slaidid</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="users">Kasutajad</a>
+                </li>
+            <?php } elseif ($_SESSION["status"] === 'moderaator') { ?>
+                <li class="nav-item">
+                    <a class="nav-link active text-white" href="artsList">Teosed</a>
+                </li>
+                <li class="nav-item"> 
+                    <a class="nav-link text-white" href="heroSlides">Slaidid</a>
+                </li>
+            <?php 
+                } 
+            }
+            ?>
+            
+            <div class="line"></div>
 
             <li class="nav-item">
                 <a class="nav-link text-white" href="../" rel="noopener noreferrer">Veebileht</a>
