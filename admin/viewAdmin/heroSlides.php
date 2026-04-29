@@ -5,6 +5,10 @@ ob_start()
 <div class="d-flex flex-column gap-4">
     <h2>Slaidid</h2>
     <button class="btn btn-dark btn-lg rounded-2" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#addSlideModal">Lisa uus slaid</button>
+    <?php if (isset($_SESSION['flash'])) { ?>
+    <strong><?= htmlspecialchars($_SESSION['flash']); ?></strong>
+    <?php unset($_SESSION['flash']); ?>
+    <?php } ?>
     <div class="slidesContainer">
     <?php
     if (!empty($arr)) { 
@@ -28,7 +32,7 @@ ob_start()
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <form method="POST" action="addSlide.php" enctype="multipart/form-data">
+      <form method="POST" action="heroSlides" enctype="multipart/form-data">
 
         <div class="modal-header">
           <h5 class="modal-title">Lisa uus slaid</h5>
@@ -45,7 +49,7 @@ ob_start()
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Lisa</button>
+          <button type="submit" class="btn btn-primary" name="save">Lisa</button>
         </div>
 
       </form>
@@ -74,7 +78,7 @@ ob_start()
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Loobu
           </button>
-          <button type="submit" class="btn btn-danger">
+          <button type="submit" class="btn btn-danger" name="delete">
             Kustuta
           </button>
         </div>

@@ -20,6 +20,18 @@ class controllerAdmin {
     }
 
     public static function HeroSlides() {
+        
+        $result = null;
+        
+        if (isset($_POST['save'])) {
+
+            $result = HeroSlides::addSlide();
+            
+            $_SESSION['flash'] = $result['message'];
+            header("Location: heroSlides");
+            exit();
+        } 
+
         $arr = HeroSlides::getAllSlides();
         include_once('viewAdmin/heroSlides.php');
     }
