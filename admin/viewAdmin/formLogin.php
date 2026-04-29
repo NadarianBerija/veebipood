@@ -3,6 +3,10 @@ if (isset($_SESSION['userId'])) {
     header('Location: dashboard');
     exit();
 }
+
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +21,10 @@ if (isset($_SESSION['userId'])) {
     <div class="mx-auto my-5" style="width: 500px;">
         <form action="login" method="POST">
             <h3>Sisestage oma andmed</h3>
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
             <input type="text" name="login" placeholder="Login" class="form-control mb-3">
             <input type="password" name="password" placeholder="Parool" class="form-control mb-3">
-            <button type="submit" class="btn btn-dark btn-lg rounded-2 mt-2">Siseneda</button>
+            <button type="submit" name="btnLogin" class="btn btn-dark btn-lg rounded-2 mt-2">Siseneda</button>
 
             <p class="pt-2">
                 <?php

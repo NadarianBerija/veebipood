@@ -1,11 +1,26 @@
 <?php
 class Login {
     public static function authentication() {
+        if (!isset($_SESSION['login_attempts'])) {
+            $_SESSION['login_attempts'] = 0;
+        }
+
+        if ($_SESSION['login_attempts'] > 5) {
+            $_SESSION['errorString'] = 'Olete ületanud maksimaalse sisselogimiskatsete arvu. Proovige hiljem uuesti.';
+            return false;
+        }
+
         if (isset($_SESSION['sessionId'])) {
             return true;
         }
 
         if (isset($_POST['btnLogin'])) {
+
+            if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                $_SESSION['errorString'] = 'Vigane CSRF token';
+                return false;
+            }
+
             $login = trim($_POST['login'] ?? '');
             $password = $_POST['password'] ?? '';
 
@@ -19,18 +34,36 @@ class Login {
                     $_SESSION['userId'] = $item['id'];
                     $_SESSION['name'] = $item['username'];
                     $_SESSION['status'] = $item['status'];
+
+                    $_SESSION['login_attempts'] = 0;
+
                     return true;
                 }
             }
         }
+
+        $_SESSION['login_attempts']++;
+
         return false;
     }
 
     public static function logout() {
-        unset($_SESSION['sessionId']);
-        unset($_SESSION['userId']);
-        unset($_SESSION['name']);
-        unset($_SESSION['status']);
+        $_SESSION = [];
+
+        if (ini_get("session.use_cookies")) {
+
+            $params = session_get_cookie_params();
+
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000,
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
+            );
+        }
         session_destroy();
     }
 }
