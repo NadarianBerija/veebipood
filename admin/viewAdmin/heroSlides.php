@@ -2,9 +2,9 @@
 ob_start()
 ?>
 
-<div class="d-flex flex-column gap-4">
+<div style="margin: 30px;">
     <h2>Slaidid</h2>
-    <button class="btn btn-dark btn-lg rounded-2" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#addSlideModal">Lisa uus slaid</button>
+    <button class="btn btn-dark btn-lg my-3 mx-auto rounded-2" data-bs-toggle="modal" data-bs-target="#addSlideModal">Lisa uus slaid</button>
     <?php if (isset($_SESSION['flash'])) { ?>
     <strong><?= htmlspecialchars($_SESSION['flash']); ?></strong>
     <?php unset($_SESSION['flash']); ?>

@@ -2,6 +2,10 @@
 ob_start()
 ?>
 
+<div style="margin: 30px;">
+<h2>Teosed</h2>
+<button class="btn btn-dark btn-lg my-3 mx-auto rounded-2" >Lisa uus teos</button>
+
 <div class="slidesContainer">
 <?php foreach($list as $row) { ?>
     <div class="card">
@@ -18,8 +22,19 @@ ob_start()
                 echo '<p><b>On poes: </b>Ei</p>';    
             }?>
         </div>
+        <a href="" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
+        <?php
+        if (isset($_SESSION["status"])) {
+            if ($_SESSION["status"] === 'admin') { 
+        ?>
+        <a href="" class="btn btn-danger btn-lg rounded-2 my-2 mx-3"><i class="bi bi-trash-fill"></i></a>
+        <?php
+            }
+        }
+        ?>
     </div>
 <?php } ?>
+</div>
 </div>
 
 <?php

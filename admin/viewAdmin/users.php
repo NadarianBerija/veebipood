@@ -2,6 +2,7 @@
 ob_start()
 ?>
 
+<div style="margin: 30px;">
 <div class="slidesContainer">
 <?php foreach ($arr as $row) {?>
     <div class="card">
@@ -18,6 +19,7 @@ ob_start()
         </div>
     </div>
 <?php } ?>
+</div>
 </div>
 
 <?php
