@@ -75,11 +75,19 @@ ob_start()
         <?php } ?>
     </select>
 
-    <input type="file" name="images[]" class="form-control" id="artImages" multiple accept="image/*">
+    <input type="file" name="images[]" class="form-control mb-3" id="artImages" multiple accept="image/*">
+
+    <div id="gallery" class="gallery"></div>
+
+    <div class="mt-4">
+        <a href="artsList" class="btn btn-dark">&larr; Tagasi</a>
+        <button type="submit" name="save" class="btn btn-dark">Salvestada</button>
+    </div>
     
 </form>
 </div>
 <script src="../admin/public/js/artScripts.js"></script>
+<script src="../admin/public/js/addArt.js"></script>
 
 <?php
 $content = ob_get_clean();
