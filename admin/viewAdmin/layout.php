@@ -61,7 +61,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
 <?php
 }
 ?>
-        <main>
+        <main class="d-flex flex-grow-1">
             <?php echo $content; ?>
         </main>
     </div>
