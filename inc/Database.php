@@ -59,5 +59,21 @@ class Database {
         $stmt = $this->conn->prepare($query);
         return $stmt->execute($params);
     }
+
+     function beginTransaction() {
+        return $this->conn->beginTransaction();
+    }
+
+    function commit() {
+        return $this->conn->commit();
+    }
+
+    function rollBack() {
+        return $this->conn->rollBack();
+    }
+
+    function getLastId() {
+        return $this->conn->lastInsertId();
+    }
 }
 
