@@ -52,6 +52,10 @@ class controllerAdmin {
         include_once('viewAdmin/users.php');
     }
 
+    public static function AddArtForm() {
+        include_once('viewAdmin/addArt.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }

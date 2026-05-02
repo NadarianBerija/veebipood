@@ -4,7 +4,7 @@ ob_start()
 
 <div style="margin: 30px;">
 <h2>Teosed</h2>
-<button class="btn btn-dark btn-lg my-3 mx-auto rounded-2" >Lisa uus teos</button>
+<a href="addArt" class="btn btn-dark btn-lg my-3 mx-auto rounded-2" >Lisa uus teos</a>
 
 <div class="slidesContainer">
 <?php foreach($list as $row) { ?>

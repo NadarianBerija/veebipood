@@ -21,6 +21,9 @@ elseif ($path == 'artsList') {
 elseif ($path == 'users') {
     $response = controllerAdmin::Users();
 }
+elseif ($path == 'addArt') {
+    $response = controllerAdmin::AddArtForm();
+}
 else {
     $response = controllerAdmin::error404();
 }
