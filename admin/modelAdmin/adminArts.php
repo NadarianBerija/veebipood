@@ -27,4 +27,29 @@ class adminArts {
         $db = new Database();
         return $db->getAll($query);
     }
+
+    public static function getCategoriesAndAuthors() {
+      $db = new Database();
+
+      $categories = $db->getAll("
+        SELECT c.id AS cat_id,
+          cl.name AS cat_name
+        FROM categories c
+        JOIN cat_lang cl ON cl.cat_id = c.id
+        JOIN languages l ON cl.lang_id = l.id
+        WHERE l.code = 'ee'  
+      ");
+
+      $authors = $db->getAll("
+        SELECT u.id AS author_id,
+          u.username AS author_name
+        FROM users u
+        WHERE u.id <> 1
+      ");
+
+      return [
+        'categories' => $categories,
+        'authors' => $authors
+      ];
+    }
 }

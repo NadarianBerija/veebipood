@@ -53,6 +53,10 @@ class controllerAdmin {
     }
 
     public static function AddArtForm() {
+        $data = adminArts::getCategoriesAndAuthors();
+
+        $categories = $data['categories'];
+        $authors = $data['authors'];
         include_once('viewAdmin/addArt.php');
     }
 

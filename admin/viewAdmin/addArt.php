@@ -45,11 +45,17 @@ ob_start()
     <label class="form-label fs-5 fw-medium">Kategooria</label>
     <select name="category" class="form-control mb-3" required>
         <option value="" disabled selected>-</option>
+        <?php foreach ($categories as $cat) {?>
+            <option value="<?= $cat['cat_name'] ?>"><?= $cat['cat_name'] ?></option>
+        <?php } ?>
     </select>
 
     <label class="form-label fs-5 fw-medium">Author</label>
     <select name="author" class="form-control mb-3" required>
         <option value="" disabled selected>-</option>
+        <?php foreach ($authors as $auth) {?>
+            <option value="<?= $auth['author_name'] ?>"><?= $auth['author_name'] ?></option>
+        <?php } ?>
     </select>
     
 </form>
