@@ -24,6 +24,9 @@ elseif ($path == 'users') {
 elseif ($path == 'addArt') {
     $response = controllerAdmin::AddArtForm();
 }
+elseif ($path == 'addArtResult') {
+    $response = controllerAdmin::AddArt();
+}
 else {
     $response = controllerAdmin::error404();
 }

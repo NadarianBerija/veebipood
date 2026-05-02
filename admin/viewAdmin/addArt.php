@@ -4,8 +4,28 @@ ob_start()
 
 <div class="d-flex flex-column flex-grow-1" style="margin: 30px;">
 <h2>Uus teos</h2>
+<?php 
+if (isset($result)) {
+    if ($result[0] == true) {
+?>
+    <div class="alert alert-success w-25">
+        <strong>Teos on lisatud.</strong><br><br>
+        <a href="artsList" class="link-dark">Teostele</a>
+    </div>
+<?php 
+    } else {
+?>
+    <div class="alert alert-danger w-25">
+        <strong>Töö lisamise viga!</strong>
+        <?php if(!empty($result[1])) echo "<br>".$result[1]; ?><br><br>
+        <a href="addArt" class="link-dark">Lisamisvorm</a>
+    </div>
+<?php 
+    }
+} else {
+?>
 
-<form action="" class="d-flex flex-column w-100" style="max-width: 700px;">
+<form action="addArtResult" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
     <label class="form-label fs-5 fw-semibold">On poes
         <input type="checkbox" name="in_shop" id="toggleExtra">
     </label>
@@ -85,6 +105,9 @@ ob_start()
     </div>
     
 </form>
+
+<?php } ?>
+
 </div>
 <script src="../admin/public/js/artScripts.js"></script>
 <script src="../admin/public/js/addArt.js"></script>

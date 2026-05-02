@@ -60,6 +60,12 @@ class controllerAdmin {
         include_once('viewAdmin/addArt.php');
     }
 
+    public static function AddArt() {
+        $result = adminArts::addArt();
+
+        include_once('viewAdmin/addArt.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }
