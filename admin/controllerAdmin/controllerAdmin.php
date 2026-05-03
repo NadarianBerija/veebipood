@@ -66,6 +66,19 @@ class controllerAdmin {
         include_once('viewAdmin/addArt.php');
     }
 
+    public static function EditArtForm($id) {
+        $id = (int)$id;
+
+        $data = adminArts::getCategoriesAndAuthors();
+
+        $categories = $data['categories'];
+        $authors = $data['authors'];
+
+        $artData = adminArts::getArtById($id);
+
+        include_once('viewAdmin/editArt.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }

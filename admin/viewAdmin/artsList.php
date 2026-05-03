@@ -22,7 +22,7 @@ ob_start()
                 echo '<p><b>On poes: </b>Ei</p>';    
             }?>
         </div>
-        <a href="" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
+        <a href="editArt?id=<?= $row['art_id'] ?>" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
         <?php
         if (isset($_SESSION["status"])) {
             if ($_SESSION["status"] === 'admin') { 

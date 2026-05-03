@@ -2,6 +2,7 @@
 $host = explode('?', $_SERVER['REQUEST_URI'])[0];
 $num = substr_count($host, '/');
 $path = explode('/', $host)[$num];
+$id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 
 if ($path == 'admin' OR $path == '' OR $path == 'index.php') {
     $response = controllerAdmin::formLoginSite();
@@ -26,6 +27,9 @@ elseif ($path == 'addArt') {
 }
 elseif ($path == 'addArtResult') {
     $response = controllerAdmin::AddArt();
+}
+elseif ($path == 'editArt' && $id) {
+    $response = controllerAdmin::EditArtForm($id);
 }
 else {
     $response = controllerAdmin::error404();
