@@ -27,7 +27,7 @@ ob_start()
         if (isset($_SESSION["status"])) {
             if ($_SESSION["status"] === 'admin') { 
         ?>
-        <a href="" class="btn btn-danger btn-lg rounded-2 my-2 mx-3"><i class="bi bi-trash-fill"></i></a>
+        <a href="deleteArt?id=<?= $row['art_id'] ?>" class="btn btn-danger btn-lg rounded-2 my-2 mx-3"><i class="bi bi-trash-fill"></i></a>
         <?php
             }
         }
