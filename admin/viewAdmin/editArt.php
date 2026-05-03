@@ -102,7 +102,7 @@ if (isset($result)) {
 
     <input type="file" name="images[]" class="form-control mb-3" id="artImages" multiple accept="image/*">
 
-    <div id="gallery" class="gallery"></div>
+    <div id="gallery" class="gallery" data-existing-images='<?= json_encode($artData['images'], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT) ?>'></div>
 
     <div class="mt-4">
         <a href="artsList" class="btn btn-dark">&larr; Tagasi</a>
@@ -115,6 +115,7 @@ if (isset($result)) {
 
 </div>
 <script src="../admin/public/js/artScripts.js"></script>
+<script src="../admin/public/js/editArt.js"></script>
 
 <?php
 $content = ob_get_clean();
