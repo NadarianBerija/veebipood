@@ -58,6 +58,46 @@ class adminArts {
       ];
     }
 
+    public static function getArtById($id) {
+        $id = (int)$id;
+
+        if($id <= 0) {
+            return false;
+        }
+
+        $db = new Database();
+
+        $art = $db->getOne("
+            SELECT a.*, 
+                u.username,
+                c.id as category_id
+            FROM arts a
+            JOIN users u ON u.id = a.user_id
+            JOIN categories c ON c.id = a.category_id
+            WHERE a.id = ?
+        ", [$id]);
+
+        $langs = $db->getAll("
+            SELECT l.code, al.title, al.text
+            FROM art_lang al
+            JOIN languages l ON l.id = al.lang_id
+            WHERE al.art_id = ?
+        ", [$id]);
+
+        $images = $db->getAll("
+            SELECT id, image, position
+            FROM art_images
+            WHERE art_id = ?
+            ORDER BY position ASC
+        ", [$id]);
+
+        return [
+            'art' => $art,
+            'langs' => $langs,
+            'images' => $images
+        ];
+    }
+
     public static function addArt() {
         $controll = array(0 => false, 1 => 'error');
         if (isset($_POST['save'])) {
