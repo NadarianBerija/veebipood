@@ -30,7 +30,7 @@ if (isset($result)) {
 } else {
 ?>
 
-<form action="" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
+<form action="editArtResult?id=<?= (int)$artData['art']['id'] ?>" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
     <label class="form-label fs-5 fw-semibold">On poes
         <input type="checkbox" name="in_shop" id="toggleExtra" <?= $artData['art']['in_shop'] ? 'checked' : '' ?>>
     </label>
