@@ -432,4 +432,50 @@ class adminArts {
 
         return $controll;
     }
+
+    public static function deleteArt($id) {
+        $controll = array(0 => false, 1 => 'error');
+
+        if(isset($_POST['delete'])){
+            $db = new Database();
+            $db->beginTransaction();
+
+            try {
+                $art = $db->getOne("
+                    SELECT cl.name as cat_name
+                    FROM arts a
+                    JOIN categories c ON c.id = a.category_id
+                    JOIN cat_lang cl ON cl.cat_id = c.id
+                    JOIN languages l ON l.id = cl.lang_id
+                    WHERE a.id=? AND l.code='ee'
+                ", [$id]);
+
+                if(!$art) throw new Exception("Artwork not found");
+
+                $categoryName = $art['cat_name'];
+
+                $artDir = dirname(__DIR__,2)."/public/images/arts/".$categoryName."/".$id."/";
+                if(is_dir($artDir)){
+                    $files = glob($artDir."*");
+                    foreach($files as $file){
+                        if(is_file($file)) unlink($file);
+                    }
+                    rmdir($artDir);
+                }
+
+                $db->executeRun("DELETE FROM art_images WHERE art_id=?", [$id]);
+                $db->executeRun("DELETE FROM art_lang WHERE art_id=?", [$id]);
+                $db->executeRun("DELETE FROM arts WHERE id=?", [$id]);
+
+                $db->commit();
+                $controll = array(0 => true);
+
+            } catch (Exception $e) {
+                $db->rollBack();
+                $controll = array(0 => false, 1 => $e->getMessage());
+            }
+        }
+
+        return $controll;
+    }
 }

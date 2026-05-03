@@ -37,6 +37,9 @@ elseif ($path == 'editArtResult' && $id) {
 elseif ($path == 'deleteArt' && $id) {
     $response = controllerAdmin::DeleteArtForm($id);
 }
+elseif ($path == 'deleteArtResult' && $id) {
+    $response = controllerAdmin::DeleteArt($id);
+}
 else {
     $response = controllerAdmin::error404();
 }

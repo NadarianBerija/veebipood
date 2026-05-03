@@ -73,8 +73,6 @@ if (isset($result)) {
 <?php } ?>
 
 </div>
-<script src="../admin/public/js/artScripts.js"></script>
-<script src="../admin/public/js/editArt.js"></script>
 
 <?php
 $content = ob_get_clean();

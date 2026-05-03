@@ -107,6 +107,16 @@ class controllerAdmin {
         include_once('viewAdmin/deleteArt.php');
     }
 
+    public static function DeleteArt($id) {
+        $id = (int)$id;
+
+        $result = adminArts::deleteArt($id);
+
+        $artData = adminArts::getArtById($id);
+
+        include_once('viewAdmin/deleteArt.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }
