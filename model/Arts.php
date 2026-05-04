@@ -6,12 +6,13 @@ class Arts {
                         a.in_shop AS in_shop,
                         al.title AS art_title,
                         al.text AS art_text,
-                        ai.image AS art_image
+                        ai.image AS art_image,
+                        a.is_deleted as is_deleted
                     FROM arts a
                     JOIN art_lang al ON al.art_id = a.id
                     JOIN art_images ai ON ai.art_id = a.id
                     JOIN languages l ON al.lang_id = l.id
-                    WHERE ai.position = 0 AND l.code = ? AND a.in_shop = 1
+                    WHERE ai.position = 0 AND l.code = ? AND a.in_shop = 1 AND a.is_deleted = 0
                     ORDER BY a.id DESC
                     LIMIT ? OFFSET ?";
         $db = new Database();
@@ -25,7 +26,7 @@ class Arts {
                     JOIN art_lang al ON al.art_id = a.id
                     JOIN art_images ai ON ai.art_id = a.id
                     JOIN languages l ON al.lang_id = l.id
-                    WHERE ai.position = 0 AND l.code = ? AND a.in_shop = 1";
+                    WHERE ai.position = 0 AND l.code = ? AND a.in_shop = 1 AND a.is_deleted = 0";
 
         $db = new Database();
         $arr = $db->getOne($query, [$lang]);
@@ -38,13 +39,14 @@ class Arts {
                         al.title AS art_title,
                         al.text AS art_text,
                         ai.image AS art_image,
-                        c.id AS category_id
+                        c.id AS category_id,
+                        a.is_deleted as is_deleted
                     FROM arts a
                     JOIN art_lang al ON al.art_id = a.id
                     JOIN art_images ai ON ai.art_id = a.id
                     JOIN categories c ON a.category_id = c.id
                     JOIN languages l ON al.lang_id = l.id
-                    WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.in_shop = 1
+                    WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.in_shop = 1 AND a.is_deleted = 0
                     ORDER BY a.id DESC
                     LIMIT ? OFFSET ?";
         $db = new Database();
@@ -59,7 +61,7 @@ class Arts {
                 JOIN art_images ai ON ai.art_id = a.id
                 JOIN categories c ON a.category_id = c.id 
                 JOIN languages l ON al.lang_id = l.id 
-                WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.in_shop = 1";
+                WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.in_shop = 1 AND a.is_deleted = 0";
 
         $db = new Database();
         $arr = $db->getOne($query, [$id, $lang]);
@@ -72,13 +74,14 @@ class Arts {
                         al.title AS art_title,
                         al.text AS art_text,
                         ai.image AS art_image,
-                        c.id AS category_id
+                        c.id AS category_id,
+                        a.is_deleted AS is_deleted
                     FROM arts a
                     JOIN art_lang al ON al.art_id = a.id
                     JOIN art_images ai ON ai.art_id = a.id
                     JOIN categories c ON a.category_id = c.id
                     JOIN languages l ON al.lang_id = l.id
-                    WHERE ai.position = 0 AND c.id = ? AND l.code = ?
+                    WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.is_deleted = 0
                     ORDER BY a.id DESC
                     LIMIT ? OFFSET ?";
         $db = new Database();
@@ -93,7 +96,7 @@ class Arts {
                     JOIN art_images ai ON ai.art_id = a.id
                     JOIN categories c ON a.category_id = c.id 
                     JOIN languages l ON al.lang_id = l.id 
-                    WHERE ai.position = 0 AND c.id = ? AND l.code = ?";
+                    WHERE ai.position = 0 AND c.id = ? AND l.code = ? AND a.is_deleted = 0";
 
         $db = new Database();
         $arr = $db->getOne($query, [$id, $lang]);
@@ -112,14 +115,15 @@ class Arts {
                         cl.name AS cat_name,  
                         l.code AS lang_code,
                         u.username AS author,
-                        u.picture AS author_picture
+                        u.picture AS author_picture,
+                        a.is_deleted = AS is_deleted
                     FROM arts a 
                     JOIN art_lang al ON al.art_id = a.id
                     JOIN languages l ON al.lang_id = l.id
                     JOIN categories c ON c.id = a.category_id
                     JOIN cat_lang cl ON cl.cat_id = c.id AND cl.lang_id = l.id
                     JOIN users u ON a.user_id = u.id
-                    WHERE a.id = ? AND l.code = ?";
+                    WHERE a.id = ? AND l.code = ? AND a.is_deleted = 0";
         $db = new Database();
         $n = $db->getOne($query, [$id, $lang]);
         return $n;
@@ -146,14 +150,16 @@ class Arts {
         $query = "SELECT a.id AS art_id,
                         a.price AS art_price,
                         al.title AS art_title,
-                        ai.image AS art_image
+                        ai.image AS art_image,
+                        a.is_deleted AS is_deleted
                 FROM arts a
                 JOIN art_lang al ON al.art_id = a.id
                 JOIN art_images ai ON ai.art_id = a.id
                 JOIN languages l ON al.lang_id = l.id
                 WHERE ai.position = 0
                 AND l.code = ?
-                AND a.id IN ($placeholders)";
+                AND a.id IN ($placeholders)
+                AND a.is_deleted = 0";
 
         $db = new Database();
         $arr = $db->getAll($query, array_merge([$lang], $ids));

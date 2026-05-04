@@ -11,7 +11,8 @@ class adminArts {
                          u.username AS author,
                          cl.name AS cat_name,
                          a.in_shop,
-                         ai.image AS art_image
+                         ai.image AS art_image,
+                         a.is_deleted
                   FROM arts a
                   JOIN users u ON a.user_id = u.id
                   LEFT JOIN art_lang al
@@ -477,5 +478,26 @@ class adminArts {
         }
 
         return $controll;
+    }
+
+    public static function getDeletedStatus($id) {
+        $db = new Database();
+
+        $query = "SELECT a.is_deleted FROM arts a WHERE id = ?";
+
+        return $db->getOne($query,[$id])['is_deleted'];
+    }
+
+    public static function toggleDeleted($id) {
+        $db = new Database();
+
+        $current = self::getDeletedStatus($id);
+        $new = $current ? 0 : 1;
+
+        $query = "UPDATE arts SET is_deleted = ? WHERE id = ?";
+
+        $db->executeRun($query, [$new, $id]);
+
+        return $new;
     }
 }
