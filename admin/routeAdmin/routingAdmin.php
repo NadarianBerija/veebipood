@@ -40,6 +40,9 @@ elseif ($path == 'deleteArt' && $id) {
 elseif ($path == 'deleteArtResult' && $id) {
     $response = controllerAdmin::DeleteArt($id);
 }
+elseif ($path == 'toggleDeleteArt') {
+    $response = controllerAdmin::ToggleDeleteArt();
+}
 else {
     $response = controllerAdmin::error404();
 }

@@ -117,6 +117,22 @@ class controllerAdmin {
         include_once('viewAdmin/deleteArt.php');
     }
 
+    public static function ToggleDeleteArt() {
+        if (!isset($_POST['id'])) {
+            echo json_encode(['success' => false]);
+            return;
+        }
+
+        $id = (int)$_POST['id'];
+
+        $new = adminArts::toggleDeleted($id);
+
+        echo json_encode([
+            'success' => true,
+            'is_deleted' => $new
+        ]);
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }
