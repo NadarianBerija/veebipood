@@ -23,6 +23,7 @@ ob_start()
             }?>
         </div>
         <a href="editArt?id=<?= $row['art_id'] ?>" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
+        <button  class="toggle-delete btn btn-primary btn-lg rounded-2 my-2 mx-3 <?= $row['is_deleted'] ? 'btn-success' : 'btn-warning' ?>" data-id="<?= $row['art_id'] ?>"><i class="bi <?= $row['is_deleted'] ? 'bi-arrow-counterclockwise' : 'bi-trash' ?>"></i></button>
         <?php
         if (isset($_SESSION["status"])) {
             if ($_SESSION["status"] === 'admin') { 
@@ -36,6 +37,8 @@ ob_start()
 <?php } ?>
 </div>
 </div>
+
+<script src="../admin/public/js/toggleDelete.js"></script>
 
 <?php
 $content = ob_get_clean();
