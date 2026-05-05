@@ -26,16 +26,16 @@ if (isset($result)) {
 ?>
 
 <form action="" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
-    <label class="form-label fs-5 fw-semibold">Username</label>
+    <label class="form-label fs-5 fw-semibold">Kasutajanimi</label>
     <input type="text" name="name" class="form-control mb-3" required>
 
-    <label class="form-label fs-5 fw-semibold">Login</label>
+    <label class="form-label fs-5 fw-semibold">Kasutajatunnus</label>
     <input type="text" name="login" class="form-control mb-3" required>
 
-    <label class="form-label fs-5 fw-semibold">Password</label>
+    <label class="form-label fs-5 fw-semibold">Parool</label>
     <input type="password" name="password" class="form-control mb-3" required>
 
-    <label class="form-label fs-5 fw-semibold">Confirm Password</label>
+    <label class="form-label fs-5 fw-semibold">Kinnita parool</label>
     <input type="password" name="confirm" class="form-control mb-3" required>
 
     <label class="form-label fs-5 fw-semibold">Status</label>
@@ -44,6 +44,7 @@ if (isset($result)) {
         <option value="moderaator">moderaator</option>
     </select>
 
+    <label class="form-label fs-5 fw-semibold">Kasutajate pilt</label>
     <input type="file" name="picture" class="form-control mb-3">
 </form>
 

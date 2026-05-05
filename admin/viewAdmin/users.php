@@ -3,6 +3,9 @@ ob_start()
 ?>
 
 <div style="margin: 30px;">
+<h2>Kasutajad</h2>
+<a href="addUser" class="btn btn-dark btn-lg my-3 mx-auto rounded-2" >Lisa uus kasutaja</a>
+
 <div class="slidesContainer">
 <?php foreach ($arr as $row) {?>
     <div class="card">
