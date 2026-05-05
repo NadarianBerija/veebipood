@@ -10,7 +10,7 @@ if (isset($result)) {
 ?>
     <div class="alert alert-success w-25">
         <strong>Kasutaja on lisatud.</strong><br><br>
-        <a href="artsList" class="link-dark">Kasutajatele</a>
+        <a href="users" class="link-dark">Kasutajatele</a>
     </div>
 <?php 
     } else {

@@ -14,7 +14,7 @@ class Users {
         $controll=array(0=>false,1=>'error');
         if (isset($_POST['save'])) {
             if ($_SESSION['status'] !== 'admin') {
-                die('Access denied');
+                die('Juurdepääs keelatud');
             }
 
             $errorString = "";
@@ -26,13 +26,13 @@ class Users {
 
             $allowedStatus = ['admin','moderaator'];
             if (!in_array($status, $allowedStatus)) {
-                $errorString .= "Invalid user status.<br>";
+                $errorString .= "Vigane kasutaja staatus.<br>";
             }
 
             $db = new Database();
             $exist = $db->getOne("SELECT id FROM users WHERE login=?", [$login]);
             if ($exist) {
-                $errorString .= "This login is already in use.<br>";
+                $errorString .= "See kasutajatunnus on juba kasutusel.<br>";
             }
 
             $picture = NULL;
@@ -46,14 +46,14 @@ class Users {
                 $allowedMime = ['image/jpeg', 'image/png'];
 
                 if ($_FILES['picture']['size'] > $maxFileSize) {
-                    $errorString .= "Maximum picture size is 2MB.<br>";
+                    $errorString .= "Fail on liiga suur (maksimaalselt 2 MB).<br>";
                 } else {
                     $finfo = finfo_open(FILEINFO_MIME_TYPE);
                     $mime = finfo_file($finfo, $fileTmpPath);
                     finfo_close($finfo);
 
                     if (!in_array($mime, $allowedMime) || !in_array($fileExtension, $allowedExtensions)) {
-                        $errorString .= "Allowed formats: JPG, JPEG, PNG, and JFIF.<br>";
+                        $errorString .= "Lubatud vormingud: JPG, JPEG, PNG ja JFIF.<br>";
                     } else {
                         $uploadDir = dirname(__DIR__, 2) . '/public/images/users/';
                         if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
@@ -65,18 +65,18 @@ class Users {
                             chmod($destPath, 0644);
                             $picture = 'images/users/' . $newFileName;
                         } else {
-                            $errorString .= "File upload failed.<br>";
+                            $errorString .= "Faili üleslaadimine ebaõnnestus.<br>";
                         }
                     }
                 }
             }
 
             if (!$password || !$confirm || mb_strlen($password) < 8) {
-                $errorString.="Password must be at least 8 characters long.<br>";
+                $errorString.="Parool peab olema vähemalt 8 tähemärki pikk.<br>";
             }
 
             if ($password != $confirm) {
-                $errorString.="Passwords do not match.<br>";
+                $errorString.="Paroolid ei kattu.<br>";
             }
 
             if (mb_strlen($errorString)==0 ) {
