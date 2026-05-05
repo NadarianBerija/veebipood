@@ -46,6 +46,9 @@ elseif ($path == 'toggleDeleteArt') {
 elseif ($path == 'addUser') {
     $response = controllerAdmin::AddUserForm();
 }
+elseif ($path == 'addUserResult') {
+    $response = controllerAdmin::AddUser();
+}
 else {
     $response = controllerAdmin::error404();
 }

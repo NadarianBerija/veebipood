@@ -137,6 +137,12 @@ class controllerAdmin {
         include_once('viewAdmin/addUser.php');
     }
 
+    public static function AddUser() {
+        $result = Users::addUser();
+
+        include_once('viewAdmin/addUser.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }

@@ -25,7 +25,7 @@ if (isset($result)) {
 } else {
 ?>
 
-<form action="" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
+<form action="addUserResult" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
     <label class="form-label fs-5 fw-semibold">Kasutajanimi</label>
     <input type="text" name="name" class="form-control mb-3" required>
 
@@ -46,8 +46,6 @@ if (isset($result)) {
 
     <label class="form-label fs-5 fw-semibold">Kasutajate pilt</label>
     <input type="file" name="picture" class="form-control mb-3">
-</form>
-
 
     <div class="mt-4">
         <a href="users" class="btn btn-dark">&larr; Tagasi</a>
