@@ -133,6 +133,22 @@ class controllerAdmin {
         ]);
     }
 
+    public static function ToggleDeleteUser() {
+        if (!isset($_POST['id'])) {
+            echo json_encode(['success' => false]);
+            return;
+        }
+
+        $id = (int)$_POST['id'];
+
+        $new = Users::toggleDeleted($id);
+
+        echo json_encode([
+            'success' => true,
+            'is_deleted' => $new
+        ]);
+    }
+
     public static function AddUserForm() {
         include_once('viewAdmin/addUser.php');
     }

@@ -4,7 +4,8 @@ class Users {
         $query = "SELECT u.id AS user_id,
                          u.username AS user_name,
                          u.picture AS picture,
-                         u.status AS user_status
+                         u.status AS user_status,
+                         u.is_deleted
                   FROM users u";
         $db = new Database();
         return $db->getAll($query);
@@ -245,5 +246,28 @@ class Users {
         }
 
         return $result;
+    }
+
+    public static function getDeletedStatus($id) {
+        $db = new Database();
+
+        $query = "SELECT u.is_deleted FROM users u WHERE id = ?";
+
+        return $db->getOne($query, [$id])['is_deleted'];
+    }
+
+    public static function toggleDeleted($id) {
+        $db = new Database();
+
+        $current = self::getDeletedStatus($id);
+        $new = $current ? 0 : 1;
+
+        $queryUser = "UPDATE users SET is_deleted = ? WHERE id = ?";
+        $db->executeRun($queryUser, [$new, $id]);
+
+        $queryArts = "UPDATE arts SET is_deleted = ? WHERE user_id = ?";
+        $db->executeRun($queryArts, [$new, $id]);
+
+        return $new;
     }
 }

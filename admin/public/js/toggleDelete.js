@@ -1,7 +1,9 @@
-document.querySelectorAll('.toggle-delete').forEach(btn => {
+document.querySelectorAll('.toggle-delete, .toggle-delete-user').forEach(btn => {
     btn.addEventListener('click', function() {
 
-        fetch('toggleDeleteArt', {
+        const url = this.classList.contains('toggle-delete-user') ? 'toggleDeleteUser' : 'toggleDeleteArt';
+
+        fetch(url, {
             method: 'POST',
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             body: 'id=' + this.dataset.id

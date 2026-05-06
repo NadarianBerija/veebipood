@@ -21,10 +21,14 @@ ob_start()
             <p><?= htmlspecialchars($row['user_status']) ?></p>
         </div>
         <a href="editUser?id=<?= $row['user_id'] ?>" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
+        <button  class="toggle-delete-user btn btn-primary btn-lg rounded-2 my-2 mx-3 <?= $row['is_deleted'] ? 'btn-success' : 'btn-warning' ?>" data-id="<?= $row['user_id'] ?>"><i class="bi <?= $row['is_deleted'] ? 'bi-arrow-counterclockwise' : 'bi-trash' ?>"></i></button>
+
     </div>
 <?php } ?>
 </div>
 </div>
+
+<script src="../admin/public/js/toggleDelete.js"></script>
 
 <?php
 $content = ob_get_clean();

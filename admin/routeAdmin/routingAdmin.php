@@ -55,6 +55,9 @@ elseif ($path == 'editUser' && $id) {
 elseif ($path == 'editUserResult' && $id) {
     $response = controllerAdmin::EditUser($id);
 }
+elseif ($path == 'toggleDeleteUser') {
+    $response = controllerAdmin::ToggleDeleteUser();
+}
 else {
     $response = controllerAdmin::error404();
 }
