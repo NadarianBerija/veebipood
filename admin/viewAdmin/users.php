@@ -20,6 +20,7 @@ ob_start()
             <h4><?= htmlspecialchars($row['user_name']) ?></h4>
             <p><?= htmlspecialchars($row['user_status']) ?></p>
         </div>
+        <a href="editUser?id=<?= $row['user_id'] ?>" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
     </div>
 <?php } ?>
 </div>
