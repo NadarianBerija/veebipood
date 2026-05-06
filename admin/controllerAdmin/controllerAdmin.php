@@ -125,12 +125,9 @@ class controllerAdmin {
 
         $id = (int)$_POST['id'];
 
-        $new = adminArts::toggleDeleted($id);
+        $result  = adminArts::toggleDeleted($id);
 
-        echo json_encode([
-            'success' => true,
-            'is_deleted' => $new
-        ]);
+        echo json_encode($result);
     }
 
     public static function ToggleDeleteUser() {
@@ -140,6 +137,16 @@ class controllerAdmin {
         }
 
         $id = (int)$_POST['id'];
+
+        $user = Users::getUserDetail($id);
+
+        if ($user['user_status'] === 'admin') {
+            echo json_encode([
+                'success' => false,
+                'message' => 'Admin-kasutajat ei saa kustutada'
+            ]);
+            return;
+        }
 
         $new = Users::toggleDeleted($id);
 

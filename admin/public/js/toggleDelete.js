@@ -10,7 +10,10 @@ document.querySelectorAll('.toggle-delete, .toggle-delete-user').forEach(btn => 
         })
         .then(res => res.json())
         .then(data => {
-            if (!data.success) return;
+            if (!data.success) {
+                alert(data.message || 'Error');
+                return;
+            }
 
             const icon = this.querySelector('i');
 

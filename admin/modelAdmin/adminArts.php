@@ -494,10 +494,37 @@ class adminArts {
         $current = self::getDeletedStatus($id);
         $new = $current ? 0 : 1;
 
+        if ($new == 0) {
+            if (!self::canRestoreArt($id)) {
+                return [
+                    'success' => false,
+                    'message' => 'Teost ei saa taastada, kui kasutaja on kustutatud'
+                ];
+            }
+        }
+
         $query = "UPDATE arts SET is_deleted = ? WHERE id = ?";
 
         $db->executeRun($query, [$new, $id]);
 
-        return $new;
+        return [
+            'success' => true,
+            'is_deleted' => $new
+        ];
+    }
+
+    public static function canRestoreArt($artId) {
+        $db = new Database();
+
+        $query = "
+            SELECT u.is_deleted 
+            FROM arts a
+            JOIN users u ON a.user_id = u.id
+            WHERE a.id = ?
+        ";
+
+        $result = $db->getOne($query, [$artId]);
+
+        return $result && $result['is_deleted'] == 0;
     }
 }
