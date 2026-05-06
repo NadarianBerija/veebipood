@@ -27,7 +27,7 @@ if (isset($result)) {
 
 <form action="editUserResult?id=<?= (int)$detail['user_id'] ?>" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
     <label class="form-label fs-5 fw-semibold">Muuta parool
-        <input type="checkbox" name="in_shop" id="toggleExtra">
+        <input type="checkbox" name="changePassword" id="toggleExtra">
     </label>
 
     <div class="card mb-3 p-3 extraFields">
@@ -45,7 +45,7 @@ if (isset($result)) {
     <input type="text" name="name" class="form-control mb-3" required value="<?= htmlspecialchars($detail['user_name']) ?>">
 
     <label class="form-label fs-5 fw-semibold">Kasutajatunnus</label>
-    <input type="text" name="login" class="form-control mb-3" required value="<?= htmlspecialchars($detail['user_name']) ?>">
+    <input type="text" name="login" class="form-control mb-3" required value="<?= htmlspecialchars($detail['user_login']) ?>">
 
     <label class="form-label fs-5 fw-semibold">Status</label>
     <select name="status" class="form-control mb-3" required>

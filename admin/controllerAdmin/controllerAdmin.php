@@ -150,6 +150,15 @@ class controllerAdmin {
         include_once('viewAdmin/editUser.php');
     }
 
+    public static function EditUser($id) {
+        $id = (int)$id;
+
+        $detail = Users::getUserDetail($id);
+
+        $result = Users::editUser($id);
+        include_once('viewAdmin/editUser.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }
