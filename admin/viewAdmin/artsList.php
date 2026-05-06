@@ -5,7 +5,53 @@ ob_start()
 <div style="margin: 30px;">
 <h2>Teosed</h2>
 <a href="addArt" class="btn btn-dark btn-lg my-3 mx-auto rounded-2" >Lisa uus teos</a>
+<form class="d-flex gap-3 mb-3" method="GET" action="artsList" id="filterForm">
+    <div>
+        <label class="form-label fw-semibold">Autor</label>
+        <select class="form-control" name="author" onchange="this.form.submit()">
+            <option value="">Kõik</option>
+            <?php foreach ($authors as $auth) { ?>
+                <option value="<?= (int)$auth['author_id'] ?>"
+                    <?= (isset($_GET['author']) && $_GET['author'] == $auth['author_id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($auth['author_name']) ?>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
 
+    <div>
+        <label class="form-label fw-semibold">Kategooria</label>
+        <select class="form-control" name="category" onchange="this.form.submit()">
+            <option value="">Kõik</option>
+            <?php foreach ($categories as $cat) { ?>
+                <option value="<?= (int)$cat['cat_id'] ?>"
+                    <?= (isset($_GET['category']) && $_GET['category'] == $cat['cat_id']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($cat['cat_name']) ?>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
+
+    <div>
+        <label class="form-label fw-semibold">On poes</label>
+        <select class="form-control" name="in_shop" onchange="this.form.submit()">
+            <option value="">Kõik</option>
+            <option value="1" <?= (isset($_GET['in_shop']) && $_GET['in_shop'] == '1') ? 'selected' : '' ?>>Jah</option>
+            <option value="0" <?= (isset($_GET['in_shop']) && $_GET['in_shop'] == '0') ? 'selected' : '' ?>>Ei</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="form-label fw-semibold">Kustutatud</label>
+        <select class="form-control" name="is_deleted" onchange="this.form.submit()">
+            <option value="">Kõik</option>
+            <option value="1" <?= (isset($_GET['is_deleted']) && $_GET['is_deleted'] == '1') ? 'selected' : '' ?>>Jah</option>
+            <option value="0" <?= (isset($_GET['is_deleted']) && $_GET['is_deleted'] == '0') ? 'selected' : '' ?>>Ei</option>
+        </select>
+    </div>
+</form>
+
+<?php if (!empty($list)) { ?>
 <div class="slidesContainer">
 <?php foreach($list as $row) { ?>
     <div class="card">
@@ -36,6 +82,9 @@ ob_start()
     </div>
 <?php } ?>
 </div>
+<?php } else {?>
+    <p class="text-center my-5">Pole midagi</p>
+<?php } ?>
 </div>
 
 <script src="../admin/public/js/toggleDelete.js"></script>

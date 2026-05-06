@@ -43,7 +43,18 @@ class controllerAdmin {
         include_once('viewAdmin/heroSlides.php');
     }
     public static function AllArts() {
-        $list = adminArts::getAllArts();
+        $filters = [
+            'author'   => $_GET['author'] ?? null,
+            'category' => $_GET['category'] ?? null,
+            'in_shop'  => $_GET['in_shop'] ?? null,
+            'is_deleted' => $_GET['is_deleted'] ?? null
+        ];
+
+        $list = adminArts::getAllArts($filters);
+        $data = adminArts::getCategoriesAndAuthors();
+
+        $categories = $data['categories'];
+        $authors = $data['authors'];
         include_once('viewAdmin/artsList.php');
     }
 

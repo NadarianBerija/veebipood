@@ -5,7 +5,7 @@ class adminArts {
     }
 
 
-    public static function getAllArts() {
+    public static function getAllArts($filters = []) {
         $query = "SELECT a.id AS art_id,
                          al.title AS art_title,
                          u.username AS author,
@@ -28,10 +28,34 @@ class adminArts {
                   LEFT JOIN art_images ai 
                     ON ai.art_id = a.id
                     AND ai.position = 0
-                  ORDER BY a.id DESC";
+                  WHERE 1";
+
+        $params = [];
+
+        if (!empty($filters['author'])) {
+            $query .= " AND a.user_id = ?";
+            $params[] = (int)$filters['author'];
+        }
+
+        if (!empty($filters['category'])) {
+            $query .= " AND a.category_id = ?";
+            $params[] = (int)$filters['category'];
+        }
+
+        if (isset($filters['in_shop']) && $filters['in_shop'] !== '') {
+            $query .= " AND a.in_shop = ?";
+            $params[] = (int)$filters['in_shop'];
+        }
+
+        if (isset($filters['is_deleted']) && $filters['is_deleted'] !== '') {
+            $query .= " AND a.is_deleted = ?";
+            $params[] = (int)$filters['is_deleted'];
+        }
                   
+        $query .= " ORDER BY a.id DESC";
+
         $db = new Database();
-        return $db->getAll($query);
+        return $db->getAll($query, $params);
     }
 
     public static function getCategoriesAndAuthors() {
