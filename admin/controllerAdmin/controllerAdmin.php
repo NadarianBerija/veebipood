@@ -143,6 +143,13 @@ class controllerAdmin {
         include_once('viewAdmin/addUser.php');
     }
 
+    public static function EditUserForm($id) {
+        $id = (int)$id;
+
+        $detail = Users::getUserDetail($id);
+        include_once('viewAdmin/editUser.php');
+    }
+
     public static function error404() {
         include_once('viewAdmin/error404.php');
     }

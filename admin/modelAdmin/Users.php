@@ -96,4 +96,17 @@ class Users {
         }
         return $controll;
     }
+
+    public static function getUserDetail($id) {
+        $id = (int)$id;
+        $query = "SELECT u.id AS user_id,
+                        u.username AS user_name,
+                        u.login AS user_login,
+                        u.picture AS picture,
+                        u.status AS user_status
+                    FROM users u
+                    WHERE u.id = ?";
+        $db = new Database();
+        return $db->getOne($query, [$id]);
+    }
 }

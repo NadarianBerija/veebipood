@@ -49,6 +49,9 @@ elseif ($path == 'addUser') {
 elseif ($path == 'addUserResult') {
     $response = controllerAdmin::AddUser();
 }
+elseif ($path == 'editArt' && $id) {
+    $response = controllerAdmin::EditArtForm($id);
+}
 else {
     $response = controllerAdmin::error404();
 }
