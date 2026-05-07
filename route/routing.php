@@ -50,9 +50,6 @@ elseif ($path == 'shop/art' and $id) {
 elseif ($path == 'gallery/art' and $id) {
     $response = Controller::ArtByID($id, 'gallery');
 }
-elseif ($path == 'order' and $id) {
-    $response = Controller::Order($id);
-}
 elseif ($path == 'cart') {
     $response = Controller::Cart();
 }
