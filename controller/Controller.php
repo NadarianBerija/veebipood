@@ -92,6 +92,12 @@ class Controller {
         Lang::load('lang');
 
         $currentArt = Arts::getArtById($id, APP_LANG);
+
+        if (!$currentArt) {
+            http_response_code(404);
+            return self::render('error404');
+        }
+        
         $images = Arts::getArtImages($id);
 
         if ($type === 'gallery') {
