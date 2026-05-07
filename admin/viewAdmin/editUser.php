@@ -1,4 +1,5 @@
 <?php
+/** @var array $detail */
 ob_start();
 ?>
 
@@ -26,6 +27,8 @@ if (isset($result)) {
 ?>
 
 <form action="editUserResult?id=<?= (int)$detail['user_id'] ?>" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
     <label class="form-label fs-5 fw-semibold">Muuta parool
         <input type="checkbox" name="changePassword" id="toggleExtra">
     </label>

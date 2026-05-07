@@ -1,4 +1,7 @@
 <?php
+/** @var array $artData */
+/** @var array $categories */
+/** @var array $authors */
 ob_start();
 
 $langs = [];
@@ -31,6 +34,8 @@ if (isset($result)) {
 ?>
 
 <form action="editArtResult?id=<?= (int)$artData['art']['id'] ?>" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
     <label class="form-label fs-5 fw-semibold">On poes
         <input type="checkbox" name="in_shop" id="toggleExtra" <?= $artData['art']['in_shop'] ? 'checked' : '' ?>>
     </label>

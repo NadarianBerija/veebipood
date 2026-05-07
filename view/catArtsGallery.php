@@ -1,3 +1,9 @@
+<?php
+/** @var array $category */
+/** @var array $arts */
+/** @var int $page */
+/** @var int $totalPages */
+?>
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('gallery')) ?></h2>
 

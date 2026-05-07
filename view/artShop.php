@@ -1,3 +1,7 @@
+<?php
+/** @var array $images */
+/** @var array $currentArt */
+?>
 <div class="my-container">
     <span class="breadcrumbs">
         <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/"><?= htmlspecialchars(Lang::get('home')) ?></a> /

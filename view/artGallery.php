@@ -1,3 +1,7 @@
+<?php
+/** @var array $images */
+/** @var array $currentArt */
+?>
 <div class="my-container">
     <div class="back-btn">
         <a href="<?= BASE_URL  ?>/<?= APP_LANG  ?>/gallery/category?id=<?= (int)$currentArt['cat_id']  ?>" class="back-btn">&#11207; <?= htmlspecialchars(Lang::get('back')) ?></a>

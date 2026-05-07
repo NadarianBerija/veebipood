@@ -30,6 +30,7 @@ class Login {
                 $item = $db->getOne($sql, ['login' => $login]);
 
                 if ($item && password_verify($password, $item['password'])) {
+                    session_regenerate_id(true);
                     $_SESSION['sessionId'] = session_id();
                     $_SESSION['userId'] = $item['id'];
                     $_SESSION['name'] = $item['username'];

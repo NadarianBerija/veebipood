@@ -1,3 +1,10 @@
+<?php
+/** @var array $allArtsShop */
+/** @var array $categories */
+/** @var int $selectedCategory */
+/** @var int $page */
+/** @var int $totalPages */
+?>
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('shop')) ?></h2>
     <form method="GET" class="d-flex justify-content-end me-3 mb-3">

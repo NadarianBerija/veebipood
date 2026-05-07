@@ -1,4 +1,6 @@
 <?php
+/** @var array $authors */
+/** @var array $categories */
 ob_start()
 ?>
 
@@ -26,6 +28,8 @@ if (isset($result)) {
 ?>
 
 <form action="addArtResult" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+    
     <label class="form-label fs-5 fw-semibold">On poes
         <input type="checkbox" name="in_shop" id="toggleExtra">
     </label>

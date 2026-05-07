@@ -26,6 +26,8 @@ if (isset($result)) {
 ?>
 
 <form action="addUserResult" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+
     <label class="form-label fs-5 fw-semibold">Kasutajanimi</label>
     <input type="text" name="name" class="form-control mb-3" required>
 

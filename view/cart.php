@@ -1,3 +1,7 @@
+<?php
+/** @var array $items */
+/** @var float $total */
+?>
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('cart')) ?></h2>
     <?php if (empty($items)) { ?>

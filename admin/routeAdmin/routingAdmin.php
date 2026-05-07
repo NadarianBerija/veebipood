@@ -1,7 +1,7 @@
 <?php
-$host = explode('?', $_SERVER['REQUEST_URI'])[0];
-$num = substr_count($host, '/');
-$path = explode('/', $host)[$num];
+$path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+$parts = explode('/', $path);
+$path = end($parts);
 $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 
 if ($path == 'admin' OR $path == '' OR $path == 'index.php') {

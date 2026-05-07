@@ -1,4 +1,7 @@
 <?php
+/** @var array $authors */
+/** @var array $categories */
+/** @var array $list */
 ob_start()
 ?>
 

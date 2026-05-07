@@ -33,6 +33,7 @@ ob_start()
     <div class="modal-content">
 
       <form method="POST" action="heroSlides" enctype="multipart/form-data">
+        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
         <div class="modal-header">
           <h5 class="modal-title">Lisa uus slaid</h5>
@@ -63,6 +64,7 @@ ob_start()
     <div class="modal-content">
 
       <form method="POST" action="heroSlides">
+        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
         <div class="modal-header">
           <h5 class="modal-title">Kustutamine</h5>

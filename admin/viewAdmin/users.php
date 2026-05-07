@@ -1,4 +1,5 @@
 <?php
+/** @var array $arr */
 ob_start()
 ?>
 
@@ -20,9 +21,9 @@ ob_start()
             <h4><?= htmlspecialchars($row['user_name']) ?></h4>
             <p><?= htmlspecialchars($row['user_status']) ?></p>
         </div>
-        <a href="editUser?id=<?= $row['user_id'] ?>" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
+        <a href="editUser?id=<?= (int)$row['user_id'] ?>" class="btn btn-primary btn-lg rounded-2 my-2 mx-3"><i class="bi bi-pencil-square"></i></a>
         <?php if ($row['user_status'] !== 'admin') { ?>
-        <button  class="toggle-delete-user btn btn-primary btn-lg rounded-2 my-2 mx-3 <?= $row['is_deleted'] ? 'btn-success' : 'btn-warning' ?>" data-id="<?= $row['user_id'] ?>"><i class="bi <?= $row['is_deleted'] ? 'bi-arrow-counterclockwise' : 'bi-trash' ?>"></i></button>
+        <button  class="toggle-delete-user btn btn-primary btn-lg rounded-2 my-2 mx-3 <?= $row['is_deleted'] ? 'btn-success' : 'btn-warning' ?>" data-id="<?= (int)$row['user_id'] ?>"><i class="bi <?= $row['is_deleted'] ? 'bi-arrow-counterclockwise' : 'bi-trash' ?>"></i></button>
         <?php } ?>
 
     </div>

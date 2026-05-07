@@ -1,5 +1,12 @@
 <?php
 class adminArts {
+    private static function checkCSRF() {
+        if (!isset($_POST['csrf_token']) ||
+            $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            die('CSRF validation failed');
+        }
+    }
+
     private static function clean($value){
         return trim($value);
     }
@@ -124,6 +131,8 @@ class adminArts {
     }
 
     public static function addArt() {
+        self::checkCSRF();
+
         $controll = array(0 => false, 1 => 'error');
         if (isset($_POST['save'])) {
 
@@ -213,7 +222,7 @@ class adminArts {
                             $mime = finfo_file($finfo, $tmpName);
                             finfo_close($finfo);
 
-                            $allowedMime = ['image/jpeg', 'image/png'];
+                            $allowedMime = ['image/jpeg', 'image/png', 'image/jfif'];
 
                             if(!in_array($mime,$allowedMime)){
                                 throw new Exception("Fail ei ole kehtiv pilt.");
@@ -267,6 +276,8 @@ class adminArts {
     }
 
     public static function editArt($id) {
+        self::checkCSRF();
+
         $controll = array(0 => false, 1 => 'error');
 
         if(isset($_POST['save'])){
@@ -402,7 +413,7 @@ class adminArts {
                                     $mime = finfo_file($finfo,$images['tmp_name'][$i]);
                                     finfo_close($finfo);
 
-                                    if(!in_array($mime,['image/jpeg', 'image/png'])){
+                                    if(!in_array($mime,['image/jpeg', 'image/png', 'image/jfif'])){
                                         throw new Exception("Fail ei ole kehtiv pilt.");
                                     }
 
@@ -459,6 +470,8 @@ class adminArts {
     }
 
     public static function deleteArt($id) {
+        self::checkCSRF();
+
         $controll = array(0 => false, 1 => 'error');
 
         if(isset($_POST['delete'])){

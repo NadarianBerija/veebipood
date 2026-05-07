@@ -1,5 +1,12 @@
 <?php
 class Users {
+    private static function checkCSRF() {
+        if (!isset($_POST['csrf_token']) ||
+            $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            die('CSRF validation failed');
+        }
+    }
+
     public static function getAllUsers() {
         $query = "SELECT u.id AS user_id,
                          u.username AS user_name,
@@ -12,6 +19,8 @@ class Users {
     }
 
     public static function addUser() {
+        self::checkCSRF();
+
         $controll=array(0=>false,1=>'error');
         if (isset($_POST['save'])) {
             if ($_SESSION['status'] !== 'admin') {
@@ -44,7 +53,7 @@ class Users {
                 $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
                 $allowedExtensions = ['jpg','jpeg','png','jfif'];
-                $allowedMime = ['image/jpeg', 'image/png'];
+                $allowedMime = ['image/jpeg', 'image/png', 'image/jfif'];
 
                 if ($_FILES['picture']['size'] > $maxFileSize) {
                     $errorString .= "Fail on liiga suur (maksimaalselt 2 MB).<br>";
@@ -112,6 +121,8 @@ class Users {
     }
 
     public static function editUser($id) {
+        self::checkCSRF();
+
         $id = (int)$id;
         $result = [0 => false, 1 => "error"];
 
@@ -182,7 +193,7 @@ class Users {
                 $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
                 $allowedExtensions = ['jpg','jpeg','png','jfif'];
-                $allowedMime = ['image/jpeg','image/png'];
+                $allowedMime = ['image/jpeg','image/png', 'image/jfif'];
 
                 if ($_FILES['picture']['size'] > $maxFileSize) {
                     $errorString .= "Fail on liiga suur (maksimaalselt 2 MB).<br>";

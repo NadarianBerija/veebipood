@@ -63,7 +63,14 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
 }
 ?>
         <main class="d-flex flex-grow-1">
-            <?php echo $content; ?>
+            <?php
+            if (isset($_SESSION["status"]) && ($_SESSION["status"]=="admin" || $_SESSION["status"]=="moderaator")) {
+                echo $content; 
+            } else {
+                echo '<div style="margin: 30px;">
+                    <h4>Teil ei ole õigusi!</h4>
+                    </div>';  
+            }?>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

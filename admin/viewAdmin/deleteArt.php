@@ -1,4 +1,7 @@
 <?php
+/** @var array $artData */
+/** @var array $categories */
+/** @var array $authors */
 ob_start();
 
 $langs = [];
@@ -31,6 +34,7 @@ if (isset($result)) {
 ?>
 
 <form action="deleteArtResult?id=<?= (int)$artData['art']['id'] ?>" method="POST" enctype="multipart/form-data" class="d-flex flex-column w-100" style="max-width: 700px;">  
+    <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
     <div class="tab-content">
         <div class="card mb-3 p-3 tab-pane fade show active" id="ee">
