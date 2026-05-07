@@ -87,6 +87,35 @@ ob_start()
 <?php } ?>
 </div>
 
+<div class="modal fade" id="warningModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Hoiatus</h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p id="warningText"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Sulge
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script src="../admin/public/js/toggleDelete.js"></script>
 
 <?php

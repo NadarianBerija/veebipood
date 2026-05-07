@@ -11,7 +11,15 @@ document.querySelectorAll('.toggle-delete, .toggle-delete-user').forEach(btn => 
         .then(res => res.json())
         .then(data => {
             if (!data.success) {
-                alert(data.message || 'Error');
+                document.getElementById('warningText').textContent =
+                    data.message || 'Error';
+
+                const modal = new bootstrap.Modal(
+                    document.getElementById('warningModal')
+                );
+
+                modal.show();
+
                 return;
             }
 
