@@ -23,7 +23,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
 
     <div class="d-flex">
         <nav class="d-none d-lg-flex flex-column bg-black text-white admin-sidebar">
-            <div class="d-flex flex-column align-items-center mt-3">
+            <div class="d-flex flex-column text-center align-items-center mt-3">
                 <h4 class="text-white"><?= htmlspecialchars($_SESSION["name"], ENT_QUOTES, 'UTF-8') ?></h4>
                 <p class="text-white"><?= htmlspecialchars($_SESSION["status"], ENT_QUOTES, 'UTF-8') ?></p>
             </div>
@@ -87,7 +87,7 @@ if (isset($_SESSION["userId"]) && isset($_SESSION["sessionId"])) {
 
         <div class="offcanvas-body">
 
-            <div class="d-flex flex-column align-items-center mt-3">
+            <div class="d-flex flex-column text-center align-items-center mt-3">
                 <h4 class="text-white"><?= htmlspecialchars($_SESSION["name"], ENT_QUOTES, 'UTF-8') ?></h4>
                 <p class="text-white"><?= htmlspecialchars($_SESSION["status"], ENT_QUOTES, 'UTF-8') ?></p>
             </div>

@@ -27,7 +27,7 @@ class controllerAdmin {
     public static function loginAction() {
         $login = Login::authentication();
         if (isset($login) and $login == true) {
-            include_once('viewAdmin/dashboard.php');
+            self::AllArts();
         } else {
             $_SESSION['errorString'] = 'Vale kasutajanimi või parool';
             include_once('viewAdmin/formLogin.php');
