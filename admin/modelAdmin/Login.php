@@ -14,33 +14,45 @@ class Login {
             return true;
         }
 
-        if (isset($_POST['btnLogin'])) {
+        if (!isset($_POST['btnLogin'])) {
+            return false;
+        }
+        
+        if (
+            !isset($_POST['csrf_token']) || 
+            !isset($_SESSION['csrf_token']) || 
+            !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])
+        ) {
+            $_SESSION['errorString'] = 'Vigane CSRF token';
+            $_SESSION['login_attempts']++;
+            return false;
+        }
+        
+        $login = trim($_POST['login'] ?? '');
+        $password = $_POST['password'] ?? '';
+        
+        if ($login === '' || $password === '') {
+            $_SESSION['login_attempts']++;
+            return false;
+        }
+            
+        $db = new Database();
+        $sql = "SELECT * FROM users WHERE login = ? LIMIT 1";
+        $item = $db->getOne($sql, [$login]);
+        
+        
+        if ($item && password_verify($password, $item['password'])) {
+            session_regenerate_id(true);
+            $_SESSION['sessionId'] = session_id();
+            $_SESSION['userId'] = $item['id'];
+            $_SESSION['name'] = $item['username'];
+            $_SESSION['status'] = $item['status'];
 
-            if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-                $_SESSION['errorString'] = 'Vigane CSRF token';
-                return false;
-            }
+            $_SESSION['login_attempts'] = 0;
 
-            $login = trim($_POST['login'] ?? '');
-            $password = $_POST['password'] ?? '';
-
-            if ($login !== '' && $password !== '') {
-                $db = new Database();
-                $sql = "SELECT * FROM users WHERE login = :login LIMIT 1";
-                $item = $db->getOne($sql, ['login' => $login]);
-
-                if ($item && password_verify($password, $item['password'])) {
-                    session_regenerate_id(true);
-                    $_SESSION['sessionId'] = session_id();
-                    $_SESSION['userId'] = $item['id'];
-                    $_SESSION['name'] = $item['username'];
-                    $_SESSION['status'] = $item['status'];
-
-                    $_SESSION['login_attempts'] = 0;
-
-                    return true;
-                }
-            }
+            return true;
+                
+            
         }
 
         $_SESSION['login_attempts']++;

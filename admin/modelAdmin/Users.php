@@ -7,6 +7,10 @@ class Users {
         }
     }
 
+    private static function clean($value) {
+        return trim($value);
+    }
+
     public static function getAllUsers() {
         $query = "SELECT u.id AS user_id,
                          u.username AS user_name,
@@ -28,11 +32,11 @@ class Users {
             }
 
             $errorString = "";
-            $name = trim($_POST['name']);
-            $login = trim($_POST['login']);
-            $password = $_POST['password'];
-            $confirm = $_POST['confirm'];
-            $status = $_POST['status'];
+            $name = self::clean($_POST['name'] ?? '');
+            $login = self::clean($_POST['login'] ?? '');
+            $password = $_POST['password'] ?? '';
+            $confirm = $_POST['confirm'] ?? '';
+            $status = $_POST['status'] ?? '';
 
             $allowedStatus = ['admin','moderaator'];
             if (!in_array($status, $allowedStatus)) {
@@ -134,9 +138,9 @@ class Users {
 
             $errorString = "";
 
-            $name = trim($_POST['name']);
-            $login = trim($_POST['login']);
-            $status = $_POST['status'];
+            $name = self::clean($_POST['name'] ?? '');
+            $login = self::clean($_POST['login'] ?? '');
+            $status = $_POST['status'] ?? '';
 
             $changePassword = isset($_POST['changePassword']);
 

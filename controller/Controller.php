@@ -115,6 +115,9 @@ class Controller {
     }
 
     public static function error404() {
+
+        http_response_code(404);
+        
         return self::render('error404');
     }
 

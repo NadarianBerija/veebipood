@@ -1,5 +1,12 @@
 <?php
 class HeroSlides {
+    private static function checkCSRF() {
+        if (!isset($_POST['csrf_token']) ||
+            $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+            die('CSRF validation failed');
+        }
+    }
+
     public static function getAllSlides() {
         $query = "SELECT hs.id AS slide_id,
                          hs.image AS slide_img
@@ -9,6 +16,8 @@ class HeroSlides {
     }
 
     public static function addSlide() {
+        self::checkCSRF();
+
         if (!isset($_FILES['slide_img']) || $_FILES['slide_img']['error'] !== 0) {
             return [
                 'success' => false,
@@ -72,6 +81,8 @@ class HeroSlides {
     }
 
     public static function deleteSlide($id) {
+        self::checkCSRF();
+        
         $db = new Database();
         $slide = $db->getOne("SELECT image FROM hero_slides WHERE id = ?", [$id]);
 

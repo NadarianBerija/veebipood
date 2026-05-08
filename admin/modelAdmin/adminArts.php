@@ -11,6 +11,9 @@ class adminArts {
         return trim($value);
     }
 
+    private static function sanitizePath($value) {
+        return preg_replace('/[^a-zA-Z0-9_-]/', '', $value);
+    }
 
     public static function getAllArts($filters = []) {
         $query = "SELECT a.id AS art_id,
@@ -138,9 +141,8 @@ class adminArts {
 
             $errorString = "";
 
-            $categoryName = self::clean($_POST['category']);
-            $categoryName = preg_replace('/[^a-zA-Z0-9_-]/','',$categoryName);
-            $authorName = self::clean($_POST['author']);
+            $categoryName = self::sanitizePath($_POST['category'] ?? '');
+            $authorName = self::clean($_POST['author'] ?? '');
             $inShop = isset($_POST['in_shop']) ? 1 : 0;
 
             $price = !empty($_POST['price']) ? (float)$_POST['price'] : null;
@@ -284,8 +286,8 @@ class adminArts {
 
             $errorString = "";
 
-            $categoryName = self::clean($_POST['category']);
-            $authorName = self::clean($_POST['author']);
+            $categoryName = self::sanitizePath($_POST['category'] ?? '');
+            $authorName = self::clean($_POST['author'] ?? '');
             $inShop = isset($_POST['in_shop']) ? 1 : 0;
             $price = ($_POST['price'] !== "") ? (float)$_POST['price'] : null;
 
