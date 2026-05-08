@@ -8,7 +8,7 @@ ob_start()
 <div style="margin: 30px;">
 <h2>Teosed</h2>
 <a href="addArt" class="btn btn-dark btn-lg my-3 mx-auto rounded-2" >Lisa uus teos</a>
-<form class="d-flex gap-3 mb-3" method="GET" action="artsList" id="filterForm">
+<form class="d-flex flex-wrap gap-3 mb-3" method="GET" action="artsList" id="filterForm">
     <div>
         <label class="form-label fw-semibold">Autor</label>
         <select class="form-control" name="author" onchange="this.form.submit()">

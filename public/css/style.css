@@ -635,6 +635,10 @@ footer .cat_gallery {
     .arts_list {
         grid-template-columns: 1fr;
     }
+    
+    .logo {
+        width: 70%;
+    }
 
     .mySwiper {
         height: 50px;
