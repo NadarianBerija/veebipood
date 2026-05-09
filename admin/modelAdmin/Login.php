@@ -5,7 +5,16 @@ class Login {
             $_SESSION['login_attempts'] = 0;
         }
 
-        if ($_SESSION['login_attempts'] > 5) {
+        if (!isset($_SESSION['last_attempt_time'])) {
+            $_SESSION['last_attempt_time'] = 0;
+        }
+
+        if ($_SESSION['login_attempts'] > 5 && time() - $_SESSION['last_attempt_time'] >= 600) {
+            $_SESSION['login_attempts'] = 0;
+            $_SESSION['last_attempt_time'] = 0;
+        }
+
+        if ($_SESSION['login_attempts'] > 5 && time() - $_SESSION['last_attempt_time'] < 600) {
             $_SESSION['errorString'] = 'Olete ületanud maksimaalse sisselogimiskatsete arvu. Proovige hiljem uuesti.';
             return false;
         }
@@ -25,6 +34,7 @@ class Login {
         ) {
             $_SESSION['errorString'] = 'Vigane CSRF token';
             $_SESSION['login_attempts']++;
+            $_SESSION['last_attempt_time'] = time();
             return false;
         }
         
@@ -32,13 +42,32 @@ class Login {
         $password = $_POST['password'] ?? '';
         
         if ($login === '' || $password === '') {
+            $_SESSION['errorString'] = 'Sisesta kasutajanimi ja parool';
             $_SESSION['login_attempts']++;
+            $_SESSION['last_attempt_time'] = time();
             return false;
         }
             
         $db = new Database();
         $sql = "SELECT * FROM users WHERE login = ? LIMIT 1";
         $item = $db->getOne($sql, [$login]);
+
+        if (!$item) {
+            $_SESSION['errorString'] = 'Vale kasutajanimi või parool';
+            $_SESSION['login_attempts']++;
+            $_SESSION['last_attempt_time'] = time();
+
+            return false;
+        }
+
+        if ((int)$item['is_deleted'] === 1) {
+
+            $_SESSION['errorString'] = 'Kasutaja on blokeeritud';
+            $_SESSION['login_attempts']++;
+            $_SESSION['last_attempt_time'] = time();
+
+            return false;
+        }
         
         
         if ($item && password_verify($password, $item['password'])) {
@@ -49,13 +78,17 @@ class Login {
             $_SESSION['status'] = $item['status'];
 
             $_SESSION['login_attempts'] = 0;
+            $_SESSION['last_attempt_time'] = 0;
+            unset($_SESSION['errorString']);
 
             return true;
                 
             
         }
 
+        $_SESSION['errorString'] = 'Vale kasutajanimi või parool';
         $_SESSION['login_attempts']++;
+        $_SESSION['last_attempt_time'] = time();
 
         return false;
     }

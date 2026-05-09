@@ -29,7 +29,6 @@ class controllerAdmin {
         if (isset($login) and $login == true) {
             self::AllArts();
         } else {
-            $_SESSION['errorString'] = 'Vale kasutajanimi või parool';
             include_once('viewAdmin/formLogin.php');
         }
     }
