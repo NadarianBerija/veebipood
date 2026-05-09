@@ -9,6 +9,7 @@ ob_start()
     <strong><?= htmlspecialchars($_SESSION['flash']); ?></strong>
     <?php unset($_SESSION['flash']); ?>
     <?php } ?>
+    <div class="overflow-auto" style="max-height: 78vh;">
     <div class="slidesContainer">
     <?php
     if (!empty($arr)) { 
@@ -26,6 +27,7 @@ ob_start()
     echo '<p>Slaidid puuduvad</p>';
     }
     ?>
+    </div>
     </div>
 </div>
 <div class="modal fade" id="addSlideModal" tabindex="-1" aria-hidden="true">

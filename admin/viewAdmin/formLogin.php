@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['userId'])) {
-    header('Location: dashboard');
+    header('Location: artsList');
     exit();
 }
 
@@ -18,7 +18,7 @@ if (!isset($_SESSION['csrf_token'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
-    <div class="mx-auto my-5" style="width: 500px;">
+    <div class="mx-auto my-5 px-3" style="max-width: 500px;">
         <form action="login" method="POST">
             <h3>Sisestage oma andmed</h3>
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">

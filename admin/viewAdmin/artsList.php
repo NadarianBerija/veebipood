@@ -55,6 +55,7 @@ ob_start()
 </form>
 
 <?php if (!empty($list)) { ?>
+<div class="overflow-auto" style="max-height: 78vh;">
 <div class="slidesContainer">
 <?php foreach($list as $row) { ?>
     <div class="card">
@@ -84,6 +85,7 @@ ob_start()
         ?>
     </div>
 <?php } ?>
+</div>
 </div>
 <?php } else {?>
     <p class="text-center my-5">Pole midagi</p>

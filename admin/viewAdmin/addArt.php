@@ -10,14 +10,14 @@ ob_start()
 if (isset($result)) {
     if ($result[0] == true) {
 ?>
-    <div class="alert alert-success w-25">
+    <div class="alert alert-success col-12 col-lg-4">
         <strong>Teos on lisatud.</strong><br><br>
         <a href="artsList" class="link-dark">Teostele</a>
     </div>
 <?php 
     } else {
 ?>
-    <div class="alert alert-danger w-25">
+    <div class="alert alert-danger col-12 col-lg-4">
         <strong>Töö lisamise viga!</strong>
         <?php if(!empty($result[1])) echo "<br>".$result[1]; ?><br><br>
         <a href="addArt" class="link-dark">Lisamisvorm</a>

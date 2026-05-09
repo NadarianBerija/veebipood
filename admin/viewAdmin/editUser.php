@@ -9,14 +9,14 @@ ob_start();
 if (isset($result)) {
     if ($result[0] == true) {
 ?>
-    <div class="alert alert-success w-25">
+    <div class="alert alert-success col-12 col-lg-4">
         <strong>Kasutaja andmed on muudetud.</strong><br><br>
         <a href="users" class="link-dark">Kasutajatele</a>
     </div>
 <?php 
     } else {
 ?>
-    <div class="alert alert-danger w-25">
+    <div class="alert alert-danger col-12 col-lg-4">
         <strong>Viga!</strong>
         <?php if(!empty($result[1])) echo "<br>".$result[1]; ?><br><br>
         <a href="editUser?id=<?= (int)$detail['user_id'] ?>" class="link-dark">Muutmisvorm</a>
