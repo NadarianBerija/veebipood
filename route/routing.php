@@ -59,6 +59,9 @@ elseif ($path == 'cart/add') {
 elseif ($path == 'cart/remove') {
     $response = Controller::CartRemove((int)$_GET['id']);
 }
+elseif ($path == 'order') {
+    $response = Controller::CartOrder();
+}
 else {
     $response = Controller::error404();
 }

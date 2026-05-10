@@ -59,6 +59,10 @@ return [
     'empty_cart' => 'Cart is empty',
     'remove' => 'Remove',
     'total' => 'Total',
-    'go_to_cart' => 'Go to cart'
+    'go_to_cart' => 'Go to cart',
+    'send_order' => 'The order has been sent',
+    'invalid_request' => 'Invalid request',
+    'spam' => 'Spam detected',
+    'required_fields' => 'Fill required fields'
 ]
 ?>

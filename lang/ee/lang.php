@@ -59,7 +59,10 @@ return [
     'empty_cart' => 'Ostukorv on tühi',
     'remove' => 'Eemalda',
     'total' => 'Kokku',
-    'go_to_cart' => 'Mine ostukorvi'
-
+    'go_to_cart' => 'Mine ostukorvi',
+    'send_order' => 'Tellimus on saadetud',
+    'invalid_request' => 'Vigane päring',
+    'spam' => 'Rämpspost tuvastatud',
+    'required_fields' => 'Täitke kohustuslikud väljad'
 ]
 ?>

@@ -10,7 +10,8 @@ class Order {
         string $email,
         string $phone,
         string $message,
-        array $items
+        array $items,
+        array $ids
     ): array {
 
         try {
@@ -124,6 +125,16 @@ class Order {
             ';
 
             $mail->send();
+
+            $db = new Database();
+
+            if (!empty($ids)) {
+                $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+                $sql = "UPDATE arts SET in_shop = 0 WHERE id IN ($placeholders)";
+
+                $db->executeRun($sql, $ids);
+            }
 
             return [true];
 

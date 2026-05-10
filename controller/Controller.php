@@ -162,4 +162,66 @@ class Controller {
         header("Location: " . BASE_URL . '/' . APP_LANG . '/cart');
         exit;
     }
+
+    public static function CartOrder() {
+
+        Lang::load('lang');
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+            return self::render('cart', [
+                'result' => [false, htmlspecialchars(Lang::get('invalid_request'))]
+            ]);
+        }
+
+        // honeypot
+        if (!empty($_POST['website'])) {
+
+            return self::render('cart', [
+                'result' => [false, htmlspecialchars(Lang::get('spam'))]
+            ]);
+        }
+
+        $name = trim($_POST['name'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $phone = trim($_POST['phone'] ?? '');
+        $message = trim($_POST['message'] ?? '');
+
+        if (!$name || !$email) {
+
+            return self::render('cart', [
+                'result' => [false, htmlspecialchars(Lang::get('required_fields'))]
+            ]);
+        }
+
+        $cart = $_SESSION['cart'] ?? [];
+
+        if (empty($cart)) {
+
+            return self::render('cart', [
+                'result' => [false, htmlspecialchars(Lang::get('empty_cart'))]
+            ]);
+        }
+
+        $ids = array_keys($cart);
+
+        $items = Arts::getArtsByIds($ids, 'ee');
+
+        $result = Order::send(
+            $name,
+            $email,
+            $phone,
+            $message,
+            $items,
+            $ids
+        );
+
+        if ($result[0]) {
+            unset($_SESSION['cart']);
+        }
+
+        return self::render('cart', [
+            'result' => $result
+        ]);
+    }
 }
