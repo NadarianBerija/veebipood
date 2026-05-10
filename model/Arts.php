@@ -150,18 +150,23 @@ class Arts {
                         a.price AS art_price,
                         al.title AS art_title,
                         ai.image AS art_image,
+                        cl.name AS category_title,
                         a.is_deleted AS is_deleted
                 FROM arts a
                 JOIN art_lang al ON al.art_id = a.id
                 JOIN art_images ai ON ai.art_id = a.id
                 JOIN languages l ON al.lang_id = l.id
+                JOIN categories c ON c.id = a.category_id
+                JOIN cat_lang cl ON cl.cat_id = c.id
+                JOIN languages cl_lang ON cl.lang_id = cl_lang.id
                 WHERE ai.position = 0
                 AND l.code = ?
+                AND cl_lang.code = ?
                 AND a.id IN ($placeholders)
                 AND a.is_deleted = 0";
 
         $db = new Database();
-        $arr = $db->getAll($query, array_merge([$lang], $ids));
+        $arr = $db->getAll($query, array_merge([$lang, $lang], $ids));
         return $arr;
     }
 }

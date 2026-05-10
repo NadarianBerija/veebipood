@@ -3,6 +3,26 @@
 /** @var float $total */
 ?>
 <div class="my-container">
+    <?php 
+    if (isset($result)) {
+        if ($result[0] == true) {
+    ?>
+        <div class="alert alert-success col-12 col-lg-4 mx-auto">
+            <strong><?= htmlspecialchars(Lang::get('send_order')) ?></strong><br><br>
+            <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/shop" class="link-dark"><?= htmlspecialchars(Lang::get('shop')) ?></a>
+        </div>
+    <?php 
+        } else {
+    ?>
+        <div class="alert alert-danger col-12 col-lg-4 mx-auto">
+            <strong>Viga!</strong>
+            <?php if(!empty($result[1])) echo "<br>".$result[1]; ?><br><br>
+            <a href="<?= BASE_URL ?>/<?= APP_LANG ?>/cart" class="link-dark"><?= htmlspecialchars(Lang::get('cart')) ?></a>
+        </div>
+    <?php 
+        }
+    } else {
+    ?>
     <h2><?= htmlspecialchars(Lang::get('cart')) ?></h2>
     <?php if (empty($items)) { ?>
         <p class="text-center my-5"><?= htmlspecialchars(Lang::get('empty_cart')) ?></p>
@@ -25,7 +45,7 @@
                 <?php } ?>
                 <p class="fs-4 fw-bold fst-italic text-end mt-3"><?= htmlspecialchars(Lang::get('total')) ?>: <?= number_format($total, 2) ?> €</p>
             </div>
-            <form class="col-12 col-md-4 d-flex flex-column">
+            <form method="POST" action="<?= BASE_URL ?>/<?= APP_LANG ?>/order" class="col-12 col-md-4 d-flex flex-column">
                 <label class="form-label fs-5 fw-medium">
                     <?= htmlspecialchars(Lang::get('your_name')) ?> *
                 </label>
@@ -46,10 +66,15 @@
                 </label>
                 <textarea name="message" class="form-control mb-3" rows="5" style="resize: none;"></textarea>
 
+                <input type="text" name="website" style="display:none">
+
                 <button type="submit" name="order" class="btn btn-dark btn-lg rounded-2 mt-2">
                     <?= htmlspecialchars(Lang::get('order_btn')) ?>
                 </button>
             </form>
         </div>
-    <?php } ?>
+    <?php 
+        } 
+    }
+    ?>
 </div>
