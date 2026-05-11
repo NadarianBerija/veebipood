@@ -63,6 +63,7 @@ return [
     'send_order' => 'Tellimus on saadetud',
     'invalid_request' => 'Vigane päring',
     'spam' => 'Rämpspost tuvastatud',
-    'required_fields' => 'Täitke kohustuslikud väljad'
+    'required_fields' => 'Täitke kohustuslikud väljad',
+    'sending' => 'Saadetakse...'
 ]
 ?>

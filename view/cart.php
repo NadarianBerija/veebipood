@@ -68,8 +68,12 @@
 
                 <input type="text" name="website" style="display:none">
 
-                <button type="submit" name="order" class="btn btn-dark btn-lg rounded-2 mt-2">
-                    <?= htmlspecialchars(Lang::get('order_btn')) ?>
+                <button type="submit" id="submitBtn" name="order" class="btn btn-dark btn-lg rounded-2 mt-2" data-sending-text="<?= htmlspecialchars(Lang::get('sending')) ?>">
+                    <span id="btnText">
+                        <?= htmlspecialchars(Lang::get('order_btn')) ?>
+                    </span>
+
+                    <span id="btnSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
                 </button>
             </form>
         </div>
@@ -78,3 +82,5 @@
     }
     ?>
 </div>
+
+<script src="<?= BASE_URL ?>/public/js/spinner.js"></script>

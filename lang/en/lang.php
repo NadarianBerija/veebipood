@@ -63,6 +63,7 @@ return [
     'send_order' => 'The order has been sent',
     'invalid_request' => 'Invalid request',
     'spam' => 'Spam detected',
-    'required_fields' => 'Fill required fields'
+    'required_fields' => 'Fill required fields',
+    'sending' => 'Sending...'
 ]
 ?>
