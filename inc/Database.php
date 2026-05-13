@@ -8,10 +8,10 @@ class Database {
     private $baseName;
 
     function __construct() {
-        $this->host = 'localhost';
-        $this->user = 'root';
-        $this->password = '';
-        $this->baseName = 'vihmart';
+        $this->host = $_ENV['DB_HOST'];
+        $this->user = $_ENV['DB_USER'];
+        $this->password = $_ENV['DB_PASS'];
+        $this->baseName = $_ENV['DB_NAME'];
         $this->connect();
     }
 

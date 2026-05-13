@@ -10,6 +10,10 @@ session_set_cookie_params([
 
 session_start();
 
+require_once __DIR__ . '/../public/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 require '../inc/Database.php';
 
 require 'modelAdmin/Login.php';
