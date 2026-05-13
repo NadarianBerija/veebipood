@@ -6,7 +6,7 @@ class HeroSlider {
                     FROM hero_slides hs";
         $db = new Database();
         $arr = $db->getAll($query);
-        return $arr;
+        return is_array($arr) ? $arr : [];
     }
 }
 ?>

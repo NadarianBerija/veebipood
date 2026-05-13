@@ -11,7 +11,7 @@ class Category {
                     WHERE l.code = ?";
         $db = new Database();
         $arr = $db->getAll($query, [$lang]);
-        return $arr;
+        return is_array($arr) ? $arr : [];
     }
 
     public static function getCategoryByID($id, $lang) {
