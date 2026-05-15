@@ -71,7 +71,10 @@ class Login {
         
         
         if ($item && password_verify($password, $item['password'])) {
-            session_regenerate_id(true);
+            if (session_status() === PHP_SESSION_ACTIVE && !headers_sent()) {
+                session_regenerate_id(true);
+            }
+
             $_SESSION['sessionId'] = session_id();
             $_SESSION['userId'] = $item['id'];
             $_SESSION['name'] = $item['username'];
@@ -96,20 +99,24 @@ class Login {
     public static function logout() {
         $_SESSION = [];
 
-        if (ini_get("session.use_cookies")) {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            if (ini_get("session.use_cookies") && !headers_sent()) {
+                $params = session_get_cookie_params();
 
-            $params = session_get_cookie_params();
+                setcookie(
+                    session_name(),
+                    '',
+                    time() - 42000,
+                    $params["path"],
+                    $params["domain"],
+                    $params["secure"],
+                    $params["httponly"]
+                );
+            }
 
-            setcookie(
-                session_name(),
-                '',
-                time() - 42000,
-                $params["path"],
-                $params["domain"],
-                $params["secure"],
-                $params["httponly"]
-            );
+            if (!headers_sent()) {
+                session_destroy();
+            }
         }
-        session_destroy();
     }
 }

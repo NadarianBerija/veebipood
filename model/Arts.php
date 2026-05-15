@@ -30,7 +30,7 @@ class Arts {
 
         $db = new Database();
         $arr = $db->getOne($query, [$lang]);
-        return (int)$arr['total'];
+        return (int)($arr['total'] ?? 0);
     }
 
     public static function getArtsByCategoryInShop($id, $lang, $limit, $offset) {
@@ -66,7 +66,7 @@ class Arts {
         $db = new Database();
         $arr = $db->getOne($query, [$id, $lang]);
 
-        return (int)$arr['total'];
+        return (int)($arr['total'] ?? 0);
     }
 
     public static function getArtsByCategoryID($id, $lang, $limit, $offset) {
@@ -101,7 +101,7 @@ class Arts {
         $db = new Database();
         $arr = $db->getOne($query, [$id, $lang]);
 
-        return (int)$arr['total'];
+        return (int)($arr['total'] ?? 0);
     }
 
     public static function getArtById($id, $lang) {

@@ -22,8 +22,13 @@ if (!in_array($lang, $availableLangs, true)) {
 
 $path = implode('/', $pathParts);
 
-define('APP_LANG', $lang);
-define('BASE_URL', '/vihmart');
+if (!defined('APP_LANG')) {
+    define('APP_LANG', $lang);
+}
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '/vihmart');
+}
 
 $GLOBALS['path'] = $path;
 

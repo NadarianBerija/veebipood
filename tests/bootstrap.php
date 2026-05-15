@@ -16,6 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . '/TestStubs.php';
 require_once __DIR__ . '/BaseTestCase.php';
 require_once __DIR__ . '/../inc/Lang.php';
+require_once __DIR__ . '/../view/pagination.php';
 require_once __DIR__ . '/../controller/Controller.php';
 require_once __DIR__ . '/../admin/controllerAdmin/controllerAdmin.php';
 require_once __DIR__ . '/../admin/modelAdmin/Login.php';
