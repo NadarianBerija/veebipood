@@ -77,6 +77,7 @@ class Login {
 
             $_SESSION['sessionId'] = session_id();
             $_SESSION['userId'] = $item['id'];
+            $_SESSION['last_activity'] = time();
             $_SESSION['name'] = $item['username'];
             $_SESSION['status'] = $item['status'];
 

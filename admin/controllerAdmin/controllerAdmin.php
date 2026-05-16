@@ -1,6 +1,18 @@
 <?php
 class controllerAdmin {
     private static function checkAdminAccess($adminOnly = false) {
+        $timeout_duration = 120; 
+
+        if (isset($_SESSION['last_activity'])) {
+            if (time() - $_SESSION['last_activity'] > $timeout_duration) {
+                Login::logout();
+                header("Location: login");
+                exit();
+            }
+        }    
+
+        $_SESSION['last_activity'] = time();
+
         if (
             !isset($_SESSION['sessionId']) ||
             !isset($_SESSION['status']) ||

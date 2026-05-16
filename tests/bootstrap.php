@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../public/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 if (!defined('APP_LANG')) {
     define('APP_LANG', 'en');
