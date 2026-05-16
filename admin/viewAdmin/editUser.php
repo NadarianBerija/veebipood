@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin form to edit an existing user.
+ */
 /** @var array $detail */
 ob_start();
 ?>

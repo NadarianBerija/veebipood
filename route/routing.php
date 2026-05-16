@@ -1,4 +1,8 @@
 <?php
+/**
+ * Front-end routing logic.
+ * Parses the request URI, handles language prefixing, and dispatches the request to the appropriate Controller method.
+ */
 $host = explode('?', $_SERVER['REQUEST_URI'])[0];
 $queryString = $_SERVER['QUERY_STRING'] ?? '';
 $GLOBALS['query'] = $queryString;

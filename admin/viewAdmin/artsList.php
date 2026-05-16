@@ -1,4 +1,7 @@
 <?php
+/**
+ * List of all art pieces for management
+ */
 /** @var array $authors */
 /** @var array $categories */
 /** @var array $list */

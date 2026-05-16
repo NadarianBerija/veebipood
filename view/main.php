@@ -1,4 +1,8 @@
 <?php
+/**
+ * Main landing page view.
+ * Displays the hero slider and category blocks.
+ */
 $heroImages = Controller::AllHeroSlides();
 if (is_array($heroImages)) {
     shuffle($heroImages);

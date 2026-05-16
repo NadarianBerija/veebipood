@@ -1,10 +1,30 @@
 <?php
+/**
+ * File: model/Order.php
+ * Purpose: Handles order processing, including sending email notifications and updating art availability.
+ */
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+/**
+ * Class Order
+ * 
+ * Manages the submission of customer orders, sending details via SMTP using PHPMailer.
+ */
 class Order {
 
+    /**
+     * Sends an order confirmation email and marks art pieces as sold in the database.
+     * 
+     * @param string $name Customer's name.
+     * @param string $email Customer's email address.
+     * @param string $phone Customer's phone number.
+     * @param string $message Additional message from the customer.
+     * @param array $items Array of ordered art piece data.
+     * @param array $ids Array of ordered art piece IDs.
+     * @return array Returns [true] on success, or [false, error_message] on failure.
+     */
     public static function send(
         string $name,
         string $email,
@@ -20,7 +40,7 @@ class Order {
 
             $mail->isSMTP();
 
-            // SMTP
+            // SMTP Configuration
             $mail->Host = $_ENV['MAIL_HOST'];
             $mail->SMTPAuth = true;
 
@@ -32,16 +52,16 @@ class Order {
 
             $mail->CharSet = 'UTF-8';
 
-            // sender
+            // Sender Information
             $mail->setFrom(
                 $_ENV['MAIL_FROM'],
                 $_ENV['MAIL_FROM_NAME']
             );
 
-            // receiver
+            // Receiver Information
             $mail->addAddress($_ENV['MAIL_TO']);
 
-            // reply
+            // Reply-To Information
             $mail->addReplyTo($email, $name);
 
             $mail->isHTML(true);
@@ -75,6 +95,7 @@ class Order {
                 ';
             }
 
+            // Email Body Content
             $mail->Body = '
                 <h2>Uus tellimus</h2>
 
@@ -128,6 +149,7 @@ class Order {
 
             $db = new Database();
 
+            // Mark ordered items as sold (remove from shop)
             if (!empty($ids)) {
                 $placeholders = implode(',', array_fill(0, count($ids), '?'));
 

@@ -1,3 +1,8 @@
+<?php
+/**
+ * About us page
+ */
+?>
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('about')) ?></h2>
 

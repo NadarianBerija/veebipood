@@ -1,4 +1,7 @@
 <?php
+/**
+ * Pagination component
+ */
 class Pagination {
     public static function Pagination($totalPages, $page, $path, $id = null) {
         $allowedPaths = ['shop', 'gallery/category'];

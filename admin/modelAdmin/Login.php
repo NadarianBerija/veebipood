@@ -97,6 +97,10 @@ class Login {
         return false;
     }
 
+    /**
+     * Logs out the user by clearing the session and destroying it.
+     * @return void
+     */
     public static function logout() {
         $_SESSION = [];
 

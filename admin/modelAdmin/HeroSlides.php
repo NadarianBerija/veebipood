@@ -1,5 +1,12 @@
 <?php
+/**
+ * Model for managing hero slider slides in the admin panel.
+ */
 class HeroSlides {
+    /**
+     * Validates CSRF token to prevent cross-site request forgery.
+     * @return void
+     */
     private static function checkCSRF() {
         if (!isset($_POST['csrf_token']) ||
             $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -7,6 +14,10 @@ class HeroSlides {
         }
     }
 
+    /**
+     * Retrieves all hero slides from the database.
+     * @return array Array of slides with their IDs and image paths.
+     */
     public static function getAllSlides() {
         $query = "SELECT hs.id AS slide_id,
                          hs.image AS slide_img
@@ -15,6 +26,10 @@ class HeroSlides {
         return $db->getAll($query);
     }
 
+    /**
+     * Handles the addition of a new slide, including image upload and validation.
+     * @return array Result of the operation with 'success' boolean and 'message' string.
+     */
     public static function addSlide() {
         self::checkCSRF();
 
@@ -80,6 +95,11 @@ class HeroSlides {
         ];
     }
 
+    /**
+     * Deletes a slide by its ID and removes the associated image file.
+     * @param int $id The ID of the slide to delete.
+     * @return array Result of the operation with 'success' boolean and 'message' string.
+     */
     public static function deleteSlide($id) {
         self::checkCSRF();
         

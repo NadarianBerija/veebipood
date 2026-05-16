@@ -1,4 +1,7 @@
 <?php
+/**
+ * Detailed view of an art piece for the gallery
+ */
 /** @var array $images */
 /** @var array $currentArt */
 ?>

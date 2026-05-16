@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin form to edit an existing art piece.
+ */
 /** @var array $artData */
 /** @var array $categories */
 /** @var array $authors */

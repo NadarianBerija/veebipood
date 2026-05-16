@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin form to add a new art piece
+ */
 /** @var array $authors */
 /** @var array $categories */
 ob_start()

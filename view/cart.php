@@ -1,4 +1,7 @@
 <?php
+/**
+ * Shopping cart page
+ */
 /** @var array $items */
 /** @var float $total */
 ?>

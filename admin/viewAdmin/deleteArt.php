@@ -1,4 +1,7 @@
 <?php
+/**
+ * Confirmation view for deleting an art piece
+ */
 /** @var array $artData */
 /** @var array $categories */
 /** @var array $authors */

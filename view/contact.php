@@ -1,3 +1,8 @@
+<?php
+/**
+ * Contact page
+ */
+?>
 <div class="my-container">
     <h2><?= htmlspecialchars(Lang::get('contact')) ?></h2>
 

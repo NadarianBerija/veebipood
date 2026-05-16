@@ -1,4 +1,7 @@
 <?php
+/**
+ * Estonian language translations.
+ */
 return [
     // layout
     'home' => 'Avaleht',

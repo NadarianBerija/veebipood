@@ -1,4 +1,7 @@
 <?php
+/**
+ * Russian language translations.
+ */
 return [
     // layout
     'home' => 'Главная',

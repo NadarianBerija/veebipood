@@ -1,3 +1,8 @@
+<?php
+/**
+ * Admin panel layout template.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

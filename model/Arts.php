@@ -1,5 +1,23 @@
 <?php
+/**
+ * File: model/Arts.php
+ * Purpose: Handles data retrieval for art pieces from the database.
+ */
+
+/**
+ * Class Arts
+ * 
+ * Provides static methods to retrieve art pieces, filtered by various criteria like category, status (in shop), and language.
+ */
 class Arts {
+    /**
+     * Retrieves all art pieces available in the shop for a specific language, with pagination.
+     * 
+     * @param string $lang The language code (e.g., 'en', 'ee', 'ru').
+     * @param int $limit The maximum number of records to return.
+     * @param int $offset The number of records to skip.
+     * @return array An array of art pieces.
+     */
     public static function getAllArtsInShop($lang, $limit, $offset) {
         $query = "SELECT a.id AS art_id,
                         a.price AS art_price,
@@ -20,6 +38,12 @@ class Arts {
         return $arr;
     }
 
+    /**
+     * Counts the total number of art pieces available in the shop for a specific language.
+     * 
+     * @param string $lang The language code.
+     * @return int The total count of art pieces.
+     */
     public static function getAllArtsInShopCount($lang) {
         $query = "SELECT COUNT(*) AS total
                     FROM arts a
@@ -33,6 +57,15 @@ class Arts {
         return (int)($arr['total'] ?? 0);
     }
 
+    /**
+     * Retrieves art pieces for a specific category and language available in the shop, with pagination.
+     * 
+     * @param int $id The category ID.
+     * @param string $lang The language code.
+     * @param int $limit The maximum number of records to return.
+     * @param int $offset The number of records to skip.
+     * @return array An array of art pieces.
+     */
     public static function getArtsByCategoryInShop($id, $lang, $limit, $offset) {
         $query = "SELECT a.id AS art_id,
                         a.price AS art_price,
@@ -54,6 +87,13 @@ class Arts {
         return $arr;
     }
 
+    /**
+     * Counts the total number of art pieces for a specific category and language in the shop.
+     * 
+     * @param int $id The category ID.
+     * @param string $lang The language code.
+     * @return int The total count of art pieces.
+     */
     public static function getArtsCountByCategoryInShop($id, $lang) {
         $query = "SELECT COUNT(*) AS total
                 FROM arts a
@@ -69,6 +109,15 @@ class Arts {
         return (int)($arr['total'] ?? 0);
     }
 
+    /**
+     * Retrieves art pieces for a specific category ID and language (ignoring shop status), with pagination.
+     * 
+     * @param int $id The category ID.
+     * @param string $lang The language code.
+     * @param int $limit The maximum number of records to return.
+     * @param int $offset The number of records to skip.
+     * @return array An array of art pieces.
+     */
     public static function getArtsByCategoryID($id, $lang, $limit, $offset) {
         $query = "SELECT a.id AS art_id,
                         al.title AS art_title,
@@ -89,6 +138,13 @@ class Arts {
         return $arr;
     }
 
+    /**
+     * Counts the total number of art pieces for a specific category and language (ignoring shop status).
+     * 
+     * @param int $id The category ID.
+     * @param string $lang The language code.
+     * @return int The total count of art pieces.
+     */
     public static function getArtsCountByCategory($id, $lang) {
         $query = "SELECT COUNT(*) AS total
                     FROM arts a
@@ -104,6 +160,13 @@ class Arts {
         return (int)($arr['total'] ?? 0);
     }
 
+    /**
+     * Retrieves a single art piece by its ID and language.
+     * 
+     * @param int $id The art piece ID.
+     * @param string $lang The language code.
+     * @return array|false The art piece data as an associative array, or false if not found.
+     */
     public static function getArtById($id, $lang) {
         $query = "SELECT a.id AS art_id,
                         a.category_id AS cat_id,
@@ -128,6 +191,12 @@ class Arts {
         return $n;
     }
 
+    /**
+     * Retrieves all images associated with a specific art piece ID.
+     * 
+     * @param int $id The art piece ID.
+     * @return array An array of art image data.
+     */
     public static function getArtImages($id) {
         $query = "SELECT a.id AS art_id,
                         ai.image AS art_image,
@@ -141,6 +210,13 @@ class Arts {
         return $arr;
     }
 
+    /**
+     * Retrieves art pieces by a list of their IDs and language.
+     * 
+     * @param array $ids An array of art piece IDs.
+     * @param string $lang The language code.
+     * @return array An array of art pieces.
+     */
     public static function getArtsByIds($ids, $lang) {
         if (empty($ids)) return [];
 

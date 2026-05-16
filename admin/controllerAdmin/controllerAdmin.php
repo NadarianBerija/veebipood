@@ -1,7 +1,24 @@
 <?php
+/**
+ * File: admin/controllerAdmin/controllerAdmin.php
+ * Purpose: Admin controller handling administrative routes, authentication, and content management.
+ */
+
+/**
+ * Class controllerAdmin
+ * 
+ * Orchestrates administrative tasks such as user management, art piece moderation, and system settings.
+ */
 class controllerAdmin {
+    /**
+     * Verifies if the current user has administrative or moderator access.
+     * Also handles session timeout.
+     * 
+     * @param bool $adminOnly If true, only users with 'admin' status are allowed.
+     * @return void
+     */
     private static function checkAdminAccess($adminOnly = false) {
-        $timeout_duration = 120; 
+        $timeout_duration = 120; // 2 minutes timeout for admin activity
 
         if (isset($_SESSION['last_activity'])) {
             if (time() - $_SESSION['last_activity'] > $timeout_duration) {
@@ -28,6 +45,11 @@ class controllerAdmin {
         }
     }
 
+    /**
+     * Renders the admin login form.
+     * 
+     * @return void
+     */
     public static function formLoginSite() {
         if (empty($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -36,6 +58,11 @@ class controllerAdmin {
         include_once('viewAdmin/formLogin.php');
     }
 
+    /**
+     * Processes the admin login submission.
+     * 
+     * @return void
+     */
     public static function loginAction() {
         $login = Login::authentication();
         if (isset($login) and $login == true) {
@@ -45,6 +72,11 @@ class controllerAdmin {
         }
     }
 
+    /**
+     * Processes the admin logout action.
+     * 
+     * @return void
+     */
     public static function logoutAction() {
         self::checkAdminAccess();
 
@@ -52,6 +84,12 @@ class controllerAdmin {
         include_once('viewAdmin/formLogin.php');
     }
 
+    /**
+     * Manages hero slider slides in the admin panel.
+     * Handles adding and deleting slides.
+     * 
+     * @return void
+     */
     public static function HeroSlides() {
         self::checkAdminAccess();
 
@@ -79,6 +117,11 @@ class controllerAdmin {
         include_once('viewAdmin/heroSlides.php');
     }
 
+    /**
+     * Renders the list of all art pieces with filtering options.
+     * 
+     * @return void
+     */
     public static function AllArts() {
         self::checkAdminAccess();
 
@@ -97,6 +140,11 @@ class controllerAdmin {
         include_once('viewAdmin/artsList.php');
     }
 
+    /**
+     * Renders the list of all users.
+     * 
+     * @return void
+     */
     public static function Users() {
         self::checkAdminAccess();
 
@@ -104,6 +152,11 @@ class controllerAdmin {
         include_once('viewAdmin/users.php');
     }
 
+    /**
+     * Renders the form to add a new art piece.
+     * 
+     * @return void
+     */
     public static function AddArtForm() {
         self::checkAdminAccess();
 
@@ -118,6 +171,11 @@ class controllerAdmin {
         include_once('viewAdmin/addArt.php');
     }
 
+    /**
+     * Processes the submission to add a new art piece.
+     * 
+     * @return void
+     */
     public static function AddArt() {
         self::checkAdminAccess();
 
@@ -130,6 +188,12 @@ class controllerAdmin {
         include_once('viewAdmin/addArt.php');
     }
 
+    /**
+     * Renders the form to edit an existing art piece.
+     * 
+     * @param int|string $id The ID of the art piece to edit.
+     * @return void
+     */
     public static function EditArtForm($id) {
         self::checkAdminAccess();
 
@@ -149,6 +213,12 @@ class controllerAdmin {
         include_once('viewAdmin/editArt.php');
     }
 
+    /**
+     * Processes the submission to edit an existing art piece.
+     * 
+     * @param int|string $id The ID of the art piece to edit.
+     * @return void
+     */
     public static function EditArt($id) {
         self::checkAdminAccess();
 
@@ -170,6 +240,12 @@ class controllerAdmin {
         include_once('viewAdmin/editArt.php');
     }
 
+    /**
+     * Renders the confirmation form to delete an art piece.
+     * 
+     * @param int|string $id The ID of the art piece to delete.
+     * @return void
+     */
     public static function DeleteArtForm($id) {
         self::checkAdminAccess();
 
@@ -189,6 +265,12 @@ class controllerAdmin {
         include_once('viewAdmin/deleteArt.php');
     }
 
+    /**
+     * Processes the deletion of an art piece.
+     * 
+     * @param int|string $id The ID of the art piece to delete.
+     * @return void
+     */
     public static function DeleteArt($id) {
         self::checkAdminAccess();
 
@@ -205,10 +287,13 @@ class controllerAdmin {
         include_once('viewAdmin/deleteArt.php');
     }
 
+    /**
+     * Toggles the 'is_deleted' status of an art piece (AJAX).
+     * 
+     * @return void
+     */
     public static function ToggleDeleteArt() {
         self::checkAdminAccess();
-
-
 
         if (!isset($_POST['id'])) {
             echo json_encode(['success' => false]);
@@ -222,6 +307,11 @@ class controllerAdmin {
         echo json_encode($result);
     }
 
+    /**
+     * Toggles the 'is_deleted' status of a user (AJAX). Admin access required.
+     * 
+     * @return void
+     */
     public static function ToggleDeleteUser() {
         self::checkAdminAccess(true);
 
@@ -261,6 +351,11 @@ class controllerAdmin {
         ]);
     }
 
+    /**
+     * Renders the form to add a new user. Admin access required.
+     * 
+     * @return void
+     */
     public static function AddUserForm() {
         self::checkAdminAccess(true);
 
@@ -271,6 +366,11 @@ class controllerAdmin {
         include_once('viewAdmin/addUser.php');
     }
 
+    /**
+     * Processes the submission to add a new user. Admin access required.
+     * 
+     * @return void
+     */
     public static function AddUser() {
         self::checkAdminAccess(true);
 
@@ -283,6 +383,12 @@ class controllerAdmin {
         include_once('viewAdmin/addUser.php');
     }
 
+    /**
+     * Renders the form to edit an existing user. Admin access required.
+     * 
+     * @param int|string $id The ID of the user to edit.
+     * @return void
+     */
     public static function EditUserForm($id) {
         self::checkAdminAccess(true);
 
@@ -296,6 +402,12 @@ class controllerAdmin {
         include_once('viewAdmin/editUser.php');
     }
 
+    /**
+     * Processes the submission to edit an existing user. Admin access required.
+     * 
+     * @param int|string $id The ID of the user to edit.
+     * @return void
+     */
     public static function EditUser($id) {
         self::checkAdminAccess(true);
 
@@ -315,6 +427,11 @@ class controllerAdmin {
         include_once('viewAdmin/editUser.php');
     }
 
+    /**
+     * Renders the admin 404 error page.
+     * 
+     * @return void
+     */
     public static function error404() {
 
         http_response_code(404);

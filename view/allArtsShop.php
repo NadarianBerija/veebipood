@@ -1,4 +1,7 @@
 <?php
+/**
+ * Main shop page showing all art pieces
+ */
 /** @var array $allArtsShop */
 /** @var array $categories */
 /** @var int $selectedCategory */

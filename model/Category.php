@@ -1,5 +1,21 @@
 <?php
+/**
+ * File: model/Category.php
+ * Purpose: Handles data retrieval for art categories from the database.
+ */
+
+/**
+ * Class Category
+ * 
+ * Provides static methods to retrieve art categories and their localized names.
+ */
 class Category {
+    /**
+     * Retrieves all art categories for a specific language.
+     * 
+     * @param string $lang The language code (e.g., 'en', 'ee', 'ru').
+     * @return array An array of categories, each as an associative array.
+     */
     public static function getAllCategory($lang) {
         $query = "SELECT c.id AS category_id,
                         c.cat_img AS cat_img,
@@ -14,6 +30,13 @@ class Category {
         return is_array($arr) ? $arr : [];
     }
 
+    /**
+     * Retrieves a single art category by its ID and language.
+     * 
+     * @param int $id The category ID.
+     * @param string $lang The language code.
+     * @return array|false The category data as an associative array, or false if not found.
+     */
     public static function getCategoryByID($id, $lang) {
         $query = "SELECT c.id AS category_id,
                         cl.name AS category_name,

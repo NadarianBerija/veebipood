@@ -1,4 +1,7 @@
 <?php
+/**
+ * List of all users for management.
+ */
 /** @var array $arr */
 ob_start()
 ?>

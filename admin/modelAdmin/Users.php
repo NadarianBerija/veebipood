@@ -111,6 +111,11 @@ class Users {
         return $controll;
     }
 
+    /**
+     * Retrieves detailed information for a specific user.
+     * @param int $id The user's ID.
+     * @return array|false User data or false if not found.
+     */
     public static function getUserDetail($id) {
         $id = (int)$id;
         $query = "SELECT u.id AS user_id,
@@ -124,6 +129,11 @@ class Users {
         return $db->getOne($query, [$id]);
     }
 
+    /**
+     * Handles the update of an existing user's information.
+     * @param int $id The ID of the user to edit.
+     * @return array Result of the operation.
+     */
     public static function editUser($id) {
         self::checkCSRF();
 
@@ -263,6 +273,11 @@ class Users {
         return $result;
     }
 
+    /**
+     * Retrieves the deletion status of a user.
+     * @param int $id The user's ID.
+     * @return int Deletion status (1 if deleted, 0 otherwise).
+     */
     public static function getDeletedStatus($id) {
         $db = new Database();
 
@@ -271,6 +286,11 @@ class Users {
         return $db->getOne($query, [$id])['is_deleted'];
     }
 
+    /**
+     * Toggles the deletion status of a user and their associated arts.
+     * @param int $id The user's ID.
+     * @return int The new deletion status.
+     */
     public static function toggleDeleted($id) {
         $db = new Database();
 

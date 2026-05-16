@@ -1,4 +1,7 @@
 <?php
+/**
+ * Gallery view filtered by category
+ */
 /** @var array $category */
 /** @var array $arts */
 /** @var int $page */

@@ -1,4 +1,8 @@
 <?php
+/**
+ * Entry point for the administrative panel.
+ * Sets up session security parameters, loads environment variables, and initializes admin components.
+ */
 session_set_cookie_params([
     'lifetime' => 0,
     'path' => '/',

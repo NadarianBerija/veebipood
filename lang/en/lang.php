@@ -1,4 +1,7 @@
 <?php
+/**
+ * English language translations.
+ */
 return [
     // layout
     'home' => 'Home',

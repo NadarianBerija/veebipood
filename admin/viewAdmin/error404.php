@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin panel 404 error page.
+ */
 ob_start()
 ?>
 

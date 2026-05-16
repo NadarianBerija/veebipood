@@ -1,5 +1,23 @@
 <?php
+/**
+ * File: controller/Controller.php
+ * Purpose: Main application controller handling public routes and view rendering.
+ */
+
+/**
+ * Class Controller
+ * 
+ * Orchestrates the business logic for the public-facing part of the website, 
+ * including page rendering, art displays, and shopping cart functionality.
+ */
 class Controller {
+    /**
+     * Renders a view within the main layout.
+     * 
+     * @param string $view The name of the view file (without extension).
+     * @param array $data An associative array of data to be extracted into the view.
+     * @return string The rendered HTML content.
+     */
     private static function render($view, $data = []) {
         extract($data);
 
@@ -12,29 +30,59 @@ class Controller {
         return ob_get_clean();
     }
 
+    /**
+     * Renders the main home page.
+     * 
+     * @return string The rendered HTML content.
+     */
     public static function StartSite() {
         Lang::load('lang');
         return self::render('main');
     }
 
+    /**
+     * Renders the "About Us" page.
+     * 
+     * @return string The rendered HTML content.
+     */
     public static function AboutUs() {
         Lang::load('lang');
         return self::render('aboutUs');
     }
 
+    /**
+     * Renders the "Contact" page.
+     * 
+     * @return string The rendered HTML content.
+     */
     public static function Contact() {
         Lang::load('lang');
         return self::render('contact');
     }
 
+    /**
+     * Retrieves all hero slider slides.
+     * 
+     * @return array An array of hero slides data.
+     */
     public static function AllHeroSlides() {
         return HeroSlider::getAllHeroSlides();
     }
 
+    /**
+     * Retrieves all art categories.
+     * 
+     * @return array An array of category data.
+     */
     public static function AllCategory() {
         return Category::getAllCategory(APP_LANG);
     }
 
+    /**
+     * Renders the main shop page with all arts or filtered by category, including pagination.
+     * 
+     * @return string The rendered HTML content.
+     */
     public static function AllArtsShop() {
         Lang::load('lang');
 
@@ -66,6 +114,12 @@ class Controller {
         ]);
     }
 
+    /**
+     * Renders arts filtered by a specific category ID in the gallery view.
+     * 
+     * @param int $id The category ID.
+     * @return string The rendered HTML content.
+     */
     public static function ArtsByCatID($id) {
         Lang::load('lang');
 
@@ -88,6 +142,13 @@ class Controller {
         ]);
     }
 
+    /**
+     * Renders the details of a specific art piece.
+     * 
+     * @param int $id The art piece ID.
+     * @param string $type The view type ('shop' or 'gallery'). Defaults to 'shop'.
+     * @return string The rendered HTML content.
+     */
     public static function ArtByID($id, $type = 'shop') {
         Lang::load('lang');
 
@@ -114,6 +175,11 @@ class Controller {
         
     }
 
+    /**
+     * Renders a 404 error page.
+     * 
+     * @return string The rendered HTML content.
+     */
     public static function error404() {
 
         http_response_code(404);
@@ -121,6 +187,11 @@ class Controller {
         return self::render('error404');
     }
 
+    /**
+     * Renders the shopping cart page.
+     * 
+     * @return string The rendered HTML content.
+     */
     public static function Cart() {
         Lang::load('lang');
 
@@ -149,6 +220,12 @@ class Controller {
         ]);
     }
 
+    /**
+     * Adds an art piece to the shopping cart.
+     * 
+     * @param int $id The art piece ID.
+     * @return void
+     */
     public static function CartAdd($id) {
         $_SESSION['cart'][$id] = 1;
 
@@ -156,6 +233,12 @@ class Controller {
         exit;
     }
 
+    /**
+     * Removes an art piece from the shopping cart.
+     * 
+     * @param int $id The art piece ID.
+     * @return void
+     */
     public static function CartRemove($id) {
         unset($_SESSION['cart'][$id]);
 
@@ -163,6 +246,11 @@ class Controller {
         exit;
     }
 
+    /**
+     * Processes the shopping cart order submission.
+     * 
+     * @return string The rendered HTML content (cart page with result).
+     */
     public static function CartOrder() {
 
         Lang::load('lang');
@@ -174,7 +262,7 @@ class Controller {
             ]);
         }
 
-        // honeypot
+        // honeypot check to prevent spam
         if (!empty($_POST['website'])) {
 
             return self::render('cart', [

@@ -1,5 +1,21 @@
 <?php
+/**
+ * File: admin/modelAdmin/adminArts.php
+ * Purpose: Handles administrative data operations for art pieces, including CRUD and file uploads.
+ */
+
+/**
+ * Class adminArts
+ * 
+ * Provides methods for administrators to manage art pieces, categories, authors, and images.
+ */
 class adminArts {
+    /**
+     * Validates the CSRF token from the POST request.
+     * 
+     * @return void
+     * @throws Exception If CSRF validation fails.
+     */
     private static function checkCSRF() {
         if (!isset($_POST['csrf_token']) ||
             $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -7,14 +23,32 @@ class adminArts {
         }
     }
 
+    /**
+     * Cleans a string value by trimming whitespace.
+     * 
+     * @param string $value The value to clean.
+     * @return string The cleaned value.
+     */
     private static function clean($value){
         return trim($value);
     }
 
+    /**
+     * Sanitizes a path string to allow only alphanumeric characters, underscores, and hyphens.
+     * 
+     * @param string $value The path to sanitize.
+     * @return string The sanitized path.
+     */
     private static function sanitizePath($value) {
         return preg_replace('/[^a-zA-Z0-9_-]/', '', $value);
     }
 
+    /**
+     * Retrieves all art pieces from the database with optional filtering.
+     * 
+     * @param array $filters Associative array of filters (author, category, in_shop, is_deleted).
+     * @return array An array of art pieces.
+     */
     public static function getAllArts($filters = []) {
         $query = "SELECT a.id AS art_id,
                          al.title AS art_title,
@@ -68,6 +102,11 @@ class adminArts {
         return $db->getAll($query, $params);
     }
 
+    /**
+     * Retrieves all categories and authors for selection in forms.
+     * 
+     * @return array An associative array containing 'categories' and 'authors'.
+     */
     public static function getCategoriesAndAuthors() {
       $db = new Database();
 
@@ -93,6 +132,12 @@ class adminArts {
       ];
     }
 
+    /**
+     * Retrieves detailed information about a specific art piece by its ID.
+     * 
+     * @param int|string $id The art piece ID.
+     * @return array|false An array of art data (art, langs, images), or false on failure.
+     */
     public static function getArtById($id) {
         $id = (int)$id;
 
@@ -133,6 +178,11 @@ class adminArts {
         ];
     }
 
+    /**
+     * Adds a new art piece to the database, including translations and images.
+     * 
+     * @return array An array containing success status and an optional error message.
+     */
     public static function addArt() {
         self::checkCSRF();
 
@@ -277,6 +327,12 @@ class adminArts {
         return $controll;
     }
 
+    /**
+     * Updates an existing art piece, including its metadata, translations, and images.
+     * 
+     * @param int|string $id The ID of the art piece to edit.
+     * @return array An array containing success status and an optional error message.
+     */
     public static function editArt($id) {
         self::checkCSRF();
 
@@ -471,6 +527,12 @@ class adminArts {
         return $controll;
     }
 
+    /**
+     * Deletes an art piece and its associated data (images, translations) from the database and filesystem.
+     * 
+     * @param int|string $id The ID of the art piece to delete.
+     * @return array An array containing success status and an optional error message.
+     */
     public static function deleteArt($id) {
         self::checkCSRF();
 
@@ -519,6 +581,12 @@ class adminArts {
         return $controll;
     }
 
+    /**
+     * Retrieves the deletion status ('is_deleted') of an art piece.
+     * 
+     * @param int|string $id The art piece ID.
+     * @return int The deletion status (0 or 1).
+     */
     public static function getDeletedStatus($id) {
         $db = new Database();
 
@@ -527,6 +595,12 @@ class adminArts {
         return $db->getOne($query,[$id])['is_deleted'];
     }
 
+    /**
+     * Toggles the deletion status of an art piece.
+     * 
+     * @param int|string $id The art piece ID.
+     * @return array An array containing success status and the new deletion status.
+     */
     public static function toggleDeleted($id) {
         $db = new Database();
 
@@ -552,6 +626,12 @@ class adminArts {
         ];
     }
 
+    /**
+     * Checks if an art piece can be restored (i.e., its author is not deleted).
+     * 
+     * @param int|string $artId The art piece ID.
+     * @return bool True if the art piece can be restored, false otherwise.
+     */
     public static function canRestoreArt($artId) {
         $db = new Database();
 

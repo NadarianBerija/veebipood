@@ -1,4 +1,7 @@
 <?php
+/**
+ * Management view for hero slider slides.
+ */
 ob_start()
 ?>
 

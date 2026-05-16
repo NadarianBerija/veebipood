@@ -1,3 +1,9 @@
+<?php
+/**
+ * Main layout template for the public site.
+ * Includes the common header, navigation, mobile menu, and footer.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

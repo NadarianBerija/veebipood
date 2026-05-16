@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin form to add a new user
+ */
 ob_start()
 ?>
 

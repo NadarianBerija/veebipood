@@ -1,4 +1,8 @@
 <?php
+/**
+ * Admin panel routing logic.
+ * Maps request paths to specific administrative controller actions.
+ */
 $path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $parts = explode('/', $path);
 $path = end($parts);

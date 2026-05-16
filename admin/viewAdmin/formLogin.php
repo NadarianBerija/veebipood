@@ -1,4 +1,7 @@
 <?php
+/**
+ * Admin login form.
+ */
 if (isset($_SESSION['userId'])) {
     header('Location: artsList');
     exit();
