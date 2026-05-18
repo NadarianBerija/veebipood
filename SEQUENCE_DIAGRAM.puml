@@ -1,0 +1,69 @@
+@startuml Vihmart Sequence Diagram
+
+header Vihmart Project Architecture
+title Sequence Diagram - Request Lifecycle
+
+actor "User / Admin" as User
+participant "Browser" as Browser
+participant "index.php\n(Entry Point)" as Index
+participant "routing.php\n(Router)" as Router
+participant "Controller" as Controller
+participant "Model" as Model
+database "Database" as DB
+participant "View / Layout" as View
+
+== Public Site Flow ==
+
+User -> Browser: Request URL (e.g., /shop)
+Browser -> Index: GET /vihmart/en/shop
+Index -> Index: session_start()\nLoad .env\nLoad DB & Classes
+Index -> Router: Include route/routing.php
+Router -> Router: Parse URI & Language
+Router -> Controller: Controller::AllArtsShop()
+activate Controller
+Controller -> Model: Arts::getArtsByCategoryInShop()
+activate Model
+Model -> DB: SQL Query
+activate DB
+DB --> Model: Result Set
+deactivate DB
+Model --> Controller: Arts Data
+deactivate Model
+Controller -> View: render('allArtsShop', data)
+activate View
+View -> View: Include view/allArtsShop.php (content)
+View -> View: Include view/layout.php (wrapper)
+View --> Controller: Compiled HTML
+deactivate View
+Controller --> Router: HTML Response
+deactivate Controller
+Router --> Index: $response
+Index --> Browser: echo $response
+Browser --> User: Display Page
+
+== Admin Panel Flow ==
+
+User -> Browser: Request URL (e.g., /admin/artsList)
+Browser -> Index: GET /vihmart/admin/artsList
+Index -> Router: Include admin/routeAdmin/routingAdmin.php
+Router -> Controller: controllerAdmin::AllArts()
+activate Controller
+Controller -> Model: adminArts::getAllArts()
+activate Model
+Model -> DB: SQL Query
+activate DB
+DB --> Model: Result Set
+deactivate DB
+Model --> Controller: Arts Data
+deactivate Model
+Controller -> View: renderAdmin('artsList', data)
+activate View
+View --> Controller: Compiled HTML
+deactivate View
+Controller --> Router: HTML Response
+deactivate Controller
+Router --> Index: $response
+Index --> Browser: echo $response
+Browser --> User: Display Admin Table
+
+@enduml

@@ -18,7 +18,7 @@ class controllerAdmin {
      * @return void
      */
     private static function checkAdminAccess($adminOnly = false) {
-        $timeout_duration = 120; // 2 minutes timeout for admin activity
+        $timeout_duration = 1800; // 30 minutes timeout for admin activity
 
         if (isset($_SESSION['last_activity'])) {
             if (time() - $_SESSION['last_activity'] > $timeout_duration) {

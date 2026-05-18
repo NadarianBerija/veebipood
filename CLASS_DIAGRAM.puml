@@ -1,0 +1,122 @@
+@startuml Vihmart Class Diagram
+
+header Vihmart Project Architecture
+title Class Diagram - Models and Controllers
+
+package "Models (Public)" {
+    class Arts {
+        + {static} getAllArtsInShop(lang, limit, offset)
+        + {static} getAllArtsInShopCount(lang)
+        + {static} getArtsByCategoryInShop(id, lang, limit, offset)
+        + {static} getArtsCountByCategoryInShop(id, lang)
+        + {static} getArtsByCategoryID(id, lang, limit, offset)
+        + {static} getArtsCountByCategory(id, lang)
+        + {static} getArtById(id, lang)
+        + {static} getArtImages(id)
+        + {static} getArtsByIds(ids, lang)
+    }
+
+    class Category {
+        + {static} getAllCategory(lang)
+        + {static} getCategoryByID(id, lang)
+    }
+
+    class HeroSlider {
+        + {static} getAllHeroSlides()
+    }
+
+    class Order {
+        + {static} send(name, email, phone, message, items, ids)
+    }
+}
+
+package "Models (Admin)" {
+    class adminArts {
+        - {static} checkCSRF()
+        - {static} clean(value)
+        - {static} sanitizePath(value)
+        + {static} getAllArts(filters)
+        + {static} getCategoriesAndAuthors()
+        + {static} getArtById(id)
+        + {static} addArt()
+        + {static} editArt(id)
+        + {static} deleteArt(id)
+        + {static} toggleDeleted(id)
+    }
+
+    class Users {
+        - {static} checkCSRF()
+        - {static} clean(value)
+        + {static} getAllUsers()
+        + {static} addUser()
+        + {static} getUserDetail(id)
+        + {static} editUser(id)
+        + {static} toggleDeleted(id)
+    }
+
+    class Login {
+        + {static} loginAction()
+        + {static} logoutAction()
+    }
+}
+
+package "Controllers" {
+    class Controller {
+        - {static} render(view, data)
+        + {static} StartSite()
+        + {static} AllArtsShop()
+        + {static} ArtsByCatID(id)
+        + {static} AboutUs()
+        + {static} Contact()
+        + {static} Cart()
+    }
+
+    class controllerAdmin {
+        - {static} renderAdmin(view, data)
+        + {static} formLoginSite()
+        + {static} loginAction()
+        + {static} AllArts()
+        + {static} AddArt()
+        + {static} Users()
+    }
+}
+
+package "Infrastructure" {
+    class Database {
+        - connection
+        + __construct()
+        + getOne(query, params)
+        + getAll(query, params)
+        + executeRun(query, params)
+        + beginTransaction()
+        + commit()
+        + rollBack()
+    }
+
+    class Lang {
+        + {static} load(file)
+        + {static} get(key)
+    }
+}
+
+' Relationships
+Arts ..> Database : uses
+Category ..> Database : uses
+HeroSlider ..> Database : uses
+Order ..> Database : uses
+adminArts ..> Database : uses
+Users ..> Database : uses
+
+Controller ..> Arts : uses
+Controller ..> Category : uses
+Controller ..> HeroSlider : uses
+Controller ..> Lang : uses
+
+controllerAdmin ..> adminArts : uses
+controllerAdmin ..> Users : uses
+controllerAdmin ..> Login : uses
+
+Arts "*" -- "1" Category : belongs to
+Arts "*" -- "1" Users : created by
+
+@enduml
