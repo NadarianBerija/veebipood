@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the Order class, focusing on the send method which handles order processing and email notifications.
- * @covers Order
  */
+#[CoversClass(Order::class)]
 final class OrderTest extends BaseTestCase
 {
     /**

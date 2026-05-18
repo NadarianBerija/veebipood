@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for the adminArts model, covering art management functionalities within the admin panel.
- * @covers adminArts
  */
+#[CoversClass(adminArts::class)]
 final class AdminArtsTest extends BaseTestCase
 {
     /**

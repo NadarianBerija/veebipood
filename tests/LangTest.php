@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the Lang class, focusing on the loading and retrieval of language data.
- * @covers Lang
  */
+#[CoversClass(Lang::class)]
 final class LangTest extends BaseTestCase
 {
     /**

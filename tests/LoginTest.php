@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the Login class, focusing on authentication and logout functionality.
- * @covers Login
  */
+#[CoversClass(Login::class)]
 final class LoginTest extends BaseTestCase
 {
     /**

@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for the adminArts helper methods.
- * @covers adminArts
  */
+#[CoversClass(adminArts::class)]
 final class AdminArtsHelperTest extends BaseTestCase
 {
     /**

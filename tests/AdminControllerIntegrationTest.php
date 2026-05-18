@@ -1,12 +1,13 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
 /**
  * Integration tests for the AdminController, focusing on page rendering and access control within the admin panel.
- * @covers controllerAdmin
  */
+#[CoversClass(controllerAdmin::class)]
 final class AdminControllerIntegrationTest extends BaseTestCase
 {
     /**

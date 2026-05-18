@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the AdminController, focusing on individual controller actions.
- * @covers controllerAdmin
  */
+#[CoversClass(controllerAdmin::class)]
 final class AdminControllerTest extends BaseTestCase
 {
     /**

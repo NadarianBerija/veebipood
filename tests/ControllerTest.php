@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the main Controller class, covering basic page rendering and error handling.
- * @covers Controller
  */
+#[CoversClass(Controller::class)]
 final class ControllerTest extends BaseTestCase
 {
     /**

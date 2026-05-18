@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the HeroSlider class, focusing on the retrieval of hero slide data from the database.
- * @covers HeroSlider
  */
+#[CoversClass(HeroSlider::class)]
 final class HeroSliderTest extends BaseTestCase
 {
         /**

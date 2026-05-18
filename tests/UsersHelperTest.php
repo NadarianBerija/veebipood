@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the Users helper class, focusing on the cleaning of input data.
- * @covers Users
  */
+#[CoversClass(Users::class)]
 final class UsersHelperTest extends BaseTestCase
 {
     /**

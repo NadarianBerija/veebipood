@@ -1,10 +1,11 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 /**
  * Tests for the Arts model, covering art retrieval functionalities for the shop and individual art details.
- * @covers Arts
  */
+#[CoversClass(Arts::class)]
 final class ArtsTest extends BaseTestCase
 {
     /**

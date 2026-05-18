@@ -1,12 +1,13 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
 /**
  * Integration tests for the PublicController, focusing on page rendering and data retrieval for public-facing pages.
- * @covers Controller
  */
+#[CoversClass(Controller::class)]
 final class PublicControllerIntegrationTest extends BaseTestCase
 {
     /**

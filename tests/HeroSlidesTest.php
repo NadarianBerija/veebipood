@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for the HeroSlides class, focusing on the addition and deletion of hero slides.
- * @covers HeroSlides
  */
+#[CoversClass(HeroSlides::class)]
 final class HeroSlidesTest extends BaseTestCase
 {
     /**

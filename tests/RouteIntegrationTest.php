@@ -1,12 +1,13 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
 /**
  * Integration tests for the main routing of the application, verifying that the correct pages are rendered based on the requested URI.
- * @covers routing
  */
+#[CoversClass(routing::class)]
 final class RouteIntegrationTest extends BaseTestCase
 {
     /**

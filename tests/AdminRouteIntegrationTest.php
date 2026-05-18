@@ -1,10 +1,11 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 /** * Integration tests for the admin routes, verifying that the correct pages are rendered based on the requested URI and user authentication status.
- * @covers controllerAdmin
  */
+#[CoversClass(controllerAdmin::class)]
 final class AdminRouteIntegrationTest extends BaseTestCase
 {
         /**

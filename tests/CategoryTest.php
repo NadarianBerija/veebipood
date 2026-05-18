@@ -1,11 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Tests for the Category model, covering category retrieval functionalities for all categories and individual category details.
- * @covers Category
  */
+#[CoversClass(Category::class)]
 final class CategoryTest extends BaseTestCase
 {
         /**
