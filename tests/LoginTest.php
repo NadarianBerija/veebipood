@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the Login class, focusing on authentication and logout functionality.
+ * @covers Login
+ */
 final class LoginTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the session and POST data.
+     */
     protected function setUp(): void
     {
         if (session_status() === PHP_SESSION_NONE && !headers_sent()) {
@@ -15,12 +22,18 @@ final class LoginTest extends BaseTestCase
         $_COOKIE = [];
     }
 
+    /**
+     * Test that the authentication method returns false when no POST data is provided, and that login attempts are not incremented.
+     */
     public function testAuthenticationReturnsFalseWithoutPost(): void
     {
         $this->assertFalse(Login::authentication());
         $this->assertSame(0, $_SESSION['login_attempts'] ?? 0);
     }
 
+    /**
+     * Test that the authentication method returns false when an invalid CSRF token is provided, and that login attempts are incremented.
+     */
     public function testAuthenticationInvalidCsrfIncrementsLoginAttempts(): void
     {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -37,6 +50,9 @@ final class LoginTest extends BaseTestCase
         $this->assertGreaterThan(0, $_SESSION['last_attempt_time']);
     }
 
+    /**
+     * Test that the logout method clears the session data, effectively logging the user out.
+     */
     public function testLogoutClearsSession(): void
     {
         $_SESSION['sessionId'] = 'abc123';
@@ -50,6 +66,9 @@ final class LoginTest extends BaseTestCase
         $this->assertEmpty($_SESSION);
     }
 
+    /**
+     * Test that the authentication method returns true with valid credentials, sets the session status to admin, and resets login attempts.
+     */
     public function testAuthenticationReturnsTrueWithValidCredentials(): void
     {
         $_SESSION['csrf_token'] = 'token123';

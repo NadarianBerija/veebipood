@@ -1,5 +1,10 @@
 <?php
 class Users {
+    /**
+     * Validates the CSRF token from the POST data against the session token.
+     * Terminates execution if validation fails.
+     * @return void
+     */
     private static function checkCSRF() {
         if (!isset($_POST['csrf_token']) ||
             $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
@@ -7,10 +12,19 @@ class Users {
         }
     }
 
+    /**
+     * Trims whitespace from the beginning and end of a string.
+     * @param string $value The string to clean.
+     * @return string The cleaned string.
+     */
     private static function clean($value) {
         return trim($value);
     }
 
+    /**
+     * Retrieves all users from the database, including their ID, username, picture, status, and deletion status.
+     * @return array An array of user data.
+     */
     public static function getAllUsers() {
         $query = "SELECT u.id AS user_id,
                          u.username AS user_name,
@@ -22,6 +36,11 @@ class Users {
         return $db->getAll($query);
     }
 
+    /**
+     * Adds a new user to the system after performing validation checks.
+     * Handles CSRF token validation, user input sanitization, password hashing, picture upload, and database insertion.
+     * @return array An array indicating the success of the operation and any error messages.
+     */
     public static function addUser() {
         self::checkCSRF();
 

@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the Order class, focusing on the send method which handles order processing and email notifications.
+ * @covers Order
+ */
 final class OrderTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and configuring email settings.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -17,6 +24,9 @@ final class OrderTest extends BaseTestCase
         $_ENV['MAIL_TO'] = 'to@example.com';
     }
 
+    /**
+     * Test that the send method returns true when the email is sent successfully, and that the database is updated accordingly.
+     */
     public function testSendReturnsTrueWhenMailIsSent(): void
     {
         Database::onQuery(
@@ -31,6 +41,9 @@ final class OrderTest extends BaseTestCase
         $this->assertSame([true], $result);
     }
 
+    /**
+     * Test that the send method returns false when the email fails to send, and that the database is updated accordingly.
+     */
     public function testSendReturnsFalseWhenMailFails(): void
     {
         \PHPMailer\PHPMailer\PHPMailer::$sendSuccess = false;

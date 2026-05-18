@@ -3,8 +3,15 @@
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
+/**
+ * Integration tests for the main routing of the application, verifying that the correct pages are rendered based on the requested URI.
+ * @covers routing
+ */
 final class RouteIntegrationTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and session.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -14,6 +21,9 @@ final class RouteIntegrationTest extends BaseTestCase
         $_SERVER = [];
     }
 
+    /**
+     * Test that the home route returns the StartSite HTML content.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testHomeRouteReturnsStartSiteHtml(): void
@@ -28,6 +38,9 @@ final class RouteIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('Vihmart', $response);
     }
 
+    /**
+     * Test that the about us route returns the AboutUs HTML content.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testAboutUsRouteReturnsAboutUsPage(): void
@@ -41,6 +54,9 @@ final class RouteIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('About', $response);
     }
 
+    /**
+     * Test that the contact route returns the Contact HTML content.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testShopRouteReturnsShopPage(): void
@@ -55,6 +71,9 @@ final class RouteIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('Shop', $response);
     }
 
+    /**
+     * Test that an unknown route returns a 404 response with the expected content.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testUnknownRouteReturns404(): void

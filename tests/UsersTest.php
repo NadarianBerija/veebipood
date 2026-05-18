@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the Users helper class, focusing on the cleaning of input data.
+ * @covers Users
+ */
 final class UsersTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and session.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -12,6 +19,9 @@ final class UsersTest extends BaseTestCase
         $_FILES = [];
     }
 
+    /**
+     * Test that the getUserDetail method correctly retrieves user details from the database based on the provided user ID.
+     */
     public function testGetUserDetailReturnsUser(): void
     {
         Database::onQuery(
@@ -25,6 +35,9 @@ final class UsersTest extends BaseTestCase
         $this->assertSame('Test User', $result['user_name']);
     }
 
+    /**
+     * Test that the addUser method fails when the provided login already exists in the database, returning the appropriate error message.
+     */
     public function testAddUserFailsWhenLoginAlreadyExists(): void
     {
         $_POST = [
@@ -48,6 +61,9 @@ final class UsersTest extends BaseTestCase
         $this->assertStringContainsString('See kasutajatunnus on juba kasutusel', $result[1]);
     }
 
+        /**
+        * Test that the toggleDeleted method correctly toggles the is_deleted status of a user and their associated arts, returning the new status.
+        */
     public function testToggleDeletedReturnsNewStatus(): void
     {
         Database::onQuery(

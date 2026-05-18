@@ -3,8 +3,15 @@
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
+/**
+ * Integration tests for the PublicController, focusing on page rendering and data retrieval for public-facing pages.
+ * @covers Controller
+ */
 final class PublicControllerIntegrationTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and session.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -15,6 +22,9 @@ final class PublicControllerIntegrationTest extends BaseTestCase
         $_SERVER = [];
     }
 
+    /**
+     * Test that the StartSite method returns HTML content containing the expected elements.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testAllArtsShopPageRendersWithProducts(): void
@@ -56,6 +66,9 @@ final class PublicControllerIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('Test Category', $html);
     }
 
+    /**
+     * Test that the ArtsByCatID method returns HTML content containing the expected category and product details.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testArtsByCatIDPageRendersCategoryProducts(): void
@@ -94,6 +107,9 @@ final class PublicControllerIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('Category Name', $html);
     }
 
+    /**
+     * Test that the HeroSlides method renders the hero slides page with the expected slide data.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testArtByIdPageRendersProductDetails(): void

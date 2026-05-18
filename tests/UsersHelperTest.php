@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the Users helper class, focusing on the cleaning of input data.
+ * @covers Users
+ */
 final class UsersHelperTest extends BaseTestCase
 {
+    /**
+     * Test that the clean method correctly trims whitespace from a given string.
+     */
     public function testCleanTrimsWhitespace(): void
     {
         $ref = new ReflectionClass(Users::class);

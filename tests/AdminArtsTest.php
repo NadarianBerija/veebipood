@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Tests for the adminArts model, covering art management functionalities within the admin panel.
+ * @covers adminArts
+ */
 final class AdminArtsTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -12,6 +19,9 @@ final class AdminArtsTest extends BaseTestCase
         $_FILES = [];
     }
 
+    /**
+     * Test that getCategoriesAndAuthors method correctly returns a list of categories and authors.
+     */
     public function testGetCategoriesAndAuthorsReturnsData(): void
     {
         Database::onQuery(
@@ -37,6 +47,9 @@ final class AdminArtsTest extends BaseTestCase
         $this->assertSame('Painting', $data['categories'][0]['cat_name']);
     }
 
+    /**
+     * Test that addArt method validation fails when title and images are missing.
+     */
     public function testAddArtValidationFailsWithoutTitleAndImages(): void
     {
         $_POST = [
@@ -56,6 +69,9 @@ final class AdminArtsTest extends BaseTestCase
         $this->assertStringContainsString('Vähemalt üks pilt', $result[1]);
     }
 
+    /**
+     * Test that deleteArt method returns false when the artwork is not found.
+     */
     public function testDeleteArtReturnsFalseWhenArtNotFound(): void
     {
         $_POST['delete'] = '1';

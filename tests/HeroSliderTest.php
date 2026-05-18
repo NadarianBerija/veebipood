@@ -2,13 +2,23 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the HeroSlider class, focusing on the retrieval of hero slide data from the database.
+ * @covers HeroSlider
+ */
 final class HeroSliderTest extends BaseTestCase
 {
+        /**
+        * Set up the test environment before each test, resetting the database.
+        */
     protected function setUp(): void
     {
         Database::reset();
     }
 
+    /**
+     * Test that getAllHeroSlides method correctly returns an array of hero slides from the database.
+     */
     public function testGetAllHeroSlidesReturnsSlides(): void
     {
         Database::onQuery(

@@ -3,8 +3,15 @@
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 
+/**
+ * Integration tests for the AdminController, focusing on page rendering and access control within the admin panel.
+ * @covers controllerAdmin
+ */
 final class AdminControllerIntegrationTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and session.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -15,6 +22,9 @@ final class AdminControllerIntegrationTest extends BaseTestCase
         $_SERVER = [];
     }
 
+    /**
+     * Helper method to simulate an admin user login.
+     */
     private function loginAsAdmin(): void
     {
         $_SESSION['sessionId'] = 'session123';
@@ -24,6 +34,9 @@ final class AdminControllerIntegrationTest extends BaseTestCase
         $_SESSION['csrf_token'] = 'csrf123';
     }
 
+        /**
+     * Test that the hero slides management page renders correctly for an admin user.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testHeroSlidesPageRendersForAdmin(): void
@@ -50,6 +63,9 @@ final class AdminControllerIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('images/slide1.jpg', $output);
     }
 
+        /**
+     * Test that the user management page renders correctly for an admin user.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testUsersPageRendersForAdmin(): void
@@ -76,6 +92,9 @@ final class AdminControllerIntegrationTest extends BaseTestCase
         $this->assertStringContainsString('Test User', $output);
     }
 
+        /**
+     * Test that the add user form renders correctly for an admin user.
+     */
     #[RunInSeparateProcess]
     #[PreserveGlobalState(enabled: false)]
     public function testAddUserFormRendersForAdmin(): void

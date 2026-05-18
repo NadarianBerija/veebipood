@@ -2,13 +2,23 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Tests for the Category model, covering category retrieval functionalities for all categories and individual category details.
+ * @covers Category
+ */
 final class CategoryTest extends BaseTestCase
 {
+        /**
+        * Set up the test environment before each test.
+        */
     protected function setUp(): void
     {
         Database::reset();
     }
 
+    /**
+     * Test that getAllCategory method correctly returns an array of categories for a given language.
+     */
     public function testGetAllCategoryReturnsResults(): void
     {
         Database::onQuery(
@@ -27,6 +37,9 @@ final class CategoryTest extends BaseTestCase
         $this->assertSame('Painting', $results[0]['category_name']);
     }
 
+    /**
+     * Test that getCategoryByID method returns the correct category record for a given ID and language.
+     */
     public function testGetCategoryByIdReturnsOneCategory(): void
     {
         Database::onQuery(

@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the AdminController, focusing on individual controller actions.
+ * @covers controllerAdmin
+ */
 final class AdminControllerTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test.
+     */
     protected function setUp(): void
     {
         Database::reset();
@@ -11,6 +18,9 @@ final class AdminControllerTest extends BaseTestCase
         $_POST = [];
     }
 
+    /**
+     * Test that the formLoginSite method outputs the login form with a CSRF token.
+     */
     public function testFormLoginSiteOutputsLoginForm(): void
     {
         $_SESSION['csrf_token'] = 'token123';

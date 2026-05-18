@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Base test case class for all tests, providing common setup and teardown functionality.
+ * It also includes enhanced logging for test execution and failure details.
+ */
 abstract class BaseTestCase extends TestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and session.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -14,6 +21,9 @@ abstract class BaseTestCase extends TestCase
         echo "[TEST START] {$class}::{$name}" . PHP_EOL;
     }
 
+    /**
+     * Tear down the test environment after each test, logging the end of the test.
+     */
     protected function tearDown(): void
     {
         $name = $this->name();
@@ -24,6 +34,9 @@ abstract class BaseTestCase extends TestCase
         parent::tearDown();
     }
 
+    /**
+     * Handle test failures, logging detailed information about the failure.
+     */
     protected function onNotSuccessfulTest(\Throwable $t): never
     {
         $name = $this->name();

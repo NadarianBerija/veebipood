@@ -2,8 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Tests for the adminArts helper methods.
+ * @covers adminArts
+ */
 final class AdminArtsHelperTest extends BaseTestCase
 {
+    /**
+     * Test that sanitizePath method correctly removes invalid characters from a given string.
+     */
     public function testSanitizePathRemovesInvalidCharacters(): void
     {
         $ref = new ReflectionClass(adminArts::class);
@@ -15,6 +22,9 @@ final class AdminArtsHelperTest extends BaseTestCase
         $this->assertSame('HelloWorld', $value);
     }
 
+    /**
+     * Test that the clean method correctly trims whitespace from a given string.
+     */
     public function testCleanTrimsWhitespace(): void
     {
         $ref = new ReflectionClass(adminArts::class);

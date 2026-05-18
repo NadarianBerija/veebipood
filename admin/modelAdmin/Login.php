@@ -1,5 +1,10 @@
 <?php
 class Login {
+    /**
+     * Authenticates a user based on provided login credentials and session data.
+     * Handles login attempts, CSRF token validation, password verification, and session management.
+     * @return bool True if authentication is successful, false otherwise.
+     */
     public static function authentication() {
         if (!isset($_SESSION['login_attempts'])) {
             $_SESSION['login_attempts'] = 0;

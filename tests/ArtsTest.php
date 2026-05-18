@@ -1,14 +1,23 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
+/**
+ * Tests for the Arts model, covering art retrieval functionalities for the shop and individual art details.
+ * @covers Arts
+ */
 final class ArtsTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test.
+     */
     protected function setUp(): void
     {
         Database::reset();
     }
 
+    /**
+     * Test that getAllArtsInShop method correctly returns an array of arts available in the shop.
+     */
     public function testGetAllArtsInShopReturnsArray(): void
     {
         Database::onQuery(
@@ -30,6 +39,9 @@ final class ArtsTest extends BaseTestCase
         $this->assertSame(150, $result[0]['art_price']);
     }
 
+    /**
+     * Test that getAllArtsInShopCount method returns the correct count of arts available in the shop.
+     */
     public function testGetAllArtsInShopCountReturnsInteger(): void
     {
         Database::onQuery(
@@ -40,6 +52,9 @@ final class ArtsTest extends BaseTestCase
         $this->assertSame(5, Arts::getAllArtsInShopCount('en'));
     }
 
+    /**
+     * Test that getArtById method returns the correct art record for a given ID and language.
+     */
     public function testGetArtByIdReturnsOneRecord(): void
     {
         Database::onQuery(
@@ -61,6 +76,9 @@ final class ArtsTest extends BaseTestCase
         $this->assertSame('Painting', $result['cat_name']);
     }
 
+    /**
+     * Test that getArtsByIds method uses a placeholder list for the IN clause.
+     */
     public function testGetArtsByIdsUsesPlaceholderList(): void
     {
         Database::onQuery(

@@ -2,14 +2,24 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit tests for the main Controller class, covering basic page rendering and error handling.
+ * @covers Controller
+ */
 final class ControllerTest extends BaseTestCase
 {
+    /**
+     * Set up the test environment before each test, resetting the database and session.
+     */
     protected function setUp(): void
     {
         Database::reset();
         $_SESSION = [];
     }
 
+    /**
+     * Test that the StartSite method returns HTML content containing the expected elements.
+     */
     public function testStartSiteReturnsHtml(): void
     {
         $html = Controller::StartSite();
@@ -18,6 +28,9 @@ final class ControllerTest extends BaseTestCase
         $this->assertStringContainsString('Vihmart', $html);
     }
 
+    /**
+     * Test that the AboutUs method returns HTML content containing the expected elements.
+     */
     public function testAboutUsReturnsHtmlContents(): void
     {
         $html = Controller::AboutUs();
@@ -25,6 +38,9 @@ final class ControllerTest extends BaseTestCase
         $this->assertStringContainsString('About', $html);
     }
 
+    /**
+     * Test that the Contact method returns HTML content containing the expected elements.
+     */
     public function testContactReturnsHtmlContents(): void
     {
         $html = Controller::Contact();
@@ -32,6 +48,9 @@ final class ControllerTest extends BaseTestCase
         $this->assertStringContainsString('Contact', $html);
     }
 
+    /**
+     * Test that the error404 method sets the correct HTTP response code and returns HTML content containing the expected elements.
+     */
     public function testError404SetsHttpResponseCode(): void
     {
         $html = Controller::error404();
