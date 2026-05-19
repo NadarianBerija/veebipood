@@ -8,6 +8,7 @@
 <?php
 $pictures = [];
 
+$authPic = $authPic ?? [];
 foreach ($authPic as $pic) {
     $pictures[$pic['username']] = $pic['user_pic'];
 }
