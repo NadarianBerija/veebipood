@@ -4,5 +4,5 @@
  */
 ?>
 <div class="my-container">
-    <h1 class="text-center my-5">Error 404</h1>
+    <h1 class="d-flex justify-content-center align-items-center" style="height: 40vh;">Error 404</h1>
 </div>

@@ -178,14 +178,15 @@ class Arts {
                         cl.name AS cat_name,  
                         l.code AS lang_code,
                         u.username AS author,
-                        u.picture AS author_picture
+                        u.picture AS author_picture,
+                        a.is_deleted AS is_deleted
                     FROM arts a 
                     JOIN art_lang al ON al.art_id = a.id
                     JOIN languages l ON al.lang_id = l.id
                     JOIN categories c ON c.id = a.category_id
                     JOIN cat_lang cl ON cl.cat_id = c.id AND cl.lang_id = l.id
                     JOIN users u ON a.user_id = u.id
-                    WHERE a.id = ? AND l.code = ?";
+                    WHERE a.id = ? AND l.code = ? AND a.is_deleted = 0";
         $db = new Database();
         $n = $db->getOne($query, [$id, $lang]);
         return $n;
