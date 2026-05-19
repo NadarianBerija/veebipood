@@ -53,11 +53,19 @@ if (isset($result)) {
     <label class="form-label fs-5 fw-semibold">Kasutajatunnus</label>
     <input type="text" name="login" class="form-control mb-3" required value="<?= htmlspecialchars($detail['user_login']) ?>">
 
+    <?php if ((int)$detail['user_id'] !== 1) {?>
     <label class="form-label fs-5 fw-semibold">Status</label>
     <select name="status" class="form-control mb-3" required>
         <option value="admin" <?= $detail['user_status'] == 'admin' ? 'selected' : '' ?>>admin</option>
         <option value="moderaator" <?= $detail['user_status'] == 'moderaator' ? 'selected' : '' ?>>moderaator</option>
     </select>
+    <?php } else {?>
+    <label class="form-label fs-5 fw-semibold">Status</label>
+	<select name="status" class="form-control mb-3" required>
+	    <option value="admin" <?= $detail['user_status'] == 'admin' ? 'selected' : '' ?>>admin</option>
+    </select>
+	<?php } ?>
+
         
     <label class="form-label fs-5 fw-semibold">Vana pild</label>
     <?php if (!empty($detail['picture'])) { ?>
