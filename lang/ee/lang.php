@@ -63,7 +63,7 @@ return [
     'remove' => 'Eemalda',
     'total' => 'Kokku',
     'go_to_cart' => 'Mine ostukorvi',
-    'send_order' => 'Tellimus on saadetud',
+    'send_order' => 'Tellimus on saadetud. Võtame teiega ühendust.',
     'invalid_request' => 'Vigane päring',
     'spam' => 'Rämpspost tuvastatud',
     'required_fields' => 'Täitke kohustuslikud väljad',

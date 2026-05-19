@@ -47,7 +47,12 @@ class Controller {
      */
     public static function AboutUs() {
         Lang::load('lang');
-        return self::render('aboutUs');
+
+        $authPic = Arts::getAuthorPicture();
+
+        return self::render('aboutUs',[
+            'authPic' => $authPic
+        ]);
     }
 
     /**

@@ -57,13 +57,13 @@
                 <div class="rounded-circle" style="width: 30px; height: 30px;">
                 <?php 
                     if (!empty($currentArt['author_picture'])) {
-                        echo '<img style="width: 100%" src="' . BASE_URL . '/public/' . htmlspecialchars($currentArt['author_picture'], ENT_QUOTES, 'UTF-8') . '">';
-                    } else {
-                        echo '<img style="width: 100%" src="' . BASE_URL . '/public/images/users/user.jpg">';
+                        echo '<img style="width: 100%; border-radius: 50%;" src="' . BASE_URL . '/public/' . htmlspecialchars($currentArt['author_picture'], ENT_QUOTES, 'UTF-8') . '">';
+                        } else {
+                        echo '<img style="width: 100%; border-radius: 50%" src="' . BASE_URL . '/public/images/users/user.jpg">';
                     }
                 ?>
                 </div>
-                <p class="fst-italic"><?= htmlspecialchars($currentArt['author']) ?></p>
+                <p class="my-auto fst-italic"><?= htmlspecialchars($currentArt['author']) ?></p>
             </div>
             <p class="fs-5"><?= htmlspecialchars($currentArt['art_text']) ?></p>
             <p class="fs-3 fw-bold fst-italic"><?= htmlspecialchars($currentArt['art_price']) ?> € </p>

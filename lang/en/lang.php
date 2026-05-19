@@ -63,7 +63,7 @@ return [
     'remove' => 'Remove',
     'total' => 'Total',
     'go_to_cart' => 'Go to cart',
-    'send_order' => 'The order has been sent',
+    'send_order' => 'The order has been sent. We will contact you.',
     'invalid_request' => 'Invalid request',
     'spam' => 'Spam detected',
     'required_fields' => 'Fill required fields',

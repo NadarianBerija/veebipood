@@ -246,5 +246,20 @@ class Arts {
         $arr = $db->getAll($query, array_merge([$lang, $lang], $ids));
         return $arr;
     }
+
+    /**
+     * Retrieves all users' profile pictures and usernames.
+     * 
+     * @return array An array of users, each containing user ID, username, and profile picture path.
+     */
+    public static function getAuthorPicture() {
+        $query = "SELECT u.id AS user_id,
+                         u.username AS username,
+                         u.picture AS user_pic
+                    FROM users u";
+        $db = new Database();
+        $arr = $db->getAll($query);
+        return $arr;
+    }
 }
 ?>
