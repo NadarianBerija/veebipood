@@ -118,13 +118,46 @@ The database uses a normalized relational structure optimized for localization:
 
 ## 🧪 Quality Assurance
 
-Run the comprehensive test suite to ensure system stability:
-```bash
-# Run all tests
-vendor/bin/phpunit tests
+Run the automated test suites for backend (PHPUnit) and end-to-end (Playwright).
 
-# Run specific test suite
+### PHPUnit (unit & integration tests)
+
+- Install PHP dependencies:
+```bash
+composer install
+```
+
+- Run all tests in the `tests` folder:
+```bash
+vendor/bin/phpunit tests
+```
+
+- Run a single test file:
+```bash
 vendor/bin/phpunit tests/AdminControllerTest.php
+```
+
+### Playwright (end-to-end tests)
+
+- Install Node dependencies and Playwright browsers:
+```bash
+npm install
+npx playwright install
+```
+
+- Run headless E2E tests (tests live in `tests-e2e`):
+```bash
+npm run test:e2e
+```
+
+- Run headed (visible) tests:
+```bash
+npm run test:e2e:headed
+```
+
+- Open the HTML report after a run:
+```bash
+npm run test:e2e:report
 ```
 
 ## 📝 License
