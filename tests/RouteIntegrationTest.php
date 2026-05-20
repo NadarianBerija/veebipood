@@ -7,7 +7,7 @@ use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 /**
  * Integration tests for the main routing of the application, verifying that the correct pages are rendered based on the requested URI.
  */
-#[CoversClass(routing::class)]
+#[CoversClass('routing')]
 final class RouteIntegrationTest extends BaseTestCase
 {
     /**

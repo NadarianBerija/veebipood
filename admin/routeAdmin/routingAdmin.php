@@ -9,59 +9,59 @@ $path = end($parts);
 $id = isset($_GET['id']) ? (int)$_GET['id'] : null;
 
 if ($path == 'admin' OR $path == '' OR $path == 'index.php') {
-    $response = controllerAdmin::formLoginSite();
+    return controllerAdmin::formLoginSite();
 }
 elseif ($path == 'login') {
-    $response = controllerAdmin::loginAction();
+    return controllerAdmin::loginAction();
 }
 elseif ($path == 'logout') {
-    $response = controllerAdmin::logoutAction();
+    return controllerAdmin::logoutAction();
 }
 elseif ($path == 'heroSlides') {
-    $response = controllerAdmin::HeroSlides();
+    return controllerAdmin::HeroSlides();
 }
 elseif ($path == 'artsList') {
-    $response = controllerAdmin::AllArts();
+    return controllerAdmin::AllArts();
 }
 elseif ($path == 'users') {
-    $response = controllerAdmin::Users();
+    return controllerAdmin::Users();
 }
 elseif ($path == 'addArt') {
-    $response = controllerAdmin::AddArtForm();
+    return controllerAdmin::AddArtForm();
 }
 elseif ($path == 'addArtResult') {
-    $response = controllerAdmin::AddArt();
+    return controllerAdmin::AddArt();
 }
 elseif ($path == 'editArt' && $id) {
-    $response = controllerAdmin::EditArtForm($id);
+    return controllerAdmin::EditArtForm($id);
 }
 elseif ($path == 'editArtResult' && $id) {
-    $response = controllerAdmin::EditArt($id);
+    return controllerAdmin::EditArt($id);
 }
 elseif ($path == 'deleteArt' && $id) {
-    $response = controllerAdmin::DeleteArtForm($id);
+    return controllerAdmin::DeleteArtForm($id);
 }
 elseif ($path == 'deleteArtResult' && $id) {
-    $response = controllerAdmin::DeleteArt($id);
+    return controllerAdmin::DeleteArt($id);
 }
 elseif ($path == 'toggleDeleteArt') {
-    $response = controllerAdmin::ToggleDeleteArt();
+    return controllerAdmin::ToggleDeleteArt();
 }
 elseif ($path == 'addUser') {
-    $response = controllerAdmin::AddUserForm();
+    return controllerAdmin::AddUserForm();
 }
 elseif ($path == 'addUserResult') {
-    $response = controllerAdmin::AddUser();
+    return controllerAdmin::AddUser();
 }
 elseif ($path == 'editUser' && $id) {
-    $response = controllerAdmin::EditUserForm($id);
+    return controllerAdmin::EditUserForm($id);
 }
 elseif ($path == 'editUserResult' && $id) {
-    $response = controllerAdmin::EditUser($id);
+    return controllerAdmin::EditUser($id);
 }
 elseif ($path == 'toggleDeleteUser') {
-    $response = controllerAdmin::ToggleDeleteUser();
+    return controllerAdmin::ToggleDeleteUser();
 }
 else {
-    $response = controllerAdmin::error404();
+    return controllerAdmin::error404();
 }

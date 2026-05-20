@@ -11,7 +11,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
   use: {
-    baseURL: process.env.BASE_URL ?? 'http://localhost:81/vihmart/',
+    baseURL: process.env.BASE_URL ?? 'http://localhost/vihmart/',
     headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,

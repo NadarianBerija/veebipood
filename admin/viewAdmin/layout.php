@@ -2,6 +2,7 @@
 /**
  * Admin panel layout template.
  */
+$content = $content ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -63,10 +63,10 @@ elseif ($path == 'cart') {
     $response = Controller::Cart();
 }
 elseif ($path == 'cart/add') {
-    $response = Controller::CartAdd((int)$_GET['id']);
+    Controller::CartAdd((int)$_GET['id']);
 }
 elseif ($path == 'cart/remove') {
-    $response = Controller::CartRemove((int)$_GET['id']);
+    Controller::CartRemove((int)$_GET['id']);
 }
 elseif ($path == 'order') {
     $response = Controller::CartOrder();

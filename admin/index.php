@@ -26,7 +26,7 @@ require 'modelAdmin/HeroSlides.php';
 require 'modelAdmin/Users.php';
 
 require 'controllerAdmin/controllerAdmin.php';
-require 'routeAdmin/routingAdmin.php';
+$response = require 'routeAdmin/routingAdmin.php';
 
 echo $response;
 ?>
